@@ -1,0 +1,28 @@
+06:24:54.461 [Druid-ConnectionPool-Create-608460706] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 154 millis. SELECT 1 FROM DUAL[]
+06:24:54.889 [http-nio-8080-exec-78] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 177 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+06:24:55.044 [http-nio-8080-exec-78] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 150 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[76]
+06:24:55.206 [http-nio-8080-exec-78] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 156 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+08:41:35.682 [http-nio-8080-exec-97] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 199 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+11:22:53.848 [Druid-ConnectionPool-Create-608460706] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 65 millis. SELECT 1 FROM DUAL[]
+21:01:22.257 [Druid-ConnectionPool-Create-608460706] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 152 millis. SELECT 1 FROM DUAL[]
+21:01:22.625 [http-nio-8080-exec-90] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 188 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+21:01:22.832 [http-nio-8080-exec-91] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 182 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+21:01:23.007 [http-nio-8080-exec-91] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 138 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]

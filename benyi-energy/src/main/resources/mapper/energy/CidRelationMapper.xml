@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidRelationMapper">
+
+    <resultMap type="CidRelation" id="CidRelationResult">
+        <result property="id" column="id"/>
+        <result property="vid" column="vid"/>
+        <result property="cid" column="cid"/>
+        <result property="roadType" column="road_type"/>
+        <result property="powerStationId" column="powerstation_id"/>
+        <result property="status" column="status"/>
+        <result property="bindType" column="bind_type"/>
+        <result property="isConfirm" column="is_confirm"/>
+        <result property="hardVersion" column="hard_version"/>
+        <result property="softVersion" column="soft_version"/>
+        <result property="softDeputyVersion" column="soft_deputy_version"/>
+        <result property="cidType" column="cid_type"/>
+        <result property="currentEnergy" column="current_energy"/>
+        <result property="weekEnergy" column="week_energy"/>
+        <result property="monthEnergy" column="month_energy"/>
+        <result property="yearEnergy" column="year_energy"/>
+        <result property="countEnergy" column="count_energy"/>
+        <result property="cammandUpdateMap" column="cammand_update_map"/>
+        <result property="cammandStartingUp" column="cammand_starting_up"/>
+        <result property="cammandUpdate" column="cammand_update"/>
+        <result property="cammandPowerCoefficient" column="cammand_power_coefficient"/>
+        <result property="cammandOnGrid" column="cammand_on_grid"/>
+        <result property="cammandUnGetOnGrid" column="cammand_un_get_on_grid"/>
+        <result property="lastUpdate" column="last_update"/>
+        <result property="lastErrorCode" column="last_error_code"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="standardPower" column="standard_power"/>
+        <result property="currentPower" column="current_power"/>
+    </resultMap>
+
+    <sql id="selectCidRelationVo">
+        select id,
+               vid,
+               cid,
+               road_type,
+               powerstation_id ,
+               current_energy,
+               week_energy,
+               month_energy,
+               year_energy,
+               count_energy,
+               status,
+               bind_type,
+               is_confirm,
+               hard_version,
+               cammand_update_map,
+               cammand_starting_up,
+               cammand_update,
+               cammand_power_coefficient,
+               cammand_on_grid,
+               cammand_un_get_on_grid,
+                   soft_version,
+               soft_deputy_version,
+               cid_type,
+               last_update,
+               last_error_code,
+               del_flag,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               standard_power,
+               current_power
+        from cid_relation c
+    </sql>
+
+
+    <select id="selectByVid" parameterType="String" resultType="map">
+
+        select id from cid_relation where vid=#{value} and del_flag=0 limit 1
+
+    </select>
+
+    <select id="selectVidByCidAndPlantID"  resultType="map">
+
+        select distinct vid from cid_relation
+        where cid=#{cid}
+        <if test="powerStationId != null  and powerStationId != ''">
+            and powerstation_id=#{powerStationId}
+          </if>
+
+
+    </select>
+
+    <select id="selectPowerstationIDByCidAndPlantID"  resultType="map">
+
+        select powerstation_id as powerstationID  from cid_relation
+        where cid=#{cid} and powerstation_id=#{powerStationId}
+
+    </select>
+
+
+    <select id="selectPowerstationIDByCidAndVid"  resultType="map">
+
+        select powerstation_id as powerstationID  from cid_relation where cid=#{cid} and vid = #{vid} and del_flag=0
+
+
+    </select>
+
+    <select id="countCidRelationByCidType" resultType="java.util.Map">
+        SELECT cid_type as cidType, count(*) as 'count' FROM cid_relation group by cid_type
+    </select>
+
+    <select id="selectVidListByPowerStationID" parameterType="long" resultType="map">
+        select vid, status
+        from cid_relation
+        where powerstation_id = #{value}
+          and del_flag = 0
+          and vid is not null
+    </select>
+
+
+    <select id="selectNotOfflineCidRelation"  resultMap="CidRelationResult">
+        select id,cid,vid from cid_relation where  status != '3'
+    </select>
+
+
+    <select id="selectCidRelationList" parameterType="CidRelation" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+
+        <where>
+            <if test="vid != null  and vid != ''">and vid = #{vid}</if>
+            <if test="cid != null  and cid != ''">and cid = #{cid}</if>
+            <if test="roadType != null  and roadType != ''">and road_type = #{roadType}</if>
+            <if test="powerStationId != null ">and powerstation_id = #{powerStationId}</if>
+            <if test="deptId != null">
+                and powerstation_id in (
+                select p.id from cid_powerstationinfo p where p.energy_dept_id=#{deptId}
+                OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) )
+                )
+            </if>
+            <if test="status != null  and status != ''">and status = #{status}</if>
+            <if test="bindType != null  and bindType != ''">and bind_type = #{bindType}</if>
+            <if test="delFlag != null  and delFlag != ''">and del_flag = #{delFlag}</if>
+            <if test="isConfirm != null and isConfirm != ''">and is_confirm = #{isConfirm}</if>
+        </where>
+    </select>
+
+    <select id="selectCidRelationListGroupBy" parameterType="CidRelation" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+        where powerstation_id =#{powerStationId} and del_flag = 0
+        group by cid
+    </select>
+
+
+    <select id="selectCidRelationListGroupByWithCid" parameterType="CidRelation" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+        where cid =#{cid}  and del_flag = 0
+        group by vid
+    </select>
+
+
+    <select id="selectCidRelationListByPowerStationIds" resultType="java.util.Map">
+        select r.id as 'id', r.cid as 'cid',r.vid as 'vid' from cid_relation r left join cid_powerstationinfo p on
+        r.powerstation_id=p.id
+        where r.del_flag=0
+        <if test="deptId!=null">and p.energy_dept_id=#{deptId}</if>
+        <if test="powerstationId !=null">
+            and r.powerstation_id = #{powerstationId}
+        </if>
+    </select>
+
+    <select id="selectCidRelationById" parameterType="Long" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+        where id = #{id} and is_confirm = '0'
+    </select>
+
+    <select id="selectCidRelationByStationIdWithGroup" resultType="java.util.Map">
+        select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=#{powerStationId} and r.del_flag = 0
+        <if test="cid != null">and r.cid = #{cid}</if>
+        <if test="vid != null">and r.vid=#{vid}</if>
+        order by r.cid
+    </select>
+
+<!--    <select id="selectCidRelationByStationIdWithGroup" resultType="java.util.Map">-->
+<!--        select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',-->
+<!--        r.is_confirm as 'isConfirm',-->
+<!--        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,-->
+<!--        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r-->
+<!--        where r.powerstation_id=#{powerStationId} and r.del_flag = 0 and r.bind_type = 0-->
+<!--        <if test="cid != null">and r.cid like concat('%', #{cid}, '%')</if>-->
+<!--        <if test="vid != null">and r.vid like concat('%', #{vid}, '%')</if>-->
+<!--        group by r.vid,r.road_type-->
+<!--        order by r.cid,r.road_type-->
+<!--    </select>-->
+
+    <select id="selectCreateCidCount" resultType="java.util.Map">
+        <!--        select count(r.cid) as 'id',DATE_FORMAT(r.create_time,'%Y-%m') as 'createTime' from cid_relation r-->
+        <!--        left join cid_powerstationinfo p on p.id = r.powerstation_id-->
+        <!--        where r.del_flag = 0 and r.bind_type = 0 and r.is_confirm = 0-->
+        <!--        <if test="energyDeptId != null  and energyDeptId != ''">-->
+        <!--            and ( p.energy_dept_id=#{energyDeptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{energyDeptId}, ancestors) ))-->
+        <!--        </if>-->
+        <!--        group by DATE_FORMAT(r.create_time,'%Y-%m')-->
+        select r.cid as 'cid',DATE_FORMAT(r.create_time,'%Y-%m') as 'cidType' from cid_relation r where r.del_flag = 0
+
+        and r.powerstation_id in (
+        select p.id from cid_powerstationinfo p where p.del_flag = 0
+        and ( p.energy_dept_id=#{energyDeptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+        find_in_set(#{energyDeptId}, ancestors) ))
+        ) and r.create_time>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+        group by r.cid,DATE_FORMAT(r.create_time,'%Y-%m');
+    </select>
+
+    <select id="selectCreateVidCount" resultType="java.util.Map">
+        <!--        select count(r.cid) as 'id',DATE_FORMAT(r.create_time,'%Y-%m') as 'createTime' from cid_relation r-->
+        <!--        left join cid_powerstationinfo p on p.id = r.powerstation_id-->
+        <!--        where r.del_flag = 0 and r.bind_type = 0 and r.is_confirm = 0-->
+        <!--        <if test="energyDeptId != null  and energyDeptId != ''">-->
+        <!--            and ( p.energy_dept_id=#{energyDeptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{energyDeptId}, ancestors) ))-->
+        <!--        </if>-->
+        <!--        group by DATE_FORMAT(r.create_time,'%Y-%m')-->
+        select count(r.vid) as 'vid',DATE_FORMAT(r.create_time,'%Y-%m') as 'cidType' from cid_relation r where r.del_flag = 0
+
+        and r.powerstation_id in (
+        select p.id from cid_powerstationinfo p where p.del_flag = 0
+        and ( p.energy_dept_id=#{energyDeptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+        find_in_set(#{energyDeptId}, ancestors) ))
+        ) and r.create_time>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+        group by r.cid,r.vid,r.road_type,DATE_FORMAT(r.create_time,'%Y-%m')
+    </select>
+
+
+    <select id="selectCidCount" resultType="java.util.Map">
+        select count(r.cid) from cid_relation r left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.del_flag = 0
+        <if test="energyDeptId != null  and energyDeptId != ''">and p.energy_dept_id = #{energyDeptId}</if>
+        group b
+    </select>
+
+    <select id="selectVidCount" resultType="java.util.Map">
+        select count(r.vid) from cid_relation r left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.del_flag = 0
+        <if test="energyDeptId != null  and energyDeptId != ''">and p.energy_dept_id = #{energyDeptId}</if>
+        group by r.vid
+    </select>
+
+    <select id="getEquptStatuCount" resultType="java.util.Map">
+        select r.id,
+               r.status,
+               r.last_update as 'lastUpdate', r.last_error_code as 'lastErrorCode'
+        from cid_relation r
+                 left join cid_powerstationinfo p on r.powerstation_id = p.id
+        where p.energy_dept_id = #{deptId}
+          and r.del_flag = 0
+
+    </select>
+
+    <select id="getEmptyVidInfoByCid" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+        where cid=#{cid} and del_flag = "0" and vid =""
+    </select>
+
+    <select id="getEmuAndStatusList" parameterType="long"  resultType="String">
+        SELECT distinct cid,status FROM cid_relation where powerstation_id = #{value};
+    </select>
+
+    <select id="getEmuList" parameterType="long"  resultType="String">
+        SELECT distinct cid FROM cid_relation where powerstation_id = #{value} and del_flag='0';
+    </select>
+
+    <select id="getCidList" resultType="java.util.Map">
+        select r.id as 'id',r.cid AS 'cid', r.vid as 'vid', r.road_type as 'roadType', p.energy_name AS
+        'powerStationName', p.energy_status AS 'energyStatus',
+        r.create_time AS 'createDate', sum(r.count_energy) AS 'countEnergy', r.soft_version AS 'softVersion',
+        r.hard_version AS 'hardVersion' ,
+        sum(r.current_energy) as 'currentEnergy' , sum(r.month_energy) as 'monthEnergy' , sum(r.year_energy) as
+        'yearEnergy',
+        r.cammand_update_map as 'cammandUpdateMap' , r.cammand_starting_up as 'cammandStartingUp', r.cammand_update as
+        'cammandUpdate',
+        r.cammand_power_coefficient as 'cammandPowerCoefficient' , r.cammand_on_grid as 'cammandOnGrid' ,
+        r.cammand_un_get_on_grid as 'cammandUnGetOnGrid'
+        ,r.last_update as 'lastUpdate',r.last_error_code as 'lastErrorCode'
+        from cid_relation r
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where  r.del_flag = 0
+        <if test="cid != null and cid != ''">
+            and r.cid like concat('%', #{cid}, '%')
+        </if>
+        <if test="deptId != null  and deptId != ''">
+            and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+            find_in_set(#{deptId}, ancestors) ))
+        </if>
+        <if test="powerStationId != null and powerStationId != ''">
+            and p.id = #{powerStationId}
+        </if>
+        <if test="searchDate != null and searchDate != ''">
+            and r.create_time like concat(#{searchDate}, '%')
+        </if>
+        group by r.cid
+    </select>
+
+
+    <insert id="insertCidRelation" parameterType="CidRelation" useGeneratedKeys="true" keyProperty="id">
+        insert into cid_relation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null">cid,</if>
+            <if test="vid != null">vid,</if>
+            <if test="roadType != null ">road_type,</if>
+            <if test="powerStationId != null">powerstation_id,</if>
+            <if test="status != null">status,</if>
+            <if test="hardVersion != null">hard_version,</if>
+            <if test="softVersion != null">soft_version,</if>
+            <if test="cidType != null">cid_type,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null">#{cid},</if>
+            <if test="vid != null">#{vid},</if>
+            <if test="roadType != null ">#{roadType},</if>
+            <if test="powerStationId != null">#{powerStationId},</if>
+            <if test="status != null">#{status},</if>
+            <if test="hardVersion != null">#{hardVersion},</if>
+            <if test="softVersion != null">#{softVersion},</if>
+            <if test="cidType != null">#{cidType},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateForResetCurrentPowerEnergy">
+        update cid_relation
+        set current_energy = "0"
+    </update>
+
+    <update id="updateRelationOffline">
+        update cid_relation set current_energy = "0",`current_power`="0", status='3'  where id=#{value} and del_flag='0'
+    </update>
+
+    <update id="resetCurrentPowerEnergyForOfflineCidrelation">
+        update cid_relation set current_energy = "0",`current_power`="0" where id>0 and (current_energy != '0' or `current_power`!='0') and del_flag='0' and status='3' and  #{value} > update_time
+    </update>
+
+    <update id="updateCidRelation" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="vid != null">vid = #{vid},</if>
+            <if test="cid != null">cid = #{cid},</if>
+            <if test="roadType != null ">road_type = #{roadType},</if>
+            <if test="powerStationId != null">powerstation_id = #{powerStationId},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="bindType != null">bind_type = #{bindType},</if>
+            <if test="hardVersion != null">hard_version = #{hardVersion},</if>
+            <if test="softVersion != null">soft_version = #{softVersion},</if>
+            <if test="cidType != null">cid_type = #{cidType},</if>
+            <if test="isConfirm != null">is_confirm = #{isConfirm},</if>
+            <if test="monthEnergy != null">month_energy = #{monthEnergy},</if>
+            <if test="yearEnergy != null">year_energy = #{yearEnergy},</if>
+            <if test="countEnergy != null">count_energy = #{countEnergy},</if>
+            <if test="cammandUpdateMap != null">cammand_update_map = #{cammandUpdateMap},</if>
+            <if test="cammandStartingUp != null">cammand_starting_up = #{cammandStartingUp},</if>
+            <if test="cammandUpdate != null">cammand_update = #{cammandUpdate},</if>
+            <if test="cammandPowerCoefficient != null">cammand_power_coefficient = #{cammandPowerCoefficient},</if>
+            <if test="cammandOnGrid != null">cammand_on_grid = #{cammandOnGrid},</if>
+            <if test="cammandUnGetOnGrid != null">cammand_un_get_on_grid = #{cammandUnGetOnGrid},</if>
+            <if test="lastUpdate != null">last_update = #{lastUpdate},</if>
+            <if test="lastErrorCode != null">last_error_code = #{lastErrorCode},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="updateCidRelationWhenOffline" parameterType="CidRelation">
+        update cid_relation set status = '3',`current_power`=#{currentPower},`update_time` = DATE_FORMAT(#{updateTime},'%Y-%m-%d %H:%i:%s')
+        where id = #{id}
+    </update>
+
+
+    <update id="updateCidRelationForAddMI" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="vid != null and cid != null and powerStationId != null">del_flag = 0,</if>
+        </trim>
+        where 1 = 1
+        <if test="vid != null">and vid = #{vid}</if>
+        <if test="vid == null">and vid is null</if>
+
+        <if test="cid != null">and cid = #{cid}</if>
+        <if test="cid == null">and cid is null</if>
+
+        <if test="powerStationId != null">and powerstation_id = #{powerStationId} </if>
+        <if test="powerStationId == null">and powerstation_id is null </if>
+
+    </update>
+
+    <update id="updateCidRelationForMigrate" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="vid != null and cid != null and powerStationId != null">del_flag = 0,</if>
+            <if test="powerStationId != null and cid != null and powerStationId != null">powerstation_id = #{powerStationId},</if>
+        </trim>
+        where 1 = 1
+        <if test="vid != null">and vid = #{vid}</if>
+        <if test="vid == null">and vid is null</if>
+
+        <if test="cid != null">and cid = #{cid}</if>
+        <if test="cid == null">and cid is null</if>
+    </update>
+
+    <update id="updateCidRelationForAdd" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="vid != null">vid = #{vid},</if>
+            <if test="cid != null">cid = #{cid},</if>
+            <if test="roadType != null ">road_type = #{roadType},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="bindType != null">bind_type = #{bindType},</if>
+            <if test="hardVersion != null">hard_version = #{hardVersion},</if>
+            <if test="softVersion != null">soft_version = #{softVersion},</if>
+            <if test="cidType != null">cid_type = #{cidType},</if>
+            <if test="isConfirm != null">is_confirm = #{isConfirm},</if>
+            <if test="monthEnergy != null">month_energy = #{monthEnergy},</if>
+            <if test="yearEnergy != null">year_energy = #{yearEnergy},</if>
+            <if test="countEnergy != null">count_energy = #{countEnergy},</if>
+            <if test="cammandUpdateMap != null">cammand_update_map = #{cammandUpdateMap},</if>
+            <if test="cammandStartingUp != null">cammand_starting_up = #{cammandStartingUp},</if>
+            <if test="cammandUpdate != null">cammand_update = #{cammandUpdate},</if>
+            <if test="cammandPowerCoefficient != null">cammand_power_coefficient = #{cammandPowerCoefficient},</if>
+            <if test="cammandOnGrid != null">cammand_on_grid = #{cammandOnGrid},</if>
+            <if test="cammandUnGetOnGrid != null">cammand_un_get_on_grid = #{cammandUnGetOnGrid},</if>
+            <if test="lastUpdate != null">last_update = #{lastUpdate},update_time = #{lastUpdate},</if>
+            <if test="lastErrorCode != null">last_error_code = #{lastErrorCode},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where powerstation_id = #{powerStationId}
+    </update>
+
+    <update id="updateCidRelationEnergyInfo" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="currentEnergy != null">current_energy = #{currentEnergy},</if>
+            <if test="weekEnergy != null">week_energy = #{weekEnergy},</if>
+            <if test="monthEnergy != null ">month_energy = #{monthEnergy},</if>
+            <if test="yearEnergy != null">year_energy = #{yearEnergy},</if>
+            <if test="countEnergy != null">count_energy = #{countEnergy},</if>
+            <if test="lastUpdate != null">last_update = #{lastUpdate},</if>
+            <if test="lastUpdate != null">update_time = #{lastUpdate},</if>
+            <if test="lastErrorCode != null">last_error_code = #{lastErrorCode},</if>
+        </trim>
+        where cid = #{cid} and vid = #{vid} and del_flag = 0
+
+        <if test="roadType != null ">
+            and road_type = #{roadType}
+        </if>
+    </update>
+
+    <update id="updateCidRelationByCammand" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cammandUpdateMap != null">cammand_update_map = #{cammandUpdateMap},</if>
+        </trim>
+        where cid = #{cid}
+        <if test="powerStationId != null ">
+            and powerstation_id = #{powerStationId}
+        </if>
+    </update>
+
+
+
+    <update id="updateBatchCidRelationByCammand" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cammandUpdateMap != null">cammand_update_map = #{cammandUpdateMap},</if>
+        </trim>
+        where vid in
+        <foreach collection="list" item="item" open="(" separator="," close=")" >
+            #{item.vid}
+        </foreach>
+        and powerstation_id = #{powerStationId}
+    </update>
+
+
+
+
+    <!-- delete from cid_relation where id = #{id} -->
+    <delete id="deleteCidRelationById" parameterType="Long">
+        update cid_relation
+        set del_flag=1,
+            update_time=now()
+        where id = #{id}
+
+    </delete>
+
+
+    <!-- delete from cid_relation where id in-->
+    <delete id="deleteCidRelationByIds" parameterType="String">
+        update cid_relation set del_flag=1,update_time=now() where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteCidRelationByInfo">
+        update cid_relation set del_flag=1,update_time=now(),update_by=#{updateBy},current_energy=0 where cid = #{cid}
+        <if test="vid == null">
+            and vid is null
+        </if>
+        <if test="vid != null">
+            and vid = #{vid}
+        </if>
+        <if test="roadType != null ">
+          and road_type = #{roadType}
+        </if>
+        <if test="powerStationId != null">
+            and powerstation_id = #{powerStationId}
+        </if>
+    </delete>
+
+    <delete id="deleteBatchCidRelationByInfo">
+        update cid_relation set del_flag=1,update_time=now(),update_by=#{updateBy}
+        where cid = #{cid}
+
+        <if test="vid != null">
+            and vid in ${vid}
+        </if>
+        and powerstation_id = #{powerStationId}
+    </delete>
+
+    <delete id="deleteCidRelationByCid">
+        update cid_relation
+        set del_flag=1,
+            update_time=now(),
+            update_by=#{updateBy}
+        where cid = #{cid}
+          and powerstation_id = #{powerStationId}
+
+    </delete>
+
+    <!-- 根据id物理删除Vid=null or vid ="" -->
+    <delete id="deleteEmptyVidById">
+        delete
+        from cid_relation
+        where id = #{id} and (vid is null or vid="")
+    </delete>
+
+    <select id="getIsConfirmByDept" resultType="java.util.Map">
+        select r.cid as 'cid',r.vid as 'vid',right(r.road_type,1) as 'roadType',r.powerstation_id as 'powerStationId',r.is_confirm as 'isConfirm'
+        from cid_relation r
+            left join cid_powerstationinfo p
+        on r.powerstation_id=p.id
+        where p.energy_dept_id = #{deptId} and r.is_confirm = 1 and r.del_flag = 0
+    </select>
+
+    <select id="getCidOrVidDetail" resultMap="CidRelationResult">
+       select id,
+        vid,
+        cid,
+        road_type,
+        powerstation_id,
+
+        <if test="cid != null  and vid == null ">
+        sum(current_power)  as current_power ,
+        sum(current_energy) as current_energy ,
+        </if>
+
+        <if test="vid != null and vid !='' and cid !='' and cid != null ">
+            current_power,
+            current_energy,
+        </if>
+
+        week_energy,
+        month_energy,
+        year_energy,
+        count_energy,
+        status,
+        bind_type,
+        is_confirm,
+        hard_version,
+        cammand_update_map,
+        cammand_starting_up,
+        cammand_update,
+        cammand_power_coefficient,
+        cammand_on_grid,
+        cammand_un_get_on_grid,
+        soft_version,
+        soft_deputy_version,
+        cid_type,
+        last_update,
+        last_error_code,
+        del_flag,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        standard_power
+        from cid_relation where del_flag=0
+        <if test="cid != null and cid !='' and vid == null ">
+            and cid=#{cid}
+        </if>
+        <!--  and cid=#{cid} -->
+        <if test="vid != null and vid !='' and cid !='' and cid != null ">
+            and vid=#{vid}
+            and cid=#{cid}
+            <if test=" roadType !=null and roadType != ''">
+                and road_type like concat('%', #{roadType})
+            </if>
+            group by vid
+        </if>
+    </select>
+
+    <select id="getCidChildDetail" resultType="java.util.Map">
+        select r.cid as 'cid',r.vid as 'vid',right(r.road_type,1) as 'roadType',r.create_time as 'createTime',p.energy_name as 'createBy'
+        from cid_relation r
+            left join cid_powerstationinfo p
+        on r.powerstation_id=p.id
+        where r.cid=#{cid} and r.del_flag=0
+    </select>
+
+    <select id="selectPowerEnergy" resultType="java.util.Map">
+        select powerstation_id as 'powerStationId',sum(current_energy) as 'currentEnergy',sum(month_energy) as 'monthEnergy', sum(year_energy) as 'yearEnergy',sum(count_energy) as 'countEnergy'
+        from cid_relation
+        where del_flag = 0
+
+        group by powerstation_id;
+    </select>
+
+    <select id="selectCidVidLoopPlantForRealtion" resultType="java.util.Map">
+        select cid, vid, road_type as 'roadType',powerstation_id as 'powerStationId'
+        from cid_relation
+        where del_flag = '0'
+          and is_confirm = '0'
+          and bind_type = '0'
+        group by cid, vid, road_type, powerstation_id
+    </select>
+
+    <select id="getPowerStationIdByCid" resultType="java.util.Map">
+        select cid, vid, road_type as 'roadType',powerstation_id as 'powerStationId'
+        from cid_relation
+        where del_flag = '0'
+          and is_confirm = '0'
+          and bind_type = '0'
+          and cid = #{cid}
+        group by cid
+    </select>
+
+    <select id="getRelationByCidVidLoop" resultType="java.util.Map">
+        select id,cid,vid,road_type as 'roadType',powerstation_id as 'powerStationId' from cid_relation
+        where del_flag = '0'
+        and cid=#{cid} and vid=#{vid}
+
+
+    </select>
+
+    <select id="getPlantIdByRelationGroup" resultType="java.util.Map">
+        select cid, powerstation_id as 'powerStationId'
+        from cid_relation
+        where del_flag = '0'
+          and is_confirm = '0'
+          and bind_type = '0'
+        group by cid, powerstation_id
+    </select>
+
+
+
+    <update id="updateRelationByCidVidLoop" parameterType="CidRelation">
+        update cid_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="currentEnergy != null">current_energy = #{currentEnergy},</if>
+            <if test="weekEnergy != null">week_energy = #{weekEnergy},</if>
+            <if test="monthEnergy != null ">month_energy = #{monthEnergy},</if>
+            <if test="yearEnergy != null">year_energy = #{yearEnergy},</if>
+            <if test="countEnergy != null">count_energy = #{countEnergy},</if>
+        </trim>
+        where cid=#{cid} and vid = #{vid} and del_flag=0
+        <if test="roadType != null">
+            and road_type = #{roadType}
+        </if>
+    </update>
+
+    <select id="selectPlantMonthEnergy" resultType="java.util.Map">
+        select powerstation_id as 'powerStationId',sum(month_energy) as 'monthEnergy'
+        from cid_relation
+        where del_flag = 0
+
+        group by powerstation_id;
+    </select>
+    <select id="selectPlantYearEnergy" resultType="java.util.Map">
+        select powerstation_id as 'powerStationId',sum(year_energy) as 'yearEnergy'
+        from cid_relation
+        where del_flag = 0
+
+        group by powerstation_id;
+    </select>
+    <select id="selectPlantCountEnergy" resultType="java.util.Map">
+        select powerstation_id as 'powerStationId',sum(count_energy) as 'countEnergy'
+        from cid_relation
+        where del_flag = 0
+
+        group by powerstation_id;
+    </select>
+
+
+    <select id="selectEmuListOnly" resultType="java.util.Map">
+        select r.cid_type as 'cidType' ,r.cid as 'cid' ,r.powerstation_id as 'powerStationId',min(r.status) as status,
+        sum(r.current_energy) as 'currentEnergy',sum(r.current_power) as 'currentPower', max(r.update_time) as 'updateTime'
+        , r.last_error_code as lastErrorCode,r.cid_type as 'cidType' from cid_relation r where r.del_flag = 0
+
+        <if test="cidType !=null ">
+            and r.cid_type = #{cidType}
+        </if>
+        <if test="powerStationId !=null ">
+            and r.powerstation_id = #{powerStationId}
+        </if>
+
+        <if test="powerStationId ==null ">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag = 0
+            and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+            find_in_set(#{deptId}, ancestors) ))
+            )
+            and r.vid is not null
+
+        </if>
+        <if test="cid != null">
+            and r.cid=#{cid}
+        </if>
+        group by r.cid order by r.status
+    </select>
+
+
+    <select id="selectEmuListOnlyInPlantArr" resultType="java.util.Map">
+        select r.cid_type as 'cidType' ,r.cid as 'cid' ,r.powerstation_id as 'powerStationId',min(r.status) as status,
+        sum(r.current_energy) as 'currentEnergy',sum(r.current_power) as 'currentPower', max(r.update_time) as 'updateTime'
+        , r.last_error_code as lastErrorCode,r.cid_type as 'cidType' from cid_relation r where r.del_flag = 0
+
+        <if test="cidType !=null ">
+            and r.cid_type = #{cidType}
+        </if>
+        <if test="powerStationId !=null ">
+            and r.powerstation_id in
+            <foreach collection="powerStationId" item="item" open="(" separator="," close=")" >
+                #{value}
+            </foreach>
+        </if>
+
+        <if test="cid != null">
+            and r.cid=#{cid}
+        </if>
+        group by r.cid order by r.status
+    </select>
+
+
+    <select id="getVidList" resultType="java.util.Map">
+
+        select r.cid as 'cid',r.powerstation_id as 'powerStationId',r.status as status,
+        r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation r where r.del_flag = 0  and r.cid=#{cid}
+
+        <if test=" powerStationId !=null ">
+            and r.powerstation_id = #{powerStationId}
+        </if>
+
+        <if test="powerStationId ==null ">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag = 0
+            and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+            find_in_set(#{deptId}, ancestors) ))
+            )
+            and r.vid is not null
+        </if>
+
+    </select>
+
+
+    <select id="selectEmuTree" resultType="java.util.Map">
+        select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion',
+        r.current_energy as 'currentEnergy', r.update_time as 'updateTime',r.soft_deputy_version as 'softDeputyVersion'
+        from cid_relation r where r.del_flag = 0
+        <if test=" powerStationId !=null ">
+            and r.powerstation_id = #{powerStationId}
+
+        </if>
+        <if test="powerStationId ==null ">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag = 0
+            and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+            find_in_set(#{deptId}, ancestors) ))
+            )
+            and r.vid is not null
+
+        </if>
+        <if test="cid != null">
+            and r.cid=#{cid}
+        </if>
+        group by r.cid
+    </select>
+
+    <select id="sumCurrentPowerByPowerStationID"  parameterType="long" resultType="String">
+        SELECT sum(`current_power`) as power FROM cid_relation where `powerstation_id`= #{value}  and vid is not null and del_flag=0 and (status='0' or status='1')
+    </select>
+
+    <select id="selectAllDeviceByDeptId" parameterType="long" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+        where del_flag = "0"  and vid is not null
+        and powerstation_id in (select p.id from cid_powerstationinfo p where p.energy_dept_id=#{value}) order by c.status
+
+    </select>
+
+    <select id="analyseDeviceStatus"   resultType="java.util.Map">
+        select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+        <if test="powerStationId != null ">
+            and r.powerstation_id = #{powerStationId}
+        </if>
+        <if test="powerStationId == null or powerStationId==-1">
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(#{deptId},s.ancestors) or p.energy_dept_id=#{deptId}) and p.energy_dept_id=s.dept_id)
+        </if>
+        group by r.status ;
+    </select>
+
+    <select id="selectVidDataByDeptId" parameterType="long" resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+        where c.del_flag = "0" and c.vid is not null
+        and c.powerstation_id in (select p.id from cid_powerstationinfo p where p.energy_dept_id=#{value}) order by c.status
+
+    </select>
+
+    <select id="getLastVidCidLoopList" resultType="java.util.Map">
+        select cid, vid, road_type
+        from cid_relation
+        where del_flag = 0
+
+    </select>
+
+    <select id="getAppCidVidCount" resultType="java.util.Map">
+        select cid from cid_relation
+        where del_flag = 0  and powerstation_id = #{powerStationId}
+        <if test="cidType == 'cid'">
+            group by cid
+        </if>
+        <if test="cidType == 'vid'">
+            group by cid,vid,road_type
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,8 @@
+# Project exclude paths
+/benyi-admin/target/
+/benyi-common/target/
+/benyi-energy/target/
+/benyi-framework/target/
+/benyi-generator/target/
+/benyi-quartz/target/
+/benyi-system/target/

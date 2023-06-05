@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CountriesMapper">
+
+    <resultMap type="Countries" id="CountriesResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="iso3"    column="iso3"    />
+        <result property="iso2"    column="iso2"    />
+        <result property="phonecode"    column="phonecode"    />
+        <result property="capital"    column="capital"    />
+        <result property="currency"    column="currency"    />
+        <result property="currencySymbol"    column="currency_symbol"    />
+        <result property="tld"    column="tld"    />
+        <result property="nativeName"    column="native_name"    />
+        <result property="region"    column="region"    />
+        <result property="subregion"    column="subregion"    />
+        <result property="timezones"    column="timezones"    />
+        <result property="translations"    column="translations"    />
+        <result property="latitude"    column="latitude"    />
+        <result property="longitude"    column="longitude"    />
+        <result property="emoji"    column="emoji"    />
+        <result property="emojiu"    column="emojiU"    />
+        <result property="wikidataid"    column="wikiDataId"    />
+    </resultMap>
+
+    <sql id="selectCountriesVo">
+        select id, name, iso3, iso2, phonecode, capital, currency, currency_symbol, tld, native_name, region, subregion, timezones, translations, latitude, longitude, emoji, emojiU, wikiDataId from countries
+    </sql>
+
+    <select id="selectCountriesList" parameterType="Countries" resultMap="CountriesResult">
+        <include refid="selectCountriesVo"/>
+        <where>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="iso3 != null  and iso3 != ''"> and iso3 = #{iso3}</if>
+            <if test="iso2 != null  and iso2 != ''"> and iso2 = #{iso2}</if>
+            <if test="phonecode != null  and phonecode != ''"> and phonecode = #{phonecode}</if>
+            <if test="capital != null  and capital != ''"> and capital = #{capital}</if>
+            <if test="currency != null  and currency != ''"> and currency = #{currency}</if>
+            <if test="currencySymbol != null  and currencySymbol != ''"> and currency_symbol = #{currencySymbol}</if>
+            <if test="tld != null  and tld != ''"> and tld = #{tld}</if>
+            <if test="nativeName != null  and nativeName != ''"> and native_name like concat('%', #{nativeName}, '%')</if>
+            <if test="region != null  and region != ''"> and region = #{region}</if>
+            <if test="subregion != null  and subregion != ''"> and subregion = #{subregion}</if>
+            <if test="timezones != null  and timezones != ''"> and timezones = #{timezones}</if>
+            <if test="translations != null  and translations != ''"> and translations = #{translations}</if>
+            <if test="latitude != null "> and latitude = #{latitude}</if>
+            <if test="longitude != null "> and longitude = #{longitude}</if>
+            <if test="emoji != null  and emoji != ''"> and emoji = #{emoji}</if>
+            <if test="emojiu != null  and emojiu != ''"> and emojiU = #{emojiu}</if>
+            <if test="wikidataid != null  and wikidataid != ''"> and wikiDataId = #{wikidataid}</if>
+        </where>
+    </select>
+
+    <select id="selectCountriesById" parameterType="Integer" resultMap="CountriesResult">
+        <include refid="selectCountriesVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectCountriesByName" parameterType="String" resultMap="CountriesResult">
+        <include refid="selectCountriesVo"/>
+        where name = #{name}
+    </select>
+
+    <insert id="insertCountries" parameterType="Countries" useGeneratedKeys="true" keyProperty="id">
+        insert into countries
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="iso3 != null">iso3,</if>
+            <if test="iso2 != null">iso2,</if>
+            <if test="phonecode != null">phonecode,</if>
+            <if test="capital != null">capital,</if>
+            <if test="currency != null">currency,</if>
+            <if test="currencySymbol != null">currency_symbol,</if>
+            <if test="tld != null">tld,</if>
+            <if test="nativeName != null">native_name,</if>
+            <if test="region != null">region,</if>
+            <if test="subregion != null">subregion,</if>
+            <if test="timezones != null">timezones,</if>
+            <if test="translations != null">translations,</if>
+            <if test="latitude != null">latitude,</if>
+            <if test="longitude != null">longitude,</if>
+            <if test="emoji != null">emoji,</if>
+            <if test="emojiu != null">emojiU,</if>
+            <if test="wikidataid != null">wikiDataId,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="iso3 != null">#{iso3},</if>
+            <if test="iso2 != null">#{iso2},</if>
+            <if test="phonecode != null">#{phonecode},</if>
+            <if test="capital != null">#{capital},</if>
+            <if test="currency != null">#{currency},</if>
+            <if test="currencySymbol != null">#{currencySymbol},</if>
+            <if test="tld != null">#{tld},</if>
+            <if test="nativeName != null">#{nativeName},</if>
+            <if test="region != null">#{region},</if>
+            <if test="subregion != null">#{subregion},</if>
+            <if test="timezones != null">#{timezones},</if>
+            <if test="translations != null">#{translations},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="emoji != null">#{emoji},</if>
+            <if test="emojiu != null">#{emojiu},</if>
+            <if test="wikidataid != null">#{wikidataid},</if>
+        </trim>
+    </insert>
+
+    <update id="updateCountries" parameterType="Countries">
+        update countries
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="iso3 != null">iso3 = #{iso3},</if>
+            <if test="iso2 != null">iso2 = #{iso2},</if>
+            <if test="phonecode != null">phonecode = #{phonecode},</if>
+            <if test="capital != null">capital = #{capital},</if>
+            <if test="currency != null">currency = #{currency},</if>
+            <if test="currencySymbol != null">currency_symbol = #{currencySymbol},</if>
+            <if test="tld != null">tld = #{tld},</if>
+            <if test="nativeName != null">native_name = #{nativeName},</if>
+            <if test="region != null">region = #{region},</if>
+            <if test="subregion != null">subregion = #{subregion},</if>
+            <if test="timezones != null">timezones = #{timezones},</if>
+            <if test="translations != null">translations = #{translations},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+            <if test="emoji != null">emoji = #{emoji},</if>
+            <if test="emojiu != null">emojiU = #{emojiu},</if>
+            <if test="wikidataid != null">wikiDataId = #{wikidataid},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCountriesById" parameterType="Integer">
+        delete from countries where id = #{id}
+    </delete>
+
+    <delete id="deleteCountriesByIds" parameterType="String">
+        delete from countries where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

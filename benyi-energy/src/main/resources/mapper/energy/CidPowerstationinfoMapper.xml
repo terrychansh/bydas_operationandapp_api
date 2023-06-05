@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidPowerstationinfoMapper">
+    
+    <resultMap type="CidPowerstationinfo" id="CidPowerstationinfoResult">
+        <result property="id"    column="id"    />
+        <result property="energyName"    column="energy_name"    />
+        <result property="energyType"    column="energy_type"    />
+        <result property="energyCapacity"    column="energy_capacity"    />
+        <result property="energyDeptName"    column="energy_dept_name"    />
+        <result property="energyDeptId"    column="energy_dept_id"    />
+        <result property="energyLocation"    column="energy_location"    />
+        <result property="energyState"    column="energy_state"    />
+        <result property="energyPrice"    column="energy_price"    />
+        <result property="priceUnit"    column="price_unit"    />
+        <result property="energyLocationDetail"    column="energy_location_detail"    />
+        <result property="energyLocationLat"    column="energy_location_lat"    />
+        <result property="energyLocationLng"    column="energy_location_lng"    />
+        <result property="energyTimeZone"    column="energy_time_zone"    />
+        <result property="energyInstall"    column="energy_install"    />
+        <result property="energyCurrentPower" column="energy_current_power" />
+        <result property="energyTotalDay"    column="energy_total_day"    />
+        <result property="energyTotalMonth"    column="energy_total_month"    />
+        <result property="energyTotalYear"    column="energy_total_year"    />
+        <result property="energyTotal"    column="energy_total"    />
+        <result property="energyLayout"    column="energy_layout"    />
+        <result property="energyStatus"    column="energy_status"    />
+        <result property="energyImageUrl"  column="energy_image_url"  />
+        <result property="energySettingsAntiReflux"    column="energy_settings_anti_reflux"    />
+        <result property="energySettingsThreePhaseEquilibrium"    column="energy_settings_three_phase_equilibrium"    />
+        <result property="energySettingsRolePrice"    column="energy_settings_role_price"    />
+        <result property="energySettingsRoleAllowLayout"    column="energy_settings_role_allow_layout"    />
+        <result property="lastUpdate" column="last_update" />
+        <result property="lastErrorCode" column="last_error_code" />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <select id="selectUTCZoneOfPowerstationByID" parameterType="long" resultType="java.util.Map">
+        select id, energy_time_zone as utcZone from cid_powerstationinfo where id=#{value}
+    </select>
+
+
+    <sql id="selectCidPowerstationinfoVo">
+        select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+    </sql>
+
+    <select id="selectCidPowerstationinfoListByDeptID" parameterType="Long" resultMap="CidPowerstationinfoResult">
+        <include refid="selectCidPowerstationinfoVo"/>
+        where energy_dept_id = #{energyDeptId}
+    </select>
+
+    <select id="selectAllCidPowerstationinfoTimezoneList"  resultMap="CidPowerstationinfoResult">
+
+        select id, energy_time_zone from cid_powerstationinfo where del_flag=0
+
+    </select>
+<!--    &#45;&#45;                 and (energy_dept_id = #{energyDeptId} OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{energyDeptId}, ancestors) ))-->
+
+    <select id="selectCidPowerstationinfoList" parameterType="CidPowerstationinfo" resultMap="CidPowerstationinfoResult">
+        <include refid="selectCidPowerstationinfoVo"/>
+
+        <where>
+            del_flag=0
+            <if test="id != null "> and id = #{id}</if>
+
+            <if test="energyName != null  and energyName != ''"> and energy_name like concat('%', #{energyName}, '%')</if>
+            <if test="energyType != null  and energyType != ''"> and energy_type = #{energyType}</if>
+            <if test="energyCapacity != null "> and energy_capacity = #{energyCapacity}</if>
+            <if test="energyDeptName != null  and energyDeptName != ''"> and energy_dept_name like concat('%', #{energyDeptName}, '%')</if>
+            <if test="id == null and energyDeptId != null  and  energyDeptId ==100">
+                                    and (energy_dept_id = #{energyDeptId} OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{energyDeptId}, ancestors) ))
+            </if>
+            <if test="id == null and energyDeptId != null  and  energyDeptId !=100">
+                and (energy_dept_id = #{energyDeptId} OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{energyDeptId}, ancestors) ))
+            </if>
+            <if test="energyLocation != null  and energyLocation != ''"> and energy_location = #{energyLocation}</if>
+            <if test="energyState != null  and energyState != ''"> and energy_state = #{energyState}</if>
+            <if test="energyPrice != null  and energyPrice != ''"> and energy_price = #{energyPrice}</if>
+            <if test="priceUnit != null  and priceUnit != ''"> and price_unit = #{priceUnit}</if>
+            <if test="energyLocationDetail != null  and energyLocationDetail != ''"> and energy_location_detail = #{energyLocationDetail}</if>
+            <if test="energyTimeZone != null  and energyTimeZone != ''"> and energy_time_zone = #{energyTimeZone}</if>
+            <if test="energyInstall != null  and energyInstall != ''"> and energy_install = #{energyInstall}</if>
+            <if test="energyTotalDay != null  and energyTotalDay != ''"> and energy_total_day = #{energyTotalDay}</if>
+            <if test="energyTotalMonth != null  and energyTotalMonth != ''"> and energy_total_month = #{energyTotalMonth}</if>
+            <if test="energyTotalYear != null  and energyTotalYear != ''"> and energy_total_year = #{energyTotalYear}</if>
+            <if test="energyTotal != null  and energyTotal != ''"> and energy_total = #{energyTotal}</if>
+            <if test="energyStatus != null  and energyStatus != ''"> and energy_status = #{energyStatus}</if>
+            <if test="energyLayout != null "> and energy_layout = #{energyLayout}</if>
+            <if test="energySettingsAntiReflux != null  and energySettingsAntiReflux != ''"> and energy_settings_anti_reflux = #{energySettingsAntiReflux}</if>
+            <if test="energySettingsThreePhaseEquilibrium != null  and energySettingsThreePhaseEquilibrium != ''"> and energy_settings_three_phase_equilibrium = #{energySettingsThreePhaseEquilibrium}</if>
+            <if test="energySettingsRolePrice != null "> and energy_settings_role_price = #{energySettingsRolePrice}</if>
+            <if test="energySettingsRoleAllowLayout != null "> and energy_settings_role_allow_layout = #{energySettingsRoleAllowLayout}</if>
+        </where>
+    </select>
+
+
+
+    <select id="selectCidPowerstationinfoListForPlantList" parameterType="CidPowerstationinfo" resultMap="CidPowerstationinfoResult">
+        <include refid="selectCidPowerstationinfoVo"/>
+
+        <where>
+            del_flag=0
+            <if test="id != null "> and id = #{id}</if>
+            <if test="energyName != null  and energyName != ''"> and energy_name like concat('%', #{energyName}, '%')</if>
+            <if test="energyType != null  and energyType != ''"> and energy_type = #{energyType}</if>
+            <if test="energyCapacity != null "> and energy_capacity = #{energyCapacity}</if>
+            <if test="energyDeptName != null  and energyDeptName != ''"> and energy_dept_name like concat('%', #{energyDeptName}, '%')</if>
+            <if test="energyDeptId != null ">
+                and (energy_dept_id = #{energyDeptId} OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{energyDeptId}, ancestors) ))
+            </if>
+            <if test="energyLocation != null  and energyLocation != ''"> and energy_location = #{energyLocation}</if>
+            <if test="energyState != null  and energyState != ''"> and energy_state = #{energyState}</if>
+            <if test="energyPrice != null  and energyPrice != ''"> and energy_price = #{energyPrice}</if>
+            <if test="priceUnit != null  and priceUnit != ''"> and price_unit = #{priceUnit}</if>
+            <if test="energyLocationDetail != null  and energyLocationDetail != ''"> and energy_location_detail = #{energyLocationDetail}</if>
+            <if test="energyTimeZone != null  and energyTimeZone != ''"> and energy_time_zone = #{energyTimeZone}</if>
+            <if test="energyInstall != null  and energyInstall != ''"> and energy_install = #{energyInstall}</if>
+            <if test="energyTotalDay != null  and energyTotalDay != ''"> and energy_total_day = #{energyTotalDay}</if>
+            <if test="energyTotalMonth != null  and energyTotalMonth != ''"> and energy_total_month = #{energyTotalMonth}</if>
+            <if test="energyTotalYear != null  and energyTotalYear != ''"> and energy_total_year = #{energyTotalYear}</if>
+            <if test="energyTotal != null  and energyTotal != ''"> and energy_total = #{energyTotal}</if>
+            <if test="energyStatus != null  and energyStatus != ''"> and energy_status = #{energyStatus}</if>
+            <if test="energyLayout != null "> and energy_layout = #{energyLayout}</if>
+            <if test="energySettingsAntiReflux != null  and energySettingsAntiReflux != ''"> and energy_settings_anti_reflux = #{energySettingsAntiReflux}</if>
+            <if test="energySettingsThreePhaseEquilibrium != null  and energySettingsThreePhaseEquilibrium != ''"> and energy_settings_three_phase_equilibrium = #{energySettingsThreePhaseEquilibrium}</if>
+            <if test="energySettingsRolePrice != null "> and energy_settings_role_price = #{energySettingsRolePrice}</if>
+            <if test="energySettingsRoleAllowLayout != null "> and energy_settings_role_allow_layout = #{energySettingsRoleAllowLayout}</if>
+        </where>
+    </select>
+
+    <select id="selectCidPowerstationinfoById" parameterType="Long" resultMap="CidPowerstationinfoResult">
+        <include refid="selectCidPowerstationinfoVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectCidPowerstationinfoByStationName" parameterType="String" resultMap="CidPowerstationinfoResult">
+        <include refid="selectCidPowerstationinfoVo"/>
+        where energy_name = #{energyName}
+    </select>
+
+    <select id="selectCidPowerstationinfoListByGroupCreateTime" parameterType="Long"  resultType="java.util.Map">
+        select count(id) as 'id',DATE_FORMAT(create_time,'%Y-%m') as 'createTime' from cid_powerstationinfo
+        <where>
+            <if test="energyDeptId != null  and energyDeptId != ''"> and energy_dept_id = #{energyDeptId}</if>
+        </where>
+        group by DATE_FORMAT(create_time,'%Y-%m')
+    </select>
+
+    <insert id="insertCidPowerstationinfo" parameterType="CidPowerstationinfo" >
+
+        <selectKey keyProperty="id" keyColumn="id" resultType="Long" order="AFTER">
+            SELECT LAST_INSERT_ID() as id
+        </selectKey>
+
+        insert into cid_powerstationinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="energyName != null">energy_name,</if>
+            <if test="energyType != null">energy_type,</if>
+            <if test="energyCapacity != null">energy_capacity,</if>
+            <if test="energyDeptName != null">energy_dept_name,</if>
+            <if test="energyDeptId != null">energy_dept_id,</if>
+            <if test="energyLocation != null">energy_location,</if>
+            <if test="energyState != null">energy_state,</if>
+            <if test="energyPrice != null">energy_price,</if>
+            <if test="priceUnit != null">price_unit,</if>
+            <if test="energyLocationDetail != null">energy_location_detail,</if>
+            <if test="energyLocationLat != null">energy_location_lat,</if>
+            <if test="energyLocationLng != null">energy_location_lng,</if>
+            <if test="energyTimeZone != null">energy_time_zone,</if>
+            <if test="energyInstall != null">energy_install,</if>
+            <if test="energyTotalDay != null">energy_total_day,</if>
+            <if test="energyTotalMonth != null">energy_total_month,</if>
+            <if test="energyTotalYear != null">energy_total_year,</if>
+            <if test="energyTotal != null">energy_total,</if>
+            <if test="energyStatus != null">energy_status,</if>
+            <if test="energyLayout != null">energy_layout,</if>
+            <if test="energySettingsAntiReflux != null">energy_settings_anti_reflux,</if>
+            <if test="energySettingsThreePhaseEquilibrium != null">energy_settings_three_phase_equilibrium,</if>
+            <if test="energySettingsRolePrice != null">energy_settings_role_price,</if>
+            <if test="energySettingsRoleAllowLayout != null">energy_settings_role_allow_layout,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="energyName != null">#{energyName},</if>
+            <if test="energyType != null">#{energyType},</if>
+            <if test="energyCapacity != null">#{energyCapacity},</if>
+            <if test="energyDeptName != null">#{energyDeptName},</if>
+            <if test="energyDeptId != null">#{energyDeptId},</if>
+            <if test="energyLocation != null">#{energyLocation},</if>
+            <if test="energyState != null">#{energyState},</if>
+            <if test="energyPrice != null">#{energyPrice},</if>
+            <if test="priceUnit != null">#{priceUnit},</if>
+            <if test="energyLocationDetail != null">#{energyLocationDetail},</if>
+            <if test="energyLocationLat != null">#{energyLocationLat},</if>
+            <if test="energyLocationLng != null">#{energyLocationLng},</if>
+            <if test="energyTimeZone != null">#{energyTimeZone},</if>
+            <if test="energyInstall != null">#{energyInstall},</if>
+            <if test="energyTotalDay != null">#{energyTotalDay},</if>
+            <if test="energyTotalMonth != null">#{energyTotalMonth},</if>
+            <if test="energyTotalYear != null">#{energyTotalYear},</if>
+            <if test="energyTotal != null">#{energyTotal},</if>
+            <if test="energyStatus != null">#{energyStatus},</if>
+            <if test="energyLayout != null">#{energyLayout},</if>
+            <if test="energySettingsAntiReflux != null">#{energySettingsAntiReflux},</if>
+            <if test="energySettingsThreePhaseEquilibrium != null">#{energySettingsThreePhaseEquilibrium},</if>
+            <if test="energySettingsRolePrice != null">#{energySettingsRolePrice},</if>
+            <if test="energySettingsRoleAllowLayout != null">#{energySettingsRoleAllowLayout},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCidPowerstationinfo" parameterType="CidPowerstationinfo">
+        update cid_powerstationinfo
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="energyName != null">energy_name = #{energyName},</if>
+            <if test="energyType != null">energy_type = #{energyType},</if>
+            <if test="energyCapacity != null">energy_capacity = #{energyCapacity},</if>
+            <if test="energyDeptName != null">energy_dept_name = #{energyDeptName},</if>
+            <if test="energyDeptId != null">energy_dept_id = #{energyDeptId},</if>
+            <if test="energyLocation != null">energy_location = #{energyLocation},</if>
+            <if test="energyState != null">energy_state = #{energyState},</if>
+            <if test="energyPrice != null">energy_price = #{energyPrice},</if>
+            <if test="priceUnit != null">price_unit = #{priceUnit},</if>
+            <if test="energyLocationDetail != null">energy_location_detail = #{energyLocationDetail},</if>
+            <if test="energyLocationLat != null">energy_location_lat = #{energyLocationLat},</if>
+            <if test="energyLocationLng != null">energy_location_lng = #{energyLocationLng},</if>
+            <if test="energyTimeZone != null">energy_time_zone = #{energyTimeZone},</if>
+            <if test="energyInstall != null">energy_install = #{energyInstall},</if>
+            <if test="energyCurrentPower != null">energy_current_power = #{energyCurrentPower},</if>
+            <if test="energyTotalDay != null">energy_total_day = #{energyTotalDay},</if>
+            <if test="energyTotalMonth != null">energy_total_month = #{energyTotalMonth},</if>
+            <if test="energyTotalYear != null">energy_total_year = #{energyTotalYear},</if>
+            <if test="energyTotal != null">energy_total = #{energyTotal},</if>
+            <if test="energyStatus != null">energy_status = #{energyStatus},</if>
+            <if test="energyLayout != null">energy_layout = #{energyLayout},</if>
+            <if test="energySettingsAntiReflux != null">energy_settings_anti_reflux = #{energySettingsAntiReflux},</if>
+            <if test="energySettingsThreePhaseEquilibrium != null">energy_settings_three_phase_equilibrium = #{energySettingsThreePhaseEquilibrium},</if>
+            <if test="energySettingsRolePrice != null">energy_settings_role_price = #{energySettingsRolePrice},</if>
+            <if test="energySettingsRoleAllowLayout != null">energy_settings_role_allow_layout = #{energySettingsRoleAllowLayout},</if>
+            <if test="lastUpdate != null">last_update = #{lastUpdate},</if>
+            <if test="lastErrorCode != null">last_error_code = #{lastErrorCode},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCidPowerstationinfoById" parameterType="Long">
+        delete from cid_powerstationinfo where id = #{id}
+    </delete>
+
+    <delete id="deleteCidPowerstationinfoByIds" parameterType="String">
+        delete from cid_powerstationinfo where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updatePowerImage" parameterType="CidPowerstationinfo">
+        update cid_powerstationinfo set energy_image_url = #{energyImageUrl} where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,102 @@
+00:23:43.515 [http-nio-8080-exec-55] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 181 millis. SELECT 1 FROM DUAL[]
+00:23:43.842 [http-nio-8080-exec-55] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 318 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+00:23:44.016 [http-nio-8080-exec-56] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 154 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+00:23:44.193 [http-nio-8080-exec-56] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 139 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+00:29:36.332 [http-nio-8080-exec-57] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 160 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+00:29:36.511 [http-nio-8080-exec-58] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 144 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+00:29:36.677 [http-nio-8080-exec-58] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 157 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[76]
+01:55:03.483 [http-nio-8080-exec-90] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 272 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[76]
+02:21:14.639 [http-nio-8080-exec-99] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 52 millis. SELECT 1 FROM DUAL[]
+03:57:21.964 [http-nio-8080-exec-35] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 141 millis. SELECT 1 FROM DUAL[]
+03:57:22.039 [http-nio-8080-exec-35] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 70 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+04:03:12.411 [http-nio-8080-exec-37] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 55 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+04:03:12.560 [http-nio-8080-exec-38] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 96 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[76]
+04:03:12.742 [http-nio-8080-exec-38] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 175 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+04:56:06.278 [http-nio-8080-exec-57] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 138 millis. SELECT 1 FROM DUAL[]
+05:11:51.950 [http-nio-8080-exec-63] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 84 millis. SELECT 1 FROM DUAL[]
+06:42:37.568 [http-nio-8080-exec-97] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 60 millis. SELECT 1 FROM DUAL[]
+06:42:37.623 [http-nio-8080-exec-97] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 51 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+06:42:37.847 [http-nio-8080-exec-98] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 195 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+06:42:37.980 [http-nio-8080-exec-98] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 100 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+06:58:40.092 [http-nio-8080-exec-3] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 175 millis. SELECT 1 FROM DUAL[]
+06:58:40.337 [http-nio-8080-exec-3] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 241 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+06:58:40.513 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 150 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+06:58:40.642 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 97 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+08:08:03.934 [http-nio-8080-exec-29] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 61 millis. SELECT 1 FROM DUAL[]
+08:19:14.860 [http-nio-8080-exec-34] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 126 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+08:24:05.661 [http-nio-8080-exec-35] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 65 millis. SELECT 1 FROM DUAL[]
+08:34:53.730 [http-nio-8080-exec-39] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 63 millis. SELECT 1 FROM DUAL[]
+08:34:53.891 [http-nio-8080-exec-39] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 157 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+08:34:53.987 [http-nio-8080-exec-40] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 70 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+08:34:54.164 [http-nio-8080-exec-40] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 145 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+08:56:15.252 [http-nio-8080-exec-47] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 67 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+08:56:15.379 [http-nio-8080-exec-48] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 94 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+08:56:15.452 [http-nio-8080-exec-48] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 69 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[76]
+08:56:15.618 [http-nio-8080-exec-48] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 160 millis. select r.cid as 'cid',r.vid as 'vid',r.powerstation_id as 'powerStationId',r.status as status,
+               r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime',r.hard_version as
+        'hardVersion',r.soft_version as 'softVersion', r.road_type as roadType
+        from cid_relation_road r where r.del_flag = 0  and r.cid=?  and r.vid=?  and r.powerstation_id = ?["C0999998","40999998",76]
+09:12:17.045 [http-nio-8080-exec-53] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 151 millis. SELECT 1 FROM DUAL[]
+09:12:17.164 [http-nio-8080-exec-54] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 66 millis. select id, energy_time_zone as utcZone from cid_powerstationinfo where id=?[76]
+20:37:17.521 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 91 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]

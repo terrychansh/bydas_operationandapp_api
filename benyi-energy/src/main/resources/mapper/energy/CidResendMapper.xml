@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidResendMapper">
+    
+    <resultMap type="CidResend" id="CidResendResult">
+        <result property="id"    column="id"    />
+        <result property="cid"    column="cid"    />
+        <result property="count"    column="count"    />
+        <result property="startDate"    column="start_date"    />
+        <result property="endDate"    column="end_date"    />
+        <result property="response"    column="is_response"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="updateDate"    column="update_date"    />
+        <result property="createDate"    column="create_date"    />
+    </resultMap>
+
+    <sql id="selectCidResendVo">
+        select id, cid, re.count, start_date, end_date, is_response, del_flag, update_date, create_date from cid_resend re
+    </sql>
+
+    <select id="selectCidResendList" parameterType="CidResend" resultMap="CidResendResult">
+        <include refid="selectCidResendVo"/>
+        <where>
+            <if test="cid != null  and cid != ''"> and cid = #{cid}</if>
+            <if test="count != null "> and re.count = #{count}</if>
+            <if test="startDate != null "> and start_date = #{startDate}</if>
+            <if test="endDate != null "> and end_date = #{endDate}</if>
+            <if test="response != null "> and is_response = #{response}</if>
+            <if test="updateDate != null "> and update_date = #{updateDate}</if>
+            <if test="createDate != null "> and create_date = #{createDate}</if>
+        </where>
+    </select>
+
+    <select id="selectCidResendByResendId" parameterType="Long" resultMap="CidResendResult">
+        <include refid="selectCidResendVo"/>
+        where id = #{value}
+    </select>
+
+
+    <select id="selectResendValByDeptId" resultType="java.util.Map">
+        select * from cid_resend r where cid in (select cid from cid_relation where del_flag=0 and is_confirm = 0 and bind_type=0
+        and powerstation_id in (select id from cid_powerstationinfo where energy_dept_id =#{deptId}))
+        and is_response = 1;
+    </select>
+
+    <select id="selectResendByDeptId" resultType="java.util.Map">
+        select re.id as 'resendId',re.cid as 'cid',re.count as 'count',re.start_date as 'startDate',re.end_date as 'endDate',re.is_response as 'isResponse',re.create_date as 'createDate'
+        from cid_resend re left join cid_relation r on re.cid=r.cid left join cid_powerstationinfo p on r.powerstation_id=p.id
+        where re.del_flag=0
+        <if test="deptId!=null and deptId !=''">
+            and p.energy_dept_id = #{deptId}
+        </if>
+        <if test="powerStationName!=null and powerStationName !=''">
+            and p.energy_name = like concat('%', #{powerStationName}, '%')
+        </if>
+        <if test="cid!=null and cid !=''">
+            and re.cid = like concat('%', #{cid}, '%')
+        </if>
+        <if test="powerStationId!=null and powerStationId !=''">
+            and p.id = #{deptId}
+        </if>
+        group by re.cid,re.count
+    </select>
+
+    <update id="updateCidResend" parameterType="CidResend">
+        update cid_resend re
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cid != null">re.cid = #{cid},</if>
+            <if test="count != null">re.count = #{count},</if>
+            <if test="startDate != null">re.start_date = #{startDate},</if>
+            <if test="endDate != null">re.end_date = #{endDate},</if>
+            <if test="response != null">re.is_response = #{response},</if>
+            <if test="delFlag != null">re.del_flag = #{delFlag},</if>
+            <if test="updateDate != null">re.update_date = #{updateDate},</if>
+            <if test="createDate != null">re.create_date = #{createDate},</if>
+        </trim>
+        where id = #{resendId}
+    </update>
+
+    <update id="updateCidResendConfirm" parameterType="CidResend">
+        update cid_resend set is_response = 0 where cid in
+    (select cid from cid_relation where del_flag = 0 and is_confirm = 0
+                                    and powerstation_id in (
+            select id from cid_powerstationinfo where energy_dept_id = #{deptId}
+        ))
+
+    </update>
+
+    <delete id="deleteCidResendByResendId" parameterType="Long">
+        delete from cid_resend where id = #{value}
+    </delete>
+
+    <delete id="deleteCidResendByResendIds" parameterType="String">
+        delete from cid_resend where id in
+        <foreach item="resendId" collection="array" open="(" separator="," close=")">
+            #{value}
+        </foreach>
+    </delete>
+</mapper>

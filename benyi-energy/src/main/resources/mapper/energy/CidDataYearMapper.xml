@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidDataYearMapper">
+
+
+    <resultMap type="CidDataYear" id="CidDataYearResult">
+        <result property="id" column="id"/>
+        <result property="plantID" column="plant_id"/>
+        <result property="cid" column="cid"/>
+        <result property="vid" column="vid"/>
+        <result property="energy" column="energy"/>
+        <result property="power" column="power"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+    <insert id="insertCidDataYear" >
+        insert into stat_mi_year (plant_id,cid,vid,energy,power,create_date) VALUES
+
+            ( #{plantID}, #{cid},#{vid}, #{energy}, #{power}, #{createDate})
+
+    </insert>
+
+
+
+    <select id="selectByVidAndCidOrderByIdLimit1"  parameterType="CidDataYear" resultMap="CidDataYearResult">
+        SELECT * FROM stat_mi_year where cid=#{cid} and vid=#{vid}    order by id limit 1 ;
+    </select>
+
+    <select id="selectByVidAndCidOrderByIdDescLimit1"  parameterType="CidDataYear" resultMap="CidDataYearResult">
+        SELECT * FROM stat_mi_year where cid=#{cid} and vid=#{vid}    order by id desc limit 1 ;
+    </select>
+
+
+    <select id="selectByCidDataYear"  parameterType="CidDataYear" resultMap="CidDataYearResult">
+        SELECT * FROM stat_mi_year where cid=#{cid} and vid=#{vid}  and  create_date = #{createDate} order by id desc limit 1 ;
+    </select>
+    <update id="updateByCidDataYear"  parameterType="java.util.Map">
+        update stat_mi_year set energy = #{energy}, power = #{power} where  id>0 and  cid=#{cid} and vid=#{vid}  and plant_id=#{plantID} and  create_date = #{createDate}
+
+    </update>
+
+    <select id="analyseDataForPlantAndCurrentYear"   parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT sum(energy) as energy FROM stat_mi_year where plant_id=#{plantID}
+        <if test="createDate !=null  ">
+            and create_date=#{createDate}
+        </if>
+    </select>
+
+    <select id="sumEnergyByCidAndVid"   resultType="map">
+        SELECT create_date as date,sum(energy) as energy FROM stat_mi_year where cid=#{cid} and vid=#{vid} group by date order by date;
+    </select>
+
+
+
+</mapper>

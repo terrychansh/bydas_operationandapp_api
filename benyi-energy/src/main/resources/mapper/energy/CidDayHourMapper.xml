@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidDayHourMapper">
+
+    <resultMap type="CidDayHour" id="CidDayHourResult">
+        <result property="id"    column="id"    />
+        <result property="cid"    column="cid"    />
+        <result property="vid"    column="vid"    />
+        <result property="roadType"    column="road_type"    />
+        <result property="softVersion"    column="soft_version"    />
+        <result property="softDeputyVersion"    column="soft_deputy_version"    />
+        <result property="volt"    column="volt"    />
+        <result property="power"    column="power"    />
+        <result property="energy"    column="energy"    />
+        <result property="temp"    column="temp"    />
+        <result property="gridVolt"    column="grid_volt"    />
+        <result property="gridFreq"    column="grid_freq"    />
+        <result property="m1MErrorCode"    column="m1_m_error_code"    />
+        <result property="m1MError"    column="m1_m_error"    />
+        <result property="m1SErrorCode"    column="m1_s_error_code"    />
+        <result property="m1SError"    column="m1_s_error"    />
+        <result property="sendTime"    column="send_time"    />
+        <result property="cidOrEmu"    column="cid_or_emu"    />
+        <result property="date"    column="date"    />
+        <result property="updateDate"    column="update_date"    />
+        <result property="createDate"    column="create_date"    />
+    </resultMap>
+
+    <sql id="selectCidDayHourVo">
+        select id, cid, vid, road_type, soft_version, soft_deputy_version, volt, power, energy, temp, grid_volt, grid_freq, m1_m_error_code, m1_m_error, m1_s_error_code, m1_s_error, send_time, cid_or_emu, date, update_date, create_date from cid_day_hour
+    </sql>
+
+    <select id="selectCidDayHourList" parameterType="CidDayHour" resultMap="CidDayHourResult">
+        <include refid="selectCidDayHourVo"/>
+        <where>
+            <if test="cid != null  and cid != ''"> and cid = #{cid}</if>
+            <if test="vid != null  and vid != ''"> and vid = #{vid}</if>
+            <if test="roadType != null  and roadType != ''"> and road_type = #{roadType}</if>
+            <if test="softVersion != null  and softVersion != ''"> and soft_version = #{softVersion}</if>
+            <if test="softDeputyVersion != null  and softDeputyVersion != ''"> and soft_deputy_version = #{softDeputyVersion}</if>
+            <if test="volt != null  and volt != ''"> and volt = #{volt}</if>
+            <if test="power != null  and power != ''"> and power = #{power}</if>
+            <if test="energy != null  and energy != ''"> and energy = #{energy}</if>
+            <if test="temp != null  and temp != ''"> and temp = #{temp}</if>
+            <if test="gridVolt != null  and gridVolt != ''"> and grid_volt = #{gridVolt}</if>
+            <if test="gridFreq != null  and gridFreq != ''"> and grid_freq = #{gridFreq}</if>
+            <if test="m1MErrorCode != null  and m1MErrorCode != ''"> and m1_m_error_code = #{m1MErrorCode}</if>
+            <if test="m1MError != null  and m1MError != ''"> and m1_m_error = #{m1MError}</if>
+            <if test="m1SErrorCode != null  and m1SErrorCode != ''"> and m1_s_error_code = #{m1SErrorCode}</if>
+            <if test="m1SError != null  and m1SError != ''"> and m1_s_error = #{m1SError}</if>
+            <if test="sendTime != null  and sendTime != ''"> and send_time = #{sendTime}</if>
+            <if test="cidOrEmu != null  and cidOrEmu != ''"> and cid_or_emu = #{cidOrEmu}</if>
+            <if test="date != null  and date != ''"> and date = #{date}</if>
+            <if test="updateDate != null "> and update_date = #{updateDate}</if>
+            <if test="createDate != null "> and create_date = #{createDate}</if>
+        </where>
+    </select>
+
+    <select id="selectCidDayHourById" parameterType="Long" resultMap="CidDayHourResult">
+        <include refid="selectCidDayHourVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectValDateHour" resultType="java.util.Map">
+        select id from cid_day_hour where cid=#{cid} and vid =#{vid}
+        <if test="roadType !=null">
+            and road_type = #{roadType}
+        </if>
+        and date = #{searchDate}
+    </select>
+
+    <insert id="insertCidDayHour" parameterType="CidDayHour" useGeneratedKeys="true" keyProperty="id">
+        insert into cid_day_hour
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null">cid,</if>
+            <if test="vid != null">vid,</if>
+            <if test="roadType != null">road_type,</if>
+            <if test="softVersion != null">soft_version,</if>
+            <if test="softDeputyVersion != null">soft_deputy_version,</if>
+            <if test="volt != null">volt,</if>
+            <if test="power != null">power,</if>
+            <if test="energy != null">energy,</if>
+            <if test="temp != null">temp,</if>
+            <if test="gridVolt != null">grid_volt,</if>
+            <if test="gridFreq != null">grid_freq,</if>
+            <if test="m1MErrorCode != null">m1_m_error_code,</if>
+            <if test="m1MError != null">m1_m_error,</if>
+            <if test="m1SErrorCode != null">m1_s_error_code,</if>
+            <if test="m1SError != null">m1_s_error,</if>
+            <if test="sendTime != null">send_time,</if>
+            <if test="cidOrEmu != null">cid_or_emu,</if>
+            <if test="date != null">date,</if>
+            <if test="updateDate != null">update_date,</if>
+            <if test="createDate != null">create_date,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null">#{cid},</if>
+            <if test="vid != null">#{vid},</if>
+            <if test="roadType != null">#{roadType},</if>
+            <if test="softVersion != null">#{softVersion},</if>
+            <if test="softDeputyVersion != null">#{softDeputyVersion},</if>
+            <if test="volt != null">#{volt},</if>
+            <if test="power != null">#{power},</if>
+            <if test="energy != null">#{energy},</if>
+            <if test="temp != null">#{temp},</if>
+            <if test="gridVolt != null">#{gridVolt},</if>
+            <if test="gridFreq != null">#{gridFreq},</if>
+            <if test="m1MErrorCode != null">#{m1MErrorCode},</if>
+            <if test="m1MError != null">#{m1MError},</if>
+            <if test="m1SErrorCode != null">#{m1SErrorCode},</if>
+            <if test="m1SError != null">#{m1SError},</if>
+            <if test="sendTime != null">#{sendTime},</if>
+            <if test="cidOrEmu != null">#{cidOrEmu},</if>
+            <if test="date != null">#{date},</if>
+            <if test="updateDate != null">#{updateDate},</if>
+            <if test="createDate != null">#{createDate},</if>
+        </trim>
+    </insert>
+
+    <update id="updateCidDayHour" parameterType="CidDayHour">
+        update cid_day_hour
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cid != null">cid = #{cid},</if>
+            <if test="vid != null">vid = #{vid},</if>
+            <if test="roadType != null">road_type = #{roadType},</if>
+            <if test="softVersion != null">soft_version = #{softVersion},</if>
+            <if test="softDeputyVersion != null">soft_deputy_version = #{softDeputyVersion},</if>
+            <if test="volt != null">volt = #{volt},</if>
+            <if test="power != null">power = #{power},</if>
+            <if test="energy != null">energy = #{energy},</if>
+            <if test="temp != null">temp = #{temp},</if>
+            <if test="gridVolt != null">grid_volt = #{gridVolt},</if>
+            <if test="gridFreq != null">grid_freq = #{gridFreq},</if>
+            <if test="m1MErrorCode != null">m1_m_error_code = #{m1MErrorCode},</if>
+            <if test="m1MError != null">m1_m_error = #{m1MError},</if>
+            <if test="m1SErrorCode != null">m1_s_error_code = #{m1SErrorCode},</if>
+            <if test="m1SError != null">m1_s_error = #{m1SError},</if>
+            <if test="sendTime != null">send_time = #{sendTime},</if>
+            <if test="cidOrEmu != null">cid_or_emu = #{cidOrEmu},</if>
+            <if test="date != null">date = #{date},</if>
+            <if test="updateDate != null">update_date = #{updateDate},</if>
+            <if test="createDate != null">create_date = #{createDate},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="updateCidDayHourByCidVidRoadDate" parameterType="CidDayHour">
+        update cid_day_hour
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="softVersion != null">soft_version = #{softVersion},</if>
+            <if test="softDeputyVersion != null">soft_deputy_version = #{softDeputyVersion},</if>
+            <if test="volt != null">volt = #{volt},</if>
+            <if test="power != null">power = #{power},</if>
+            <if test="energy != null">energy = #{energy},</if>
+            <if test="temp != null">temp = #{temp},</if>
+            <if test="gridVolt != null">grid_volt = #{gridVolt},</if>
+            <if test="gridFreq != null">grid_freq = #{gridFreq},</if>
+            <if test="m1MErrorCode != null">m1_m_error_code = #{m1MErrorCode},</if>
+            <if test="m1MError != null">m1_m_error = #{m1MError},</if>
+            <if test="m1SErrorCode != null">m1_s_error_code = #{m1SErrorCode},</if>
+            <if test="m1SError != null">m1_s_error = #{m1SError},</if>
+            <if test="sendTime != null">send_time = #{sendTime},</if>
+            <if test="cidOrEmu != null">cid_or_emu = #{cidOrEmu},</if>
+            <if test="updateDate != null">update_date = #{updateDate},</if>
+            <if test="createDate != null">create_date = #{createDate},</if>
+        </trim>
+        where cid = #{cid} and vid = #{vid}
+        <if test="roadType !=null">
+            and road_type = #{roadType}
+        </if>
+        and date = #{date}
+    </update>
+
+    <delete id="deleteCidDayHourById" parameterType="Long">
+        delete from cid_day_hour where id = #{id}
+    </delete>
+
+    <delete id="deleteCidDayHourByIds" parameterType="String">
+        delete from cid_day_hour where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,879 @@
+00:08:52.379 [http-nio-8080-exec-41] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 144 millis. SELECT 1 FROM DUAL[]
+01:13:55.782 [http-nio-8080-exec-68] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 86 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[1232]
+01:29:28.466 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 73 millis. SELECT 1 FROM DUAL[]
+01:30:11.640 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 115 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[153,153]
+01:30:36.571 [schedule-pool-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 61 millis. insert into sys_logininfor (user_name, status, ipaddr, login_location, browser, os, msg, login_time)
+		values (?, ?, ?, ?, ?, ?, ?, sysdate())["test","0","127.0.0.1","内网IP","Chrome 11","Mac OS X","退出成功"]
+01:30:42.223 [http-nio-8080-exec-32] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 53 millis. update sys_user
+ 		 SET login_ip = ?,
+ 			login_date = ?,
+ 			
+ 			
+ 			update_time = sysdate() 
+ 		where user_id = ?["127.0.0.1","2023-06-05 01:30:42",114]
+01:30:42.698 [http-nio-8080-exec-36] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 110 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+01:31:02.707 [http-nio-8080-exec-61] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 55 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+
+         WHERE del_flag=0
+             and id = ?[76]
+01:31:02.713 [http-nio-8080-exec-62] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 62 millis. SELECT sum(energy) as energy,DATE_FORMAT(create_date ,'%H') as date FROM stat_mi_hour where
+        DATE_FORMAT(create_date,'%Y-%m-%d') =?
+
+         
+            and plant_id=?
+         
+         
+
+         
+
+        group by create_date
+        order by create_date ;["2023-06-05",76]
+01:31:02.713 [http-nio-8080-exec-60] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 62 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+        where id = ?[76]
+01:31:04.232 [http-nio-8080-exec-64] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1417 millis. select r.id as 'id' , r.cid as 'cid',r.vid as 'vid' ,right(r.road_type,1) as 'roadType',r.status as 'status',
+        r.is_confirm as 'isConfirm',
+        r.current_energy as 'currentEnergy' , r.current_power as 'currentPower' , r.week_energy as 'weekEnergy' , r.month_energy as 'monthEnergy' ,
+        r.year_energy as 'yearEnergy' , r.count_energy as 'countEnergy' from cid_relation r
+        where r.powerstation_id=? and r.del_flag = 0
+         
+         
+        order by r.cid[76]
+01:31:15.335 [http-nio-8080-exec-70] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 883 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"90000051","10010022","2023-06-05"]
+01:31:15.337 [http-nio-8080-exec-66] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 864 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["90000051","10010022","1"]
+01:31:15.335 [http-nio-8080-exec-69] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 883 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["90000051","10010022","76","2023-06-05"]
+01:31:36.837 [http-nio-8080-exec-75] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 863 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["90000051","10010022","1"]
+01:31:36.888 [http-nio-8080-exec-76] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 943 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"90000051","10010022","2023-06-05"]
+01:31:36.888 [http-nio-8080-exec-77] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 949 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["90000051","10010022","76","2023-06-05"]
+01:34:06.080 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 82 millis. SELECT 1 FROM DUAL[]
+01:34:21.765 [http-nio-8080-exec-3] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 825 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["90000051","10010022","1"]
+01:34:21.780 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 869 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"90000051","10010022","2023-06-05"]
+01:34:21.788 [http-nio-8080-exec-8] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 881 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["90000051","10010022","76","2023-06-05"]
+01:35:19.276 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 79 millis. SELECT 1 FROM DUAL[]
+01:35:38.754 [http-nio-8080-exec-7] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 499 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND vid = ? AND plant_id = ?["90000051","10010022","76"]
+01:35:39.126 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 873 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["90000051","10010022","1"]
+01:35:39.129 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 911 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"90000051","10010022","2023-06-05"]
+01:35:39.130 [http-nio-8080-exec-6] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 916 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["90000051","10010022","76","2023-06-05"]
+01:35:39.746 [http-nio-8080-exec-7] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 987 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where cid = ?
+         
+            and vid = ?
+         
+         
+            and plant_id = ?
+         
+
+         
+             
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["90000051","10010022","76",50]
+01:36:23.434 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 52 millis. SELECT 1 FROM DUAL[]
+02:17:03.911 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 74 millis. SELECT 1 FROM DUAL[]
+02:49:07.640 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 65 millis. SELECT 1 FROM DUAL[]
+02:49:36.020 [schedule-pool-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 55 millis. insert into sys_logininfor (user_name, status, ipaddr, login_location, browser, os, msg, login_time)
+		values (?, ?, ?, ?, ?, ?, ?, sysdate())["visitor","0","127.0.0.1","内网IP","Chrome 11","Mac OS X","退出成功"]
+02:49:39.537 [http-nio-8080-exec-3] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 50 millis. update sys_user
+ 		 SET login_ip = ?,
+ 			login_date = ?,
+ 			
+ 			
+ 			update_time = sysdate() 
+ 		where user_id = ?["127.0.0.1","2023-06-05 02:49:39",114]
+02:49:39.731 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 74 millis. select distinct m.menu_id, m.parent_id, m.menu_name, m.path, m.component, m.`query`, m.visible, m.status, ifnull(m.perms,'') as perms, m.is_frame, m.is_cache, m.menu_type, m.icon, m.order_num, m.create_time
+		from sys_menu m
+			 left join sys_role_menu rm on m.menu_id = rm.menu_id
+			 left join sys_user_role ur on rm.role_id = ur.role_id
+			 left join sys_role ro on ur.role_id = ro.role_id
+			 left join sys_user u on ur.user_id = u.user_id
+		where u.user_id = ? and m.menu_type in ('M', 'C') and m.status = 0  AND ro.status = 0
+		order by m.parent_id, m.order_num[114]
+02:49:40.080 [http-nio-8080-exec-7] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 109 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+02:49:50.033 [http-nio-8080-exec-28] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 918 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["90000051","10010022","76","2023-06-05"]
+02:49:50.036 [http-nio-8080-exec-29] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 890 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["90000051","10010022","1"]
+02:49:50.072 [http-nio-8080-exec-30] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 944 millis. SELECT count(0) FROM cid_data WHERE cid_or_emu = '5' AND cid = ? AND vid = ? AND plant_id = ?["90000051","10010022","76"]
+02:49:50.072 [http-nio-8080-exec-27] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 954 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"90000051","10010022","2023-06-05"]
+02:49:50.876 [http-nio-8080-exec-30] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 802 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where cid_or_emu='5' and cid = ?
+
+         
+            and vid = ?
+         
+         
+            and plant_id = ?
+         
+
+         
+             
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["90000051","10010022","76",50]
+02:49:59.471 [http-nio-8080-exec-35] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 106 millis. SELECT count(0) FROM cid_data WHERE cid_or_emu = '5' AND cid = ? AND vid = ?["C0999998","40999998"]
+02:49:59.474 [http-nio-8080-exec-36] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 127 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["C0999998","40999998","76","2023-06-05"]
+02:49:59.513 [http-nio-8080-exec-37] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 119 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["C0999998","40999998","4"]
+02:49:59.514 [http-nio-8080-exec-34] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 150 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"C0999998","40999998","2023-06-05"]
+02:49:59.550 [http-nio-8080-exec-35] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 73 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where cid_or_emu='5' and cid = ?
+
+         
+            and vid = ?
+         
+         
+
+         
+             
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["C0999998","40999998",25]
+02:59:37.587 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 76 millis. SELECT 1 FROM DUAL[]
+02:59:53.741 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 95 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND cid_or_emu = ? AND vid = ?["C0999998","5","40999998"]
+02:59:53.745 [http-nio-8080-exec-6] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 96 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["C0999998","40999998","4"]
+02:59:53.751 [http-nio-8080-exec-7] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 131 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["C0999998","40999998","76","2023-06-05"]
+02:59:53.792 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 156 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"C0999998","40999998","2023-06-05"]
+02:59:53.830 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 87 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where  cid = ?
+
+         
+            and cid_or_emu = ?
+         
+
+         
+
+         
+            and vid = ?
+         
+         
+
+         
+             
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["C0999998","5","40999998",25]
+03:00:00.390 [http-nio-8080-exec-9] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 91 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND cid_or_emu = ? AND vid = ?["C0999998","5","40999998"]
+03:00:03.344 [http-nio-8080-exec-10] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 88 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND cid_or_emu = ? AND vid = ?["C0999998","5","40999998"]
+03:00:03.431 [http-nio-8080-exec-10] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 84 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where  cid = ?
+
+         
+            and cid_or_emu = ?
+         
+
+         
+
+         
+            and vid = ?
+         
+         
+
+         
+             
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["C0999998","5","40999998",25]
+03:00:31.262 [http-nio-8080-exec-15] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 93 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND cid_or_emu = ? AND vid = ?["C0999998","5","40999998"]
+03:00:31.263 [http-nio-8080-exec-16] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 96 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["C0999998","40999998","76","2023-06-05"]
+03:00:31.294 [http-nio-8080-exec-14] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 125 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"C0999998","40999998","2023-06-05"]
+03:00:31.299 [http-nio-8080-exec-18] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 91 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["C0999998","40999998","4"]
+03:00:31.344 [http-nio-8080-exec-15] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 78 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where  cid = ?
+
+         
+            and cid_or_emu = ?
+         
+
+         
+
+         
+            and vid = ?
+         
+         
+
+         
+             
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["C0999998","5","40999998",25]
+03:04:33.482 [restartedMain] ERROR o.s.b.w.e.t.TomcatStarter - [onStartup,61] - Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'filterConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'xss.excludes' in value "${xss.excludes}"
+03:04:33.515 [restartedMain] ERROR o.s.b.SpringApplication - [reportFailure,870] - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:163)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:577)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:453)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1359)
+	at com.benyi.BenYiApplication.main(BenYiApplication.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:456)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:204)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:182)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:160)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'filterConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'xss.excludes' in value "${xss.excludes}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:410)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:212)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:203)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:97)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:260)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:234)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5219)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1396)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1386)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:919)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:835)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1396)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1386)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:919)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:263)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:432)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:927)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 18 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'xss.excludes' in value "${xss.excludes}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1330)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 65 common frames omitted
+05:10:40.634 [http-nio-8080-exec-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 967 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND cid_or_emu = ? AND vid = ? AND plant_id = ? AND DATE_FORMAT(create_date, '%Y-%m-%d') = DATE_FORMAT(?, '%Y-%m-%d')["90000051","5","10010022","76","2023-06-05"]
+05:10:41.454 [http-nio-8080-exec-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 811 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where  cid = ?
+
+         
+            and cid_or_emu = ?
+         
+
+         
+
+         
+            and vid = ?
+         
+         
+            and plant_id = ?
+         
+
+         
+             
+             
+                and DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+             
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["90000051","5","10010022","76","2023-06-05",50]
+06:12:14.075 [http-nio-8080-exec-13] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 171 millis. SELECT count(0) FROM cid_data WHERE cid = ? AND cid_or_emu = ? AND vid = ?["C0999998","5","40999998"]
+06:12:14.079 [http-nio-8080-exec-11] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 199 millis. select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = ?
+         
+            and d.vid = ?
+         
+         
+            and d.plant_id = ?
+         
+         
+         
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')
+         
+         
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')["C0999998","40999998","76","2023-06-05"]
+06:12:14.118 [http-nio-8080-exec-15] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 236 millis. select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+         
+         
+            avg(power) as 'power',
+         
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+         
+            and plant_id = ?
+         
+
+         
+            and cid = ?
+         
+
+         
+            and vid = ?
+         
+
+         
+
+         
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = ?
+         
+
+         
+
+         
+            group by road_type,createDate
+            order by road_type,createDate[76,"C0999998","40999998","2023-06-05"]
+06:12:14.181 [http-nio-8080-exec-13] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 100 millis. select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where  cid = ?
+
+         
+            and cid_or_emu = ?
+         
+
+         
+
+         
+            and vid = ?
+         
+         
+
+         
+                         
+
+
+
+
+
+
+
+
+
+
+         
+         
+         
+        order by  create_date desc
+ LIMIT ? ["C0999998","5","40999998",25]
+06:12:14.214 [http-nio-8080-exec-12] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 92 millis. select max(id) from cid_data where cid = ?
+         
+            and vid = ?
+         
+         
+            and road_type = ?["C0999998","40999998","4"]
+06:12:53.176 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1318 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]
+06:13:01.955 [http-nio-8080-exec-18] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1438 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]
+06:13:13.327 [http-nio-8080-exec-19] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1271 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]
+06:13:22.809 [http-nio-8080-exec-20] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 762 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"03"]
+06:13:40.964 [http-nio-8080-exec-21] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 104 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ? AND d.vid = ?[120,120,"02","40999998"]
+06:13:48.655 [http-nio-8080-exec-22] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1193 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]
+06:13:53.721 [http-nio-8080-exec-23] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1144 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]
+06:13:59.461 [http-nio-8080-exec-24] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1132 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]
+06:14:05.755 [http-nio-8080-exec-25] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1138 millis. SELECT count(0) FROM cid_data d WHERE road_type IS NOT NULL AND d.vid IN (SELECT r.vid FROM cid_relation r WHERE r.del_flag = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p, sys_dept s WHERE p.del_flag = 0 AND p.energy_dept_id = s.dept_id AND (find_in_set(?, s.ancestors) OR p.energy_dept_id = ?))) AND d.cid_type = ?[120,120,"02"]

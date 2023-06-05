@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidDataRoadMapper">
+
+    <resultMap type="CidData" id="CidDataResult">
+        <result property="id" column="id"/>
+        <result property="cid" column="cid"/>
+        <result property="vid" column="vid"/>
+        <result property="roadType" column="road_type"/>
+        <result property="softVersion" column="soft_version"/>
+        <result property="softDeputyVersion" column="soft_deputy_version"/>
+        <result property="volt" column="volt"/>
+        <result property="power" column="power"/>
+        <result property="standardPower" column="standard_power"/>
+        <result property="energy" column="energy"/>
+        <result property="temp" column="temp"/>
+        <result property="gridVolt" column="grid_volt"/>
+        <result property="gridFreq" column="grid_freq"/>
+        <result property="m1MError" column="m1_m_error"/>
+        <result property="m1SError" column="m1_s_error"/>
+        <result property="m1MErrorCn" column="m1_m_error_cn"/>
+        <result property="m1SErrorCn" column="m1_s_error_cn"/>
+        <result property="m1MErrorCode" column="m1_m_error_code"/>
+        <result property="m1SErrorCode" column="m1_s_error_code"/>
+        <result property="sendTime" column="send_time"/>
+        <result property="cidOrEmu" column="cid_or_emu"/>
+        <result property="date" column="date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+
+
+    <select id="selectAll"  resultMap="CidDataResult">
+        select * from cid_data_road  order by id
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CitiesMapper">
+
+    <resultMap type="Cities" id="CitiesResult">
+        <result property="id"    column="id"    />
+        <result property="stateId"    column="state_id"    />
+        <result property="code"    column="code"    />
+        <result property="name"    column="name"    />
+        <result property="cname"    column="cname"    />
+        <result property="lowerName"    column="lower_name"    />
+        <result property="codeFull"    column="code_full"    />
+    </resultMap>
+
+    <sql id="selectCitiesVo">
+        select id, state_id, code, name, cname, lower_name, code_full from cities
+    </sql>
+
+    <select id="selectCitiesList" parameterType="Cities" resultMap="CitiesResult">
+        <include refid="selectCitiesVo"/>
+        <where>
+            <if test="stateId != null "> and state_id = #{stateId}</if>
+            <if test="code != null  and code != ''"> and code = #{code}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="cname != null  and cname != ''"> and cname like concat('%', #{cname}, '%')</if>
+            <if test="lowerName != null  and lowerName != ''"> and lower_name like concat('%', #{lowerName}, '%')</if>
+            <if test="codeFull != null  and codeFull != ''"> and code_full = #{codeFull}</if>
+        </where>
+    </select>
+
+    <select id="selectCitiesById" parameterType="Integer" resultMap="CitiesResult">
+        <include refid="selectCitiesVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertCities" parameterType="Cities" useGeneratedKeys="true" keyProperty="id">
+        insert into cities
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stateId != null">state_id,</if>
+            <if test="code != null">code,</if>
+            <if test="name != null">name,</if>
+            <if test="cname != null">cname,</if>
+            <if test="lowerName != null">lower_name,</if>
+            <if test="codeFull != null and codeFull != ''">code_full,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stateId != null">#{stateId},</if>
+            <if test="code != null">#{code},</if>
+            <if test="name != null">#{name},</if>
+            <if test="cname != null">#{cname},</if>
+            <if test="lowerName != null">#{lowerName},</if>
+            <if test="codeFull != null and codeFull != ''">#{codeFull},</if>
+        </trim>
+    </insert>
+
+    <update id="updateCities" parameterType="Cities">
+        update cities
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="stateId != null">state_id = #{stateId},</if>
+            <if test="code != null">code = #{code},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="cname != null">cname = #{cname},</if>
+            <if test="lowerName != null">lower_name = #{lowerName},</if>
+            <if test="codeFull != null and codeFull != ''">code_full = #{codeFull},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCitiesById" parameterType="Integer">
+        delete from cities where id = #{id}
+    </delete>
+
+    <delete id="deleteCitiesByIds" parameterType="String">
+        delete from cities where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

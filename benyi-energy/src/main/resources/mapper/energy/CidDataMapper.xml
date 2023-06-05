@@ -1,0 +1,1701 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidDataMapper">
+
+    <resultMap type="CidData" id="CidDataResult">
+        <result property="id" column="id"/>
+        <result property="plant_id" column="plantID"/>
+        <result property="cid" column="cid"/>
+        <result property="vid" column="vid"/>
+        <result property="roadType" column="road_type"/>
+        <result property="softVersion" column="soft_version"/>
+        <result property="softDeputyVersion" column="soft_deputy_version"/>
+        <result property="volt" column="volt"/>
+        <result property="power" column="power"/>
+        <result property="standardPower" column="standard_power"/>
+        <result property="energy" column="energy"/>
+        <result property="temp" column="temp"/>
+        <result property="gridVolt" column="grid_volt"/>
+        <result property="gridFreq" column="grid_freq"/>
+        <result property="m1MError" column="m1_m_error"/>
+        <result property="m1SError" column="m1_s_error"/>
+        <result property="m1MErrorCn" column="m1_m_error_cn"/>
+        <result property="m1SErrorCn" column="m1_s_error_cn"/>
+        <result property="m1MErrorCode" column="m1_m_error_code"/>
+        <result property="m1SErrorCode" column="m1_s_error_code"/>
+        <result property="sendTime" column="send_time"/>
+        <result property="cidOrEmu" column="cid_or_emu"/>
+        <result property="date" column="date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+    <resultMap id="CidDateBySumDateResultMap" type="CidData">
+        <result property="id" column="id"/>
+        <result property="cid" column="cid"/>
+        <result property="vid" column="vid"/>
+        <result property="roadType" column="road_type"/>
+        <result property="softVersion" column="soft_version"/>
+        <result property="softDeputyVersion" column="soft_deputy_version"/>
+        <result property="volt" column="volt"/>
+        <result property="power" column="power"/>
+        <result property="energy" column="energy"/>
+        <result property="temp" column="temp"/>
+        <result property="gridVolt" column="grid_volt"/>
+        <result property="gridFreq" column="grid_freq"/>
+        <result property="m1MError" column="m1_m_error"/>
+        <result property="m1SError" column="m1_s_error"/>
+        <result property="sendTime" column="send_time"/>
+        <result property="cidOrEmu" column="cid_or_emu"/>
+        <result property="date" column="date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="createDate" column="create_date"/>
+        <result property="powerStationName" column="power_station_name"/>
+
+    </resultMap>
+
+
+    <sql id="selectCidDataVo">
+        select id,
+               cid,
+               vid,
+               road_type,
+               soft_version,
+               soft_deputy_version,
+               volt,
+               power,
+               energy,
+               temp,
+               grid_volt,
+               grid_freq,
+               m1_m_error,
+               m1_s_error,
+               m1_m_error_cn,
+               m1_s_error_cn,
+               m1_m_error_code,
+               m1_s_error_code,
+               send_time,
+               cid_or_emu, date, update_date, create_date
+        from cid_data
+    </sql>
+
+
+    <select id="selectLastUpdateTime" parameterType="String" resultType="java.util.Map">
+       select cid,DATE_FORMAT(create_date,'%Y-%m-%d 00:00:00') as createDate from cid_data where cid = #{cid} order by create_date desc LIMIT 1
+    </select>
+
+    <!-- 根据CID/VID查询最近一条的故障代码和描述 -->
+    <select id="getErrorCodeAndDescByCidAndVid" resultType="java.util.Map">
+        SELECT `m1_m_error_code` as m1MErrorCode,`m1_m_error` as m1MError,`m1_m_error_cn` as m1MErrorCN ,`m1_s_error_code`  as m1SErrorCode,`m1_s_error`  as m1SError, `m1_s_error_cn` as m1SErrorCN FROM cid_data where cid=#{cid} and vid=#{vid}  and (`m1_s_error_code`!='0000' or `m1_m_error_code`!='0000' ) order by id desc limit 1;
+    </select>
+
+    <select id="selectCidDataList" parameterType="CidData" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        <where>
+            <if test="cid != null  and cid != ''">and cid = #{cid}</if>
+            <if test="vid != null  and vid != ''">and vid = #{vid}</if>
+            <if test="roadType != null  and vid != ''">and road_type = #{roadType}</if>
+            <if test="softVersion != null  and softVersion != ''">and soft_version = #{softVersion}</if>
+            <if test="softDeputyVersion != null  and softDeputyVersion != ''">and soft_deputy_version =
+                #{softDeputyVersion}
+            </if>
+            <if test="volt != null  and volt != ''">and volt = #{volt}</if>
+            <if test="power != null  and power != ''">and power = #{power}</if>
+            <if test="energy != null  and energy != ''">and energy = #{energy}</if>
+            <if test="temp != null  and temp != ''">and temp = #{temp}</if>
+            <if test="gridVolt != null  and gridVolt != ''">and grid_volt = #{gridVolt}</if>
+            <if test="gridFreq != null  and gridFreq != ''">and grid_freq = #{gridFreq}</if>
+            <if test="m1MError != null  and m1MError != ''">
+                and m1_m_error like concat('%', #{m1MError}, '%')
+            </if>
+            <if test="m1SError != null  and m1SError != ''">
+                and m1_s_error like concat('%', #{m1SError}, '%')
+            </if>
+            <if test="m1MErrorCn != null  and m1MErrorCn != ''">
+                and m1_m_error like concat('%', #{m1MError}, '%')
+            </if>
+            <if test="m1SErrorCn != null  and m1SErrorCn != ''">
+                and m1_s_error like concat('%', #{m1SError}, '%')
+            </if>
+            <if test="m1MErrorCode != null  and m1MErrorCode != ''">
+                and m1_m_error_code = #{m1MErrorCode}
+            </if>
+            <if test="m1SErrorCode != null  and m1SErrorCode != ''">
+                and m1_s_error_code = #{m1SErrorCode}
+            </if>
+            <if test="sendTime != null  and sendTime != ''">and send_time = #{sendTime}</if>
+            <if test="cidOrEmu != null  and cidOrEmu != ''">and cid_or_emu = #{cidOrEmu}</if>
+            <if test="date != null  and date != ''">and date = #{date}</if>
+            <if test="updateDate != null ">and update_date = #{updateDate}</if>
+            <if test="createDate != null ">
+               and DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(#{createDate},'%Y-%m-%d')
+            </if>
+        </where>
+    </select>
+
+    <select id="getCidListByGroup" parameterType="CidData" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        <where>
+            <if test="cid != null  and cid != ''">and cid like concat('%', #{cid}, '%')</if>
+            <if test="vid != null  and vid != ''">and vid like concat('%', #{vid}, '%')</if>
+        </where>
+        group by cid
+    </select>
+
+
+    <select id="selectCidDataErrorList" resultType="java.util.Map">
+
+        SELECT d.cid as 'cid',d.vid as 'vid',right(d.road_type,1) as 'roadType',
+        d.m1_m_error as 'm1MError',d.m1_m_error_cn as 'm1MErrorCn',d.m1_m_error_code as 'm1MErrorCode',
+        d.m1_s_error as 'm1SError',d.m1_s_error_cn as 'm1SErrorCn',d.m1_s_error_code as 'm1SErrorCode',
+        d.create_date as 'date' FROM cid_data d
+        where d.cid in (
+            select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0 and r.bind_type = 0
+            and r.powerstation_id in (
+                select p.id from cid_powerstationinfo p where p.del_flag = 0
+                <if test="powerStationId != null  and powerStationId != '' and deptId != null ">
+                    and p.id = #{powerStationId}
+                </if>
+                <if test="deptId != null and deptId!='' and powerStationId == null">
+                    and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) ))
+                </if>
+            )
+        )
+        and ( (d.m1_m_error_code!='0000' and d.m1_m_error_code !='0200' and d.m1_m_error_code !='0008')
+        or (d.m1_s_error_code!='0000' and d.m1_s_error_code !='0200' and d.m1_s_error_code !='0008'))
+
+        <if test="cid != null  and cid != ''">and d.cid = #{cid} </if>
+        <if test="vid != null  and vid != ''">and d.vid = #{vid} </if>
+        <if test="m1MError != null  and m1MError != ''">
+            and d.m1_m_error like concat('%', #{m1MError}, '%')
+        </if>
+        <if test="m1SError != null  and m1SError != ''">
+            and d.m1_s_error like concat('%', #{m1SError}, '%')
+        </if>
+        <if test="m1MErrorCn != null  and m1MErrorCn != ''">
+            and d.m1_m_error like concat('%', #{m1MError}, '%')
+        </if>
+        <if test="m1SErrorCn != null  and m1SErrorCn != ''">
+            and d.m1_s_error like concat('%', #{m1SError}, '%')
+        </if>
+        <if test="m1MErrorCode != null  and m1MErrorCode != ''">
+            and d.m1_m_error_code = #{m1MErrorCode}
+        </if>
+        <if test="m1SErrorCode != null  and m1SErrorCode != ''">
+            and d.m1_s_error_code = #{m1SErrorCode}
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(#{searchDate},'%Y-%m-%d')
+        </if>
+--         group by d.cid ,d.vid,d.road_type
+        order by id desc
+    </select>
+
+    <select id="selectCidDataById" parameterType="Long" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        where id = #{id}
+    </select>
+
+
+    <select id="getListByCids" parameterType="java.util.Map" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        where cid in
+        <foreach collection="cids" item="cid" index="index" open="(" close=")" separator=",">
+            #{cid}
+        </foreach>
+        and cid_or_emu = 0 group by cid order by id DESC
+    </select>
+
+    <select id="getListByVids" parameterType="java.util.Map" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        where vid in
+        <foreach collection="vids" item="vid" index="index" open="(" close=")" separator=",">
+            #{vid}
+        </foreach>
+        and cid_or_emu = 0 order by cid
+    </select>
+
+        <!--      and d.create_date between DATE_FORMAT(now(),'%Y-%m-%d') and ADDDATE(now(),INTERVAL 1 week) -->
+    <!--
+    <select id="getDayPowerInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(d.create_date ,'%H:%i') as 'date',sum(d.power)/4  as 'power'  from cid_data d
+            left join cid_relation r on d.cid=r.cid
+            left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+        <if test="deptId != null  and deptId != ''">and p.energy_dept_id = #{deptId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(#{searchDate},'%Y-%m-%d')
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+        group by power,DATE_FORMAT(d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')
+    </select>
+    DATE_FORMAT(d.create_date,'%i')%5 = 0
+    -->
+    <select id="getDayPowerInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(d.create_date ,'%H:%i') as 'date',sum(d.power)/4  as 'power'  from cid_data d
+        where d.cid in (select r.cid from cid_relation r
+        where  r.is_confirm = 0 and r.del_flag = 0 and
+        r.powerstation_id in (select p.id from cid_powerstationinfo p where p.energy_dept_id=#{deptId} ))
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(#{searchDate},'%Y-%m-%d')
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+        group by DATE_FORMAT(d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')
+    </select>
+
+    <select id="getDayPowerInfoForMinute" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i') as 'date',sum(d.power)  as 'power'  from cid_data d
+        where d.cid in (select r.cid from cid_relation r
+        where  r.is_confirm = 0 and r.del_flag = 0 and
+        r.powerstation_id in (select p.id from cid_powerstationinfo p where p.del_flag = 0
+        <if test="deptId != null  and deptId != ''">
+            and ( p.energy_dept_id=#{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) ))
+        </if>
+        ))
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(#{searchDate},'%Y-%m-%d')
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+        group by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i')
+        order by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i')
+    </select>
+
+    <select id="getDayCountPowerInfo" parameterType="java.util.Map" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        where vid in
+        <foreach collection="vids" item="vid" index="index" open="(" close=")" separator=",">
+            #{vid}
+        </foreach>
+        and cid in
+        <foreach collection="cids" item="cid" index="index" open="(" close=")" separator=",">
+            #{cid}
+        </foreach>
+        and TO_DAYS(create_date) = TO_DAYS(NOW())
+    </select>
+
+    <select id="getCountPowerInfo" parameterType="java.util.Map" resultType="Long">
+        select SUM(energy) as 'energy' from cid_data
+        where vid in
+        <foreach collection="vids" item="vid" index="index" open="(" close=")" separator=",">
+            #{vid}
+        </foreach>
+        and cid in
+        <foreach collection="cids" item="cid" index="index" open="(" close=")" separator=",">
+            #{cid}
+        </foreach>
+        and cid_or_emu = 0
+    </select>
+
+    <!-- 迁移 -->
+    <select id="getWeekPowerInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(d.create_date ,'%Y-%m-%d') as 'date',sum(d.energy)  as 'energy'  from cid_data d
+        left join cid_relation r on d.cid=r.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+        <if test="deptId != null  and deptId != ''">and p.energy_dept_id = #{deptId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and d.create_date between #{searchDate} and ADDDATE(#{searchDate},INTERVAL 1 week)
+        </if>
+        <if test="searchDate == null">
+            and d.create_date between DATE_FORMAT(now(),'%Y-%m-%d') and ADDDATE(now(),INTERVAL 1 week)
+        </if>
+        group by DATE_FORMAT( d.create_date ,'%Y-%m-%d')
+        order by DATE_FORMAT( d.create_date ,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <select id="getMonthPowerInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(d.create_date ,'%Y-%m-%d') as 'date',sum(d.energy)  as 'energy' from cid_data d
+        left join cid_relation r on d.cid=r.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId != null  and deptId != ''">and p.energy_dept_id = #{deptId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT( d.create_date, '%Y-%m' ) = DATE_FORMAT( #{searchDate} , '%Y-%m' )
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT( d.create_date, '%Y-%m' ) = DATE_FORMAT( now() , '%Y-%m' )
+        </if>
+        group by DATE_FORMAT( d.create_date ,'%Y-%m-%d')
+        order by DATE_FORMAT( d.create_date ,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <select id="getYearPowerInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(d.create_date ,'%Y-%m') as 'date',sum(d.energy)  as 'energy'  from cid_data d
+        left join cid_relation r on d.cid=r.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId != null  and deptId != ''">and p.energy_dept_id = #{deptId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT( d.create_date, '%Y' ) = DATE_FORMAT( #{searchDate} , '%Y' )
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT( d.create_date, '%Y' ) = DATE_FORMAT( now() , '%Y' )
+        </if>
+
+        group by DATE_FORMAT( d.create_date ,'%Y-%m')
+        order by DATE_FORMAT( d.create_date ,'%Y-%m')
+    </select>
+
+    <!-- 迁移 -->
+    <select id="getAllPowerInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select DATE_FORMAT(d.create_date ,'%Y') as 'date',sum(d.energy)  as 'energy'  from cid_data d
+        left join cid_relation r on d.cid=r.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId != null  and deptId != ''">and p.energy_dept_id = #{deptId}</if>
+        group by DATE_FORMAT( d.create_date ,'%Y')
+        order by DATE_FORMAT( d.create_date ,'%Y')
+        </select>
+
+    <!-- 迁移 -->
+    <select id="getCidCountByDate" resultType="java.util.Map">
+        select count(d.cid) as 'id',DATE_FORMAT(d.create_date,'%Y-%m') as 'createTime' from cid_data d
+        left join cid_relation r on d.cid=r.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="energyDeptId != null  and energyDeptId != ''"> and energy_dept_id = #{energyDeptId}</if>
+
+        group by DATE_FORMAT(d.create_date,'%Y-%m')
+    </select>
+
+    <select id="getCidPowerCount" resultType="String">
+        select sum(power) as 'power' from cid_data
+        where cid in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        group by DATE_FORMAT(create_date,'%y-%m-%d'),road_type
+    </select>
+
+    <select id="getEmuCurrentPowerByEmu" parameterType="String" resultMap="CidDataResult">
+        select * from cid_data where vid = #{vid} order by id desc LIMIT 1
+    </select>
+
+    <select id="getEmuPowerCountByEmu" parameterType="String" resultMap="CidDataResult">
+        select vid,sum(power) as 'power' from cid_data where vid = #{vid}
+    </select>
+
+    <!-- 根据网关 查询 网关指定日时间的详情 -->
+    <select id="getCidDayDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(floor(create_date/500)*500,'%H:%i')  as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where cid=#{cid}
+        <if test="searchDate == null">
+            and  DATE_FORMAT(create_date,'%Y-%m-%d') = curdate()
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and  DATE_FORMAT(create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+        and m1_m_error_code !='0200'
+        group by create_date
+        order by create_date
+    </select>
+
+    <select id="getVidsDayDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(floor(create_date/500)*500,'%H:%i')  as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where vid = #{vid}
+        <if test="roadType!=null">
+            and road_type like concat('%', #{roadType})
+        </if>
+        <if test="searchDate == null">
+            and  DATE_FORMAT(create_date,'%Y-%m-%d') = curdate()
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and  DATE_FORMAT(create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+        and m1_m_error_code !='0200'
+        group by create_date
+        order by create_date
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据网关 查询 网关指定周时间的详情 -->
+    <select id="getCidWeekDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y-%m-%d') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where cid=#{cid}
+        <if test="searchDate == null">
+            and YEARWEEK(date_format(create_date,'%Y-%m-%d'),1) = YEARWEEK(curdate(),1)
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and YEARWEEK(date_format(create_date,'%Y-%m-%d'),1) = YEARWEEK(#{searchDate},1)
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y-%m-%d')
+        order by DATE_FORMAT(create_date,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据网关 查询 网关指定月时间的详情 -->
+    <select id="getCidMonthDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y-%m-%d') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where cid=#{cid}
+        <if test="searchDate == null">
+            and DATE_FORMAT(create_date,'%Y-%m') = DATE_FORMAT(now(),'%Y-%m')
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(create_date,'%Y-%m') = DATE_FORMAT(#{searchDate},'%Y-%m')
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y-%m-%d')
+        order by DATE_FORMAT(create_date,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据网关 查询 网关指定年时间的详情 -->
+    <select id="getCidYearDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y-%m') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where cid=#{cid}
+        <if test="searchDate == null">
+            and DATE_FORMAT(create_date,'%Y') = DATE_FORMAT(now(),'%Y')
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(create_date,'%Y') = DATE_FORMAT(#{searchDate},'%Y')
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y-%m')
+        order by DATE_FORMAT(create_date,'%Y-%m')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据网关 查询 网关总详情 -->
+    <select id="getCidAllDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where cid=#{cid}
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y')
+        order by DATE_FORMAT(create_date,'%Y')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据微逆  查询 微逆指定周时间的详情 -->
+    <select id="getVidsWeekDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y-%m-%d') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where vid = #{vid}
+        <if test="roadType!=null">
+            and road_type like concat('%', #{roadType})
+        </if>
+        <if test="searchDate == null">
+            and YEARWEEK(date_format(create_date,'%Y-%m-%d'),1) = YEARWEEK(curdate(),1)
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and YEARWEEK(date_format(create_date,'%Y-%m-%d'),1) = YEARWEEK(#{searchDate},1)
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y-%m-%d')
+        order by DATE_FORMAT(create_date,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据微逆  查询 微逆指定月时间的详情 -->
+    <select id="getVidsMonthDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y-%m-%d') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where vid = #{vid}
+        <if test="roadType!=null">
+            and road_type like concat('%', #{roadType})
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(create_date,'%Y-%m') = DATE_FORMAT(now(),'%Y-%m')
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(create_date,'%Y-%m') = DATE_FORMAT(#{searchDate},'%Y-%m')
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y-%m-%d')
+        order by DATE_FORMAT(create_date,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据微逆  查询 微逆指定年时间的详情 -->
+    <select id="getVidsYearDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y-%m') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where vid = #{vid}
+        <if test="roadType!=null">
+            and road_type like concat('%', #{roadType})
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(create_date,'%Y') = DATE_FORMAT(now(),'%Y')
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(create_date,'%Y') = DATE_FORMAT(#{searchDate},'%Y')
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y-%m')
+        order by DATE_FORMAT(create_date,'%Y-%m')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据微逆  查询 微逆指定总时间的详情 -->
+    <select id="getVidsAllDetail" resultType="java.util.Map" >
+        SELECT cid,DATE_FORMAT(create_date,'%Y') as 'create_date', sum(power) as 'power',sum(energy) as 'energy',grid_volt,grid_freq,temp
+        FROM cid_data
+        where vid = #{vid}
+        <if test="roadType!=null">
+            and road_type like concat('%', #{roadType})
+        </if>
+        and m1_m_error_code !='0200'
+        group by DATE_FORMAT(create_date,'%Y')
+        order by DATE_FORMAT(create_date,'%Y')
+    </select>
+
+
+    <insert id="insertCidData" parameterType="CidData" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO cid_data (
+        cid,vid,road_type,soft_version,soft_deputy_version,volt,standard_power,power,energy,temp,grid_volt,grid_freq,
+        m1_m_error,m1_m_error_cn,m1_m_error_code,m1_s_error,m1_s_error_cn,
+        m1_s_error_code,send_time,cid_or_emu,cid_type,date,create_date
+        ) VALUES
+            (
+                #{cid}, #{vid},#{roadType}, #{softVersion}, #{softDeputyVersion}, #{volt},#{standardPower}, #{power}, #{energy}, #{temp}, #{gridVolt}, #{gridFreq},
+                #{m1MError}, #{m1MErrorCn}, #{m1MErrorCode}, #{m1SError}, #{m1SErrorCn}, #{m1SErrorCode} ,#{sendTime} , #{cidOrEmu}, #{cidType}, DATE_FORMAT(  #{createDate} ,'%Y-%m-%d'), #{createDate}
+            )
+
+    </insert>
+
+    <update id="updateCidData" parameterType="CidData">
+        update cid_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cid != null">cid = #{cid},</if>
+            <if test="vid != null">vid = #{vid},</if>
+            <if test="roadType != null">road_type = #{roadType},</if>
+            <if test="softVersion != null">soft_version = #{softVersion},</if>
+            <if test="softDeputyVersion != null">soft_deputy_version = #{softDeputyVersion},</if>
+            <if test="volt != null">volt = #{volt},</if>
+            <if test="power != null">power = #{power},</if>
+            <if test="energy != null">energy = #{energy},</if>
+            <if test="temp != null">temp = #{temp},</if>
+            <if test="gridVolt != null">grid_volt = #{gridVolt},</if>
+            <if test="gridFreq != null">grid_freq = #{gridFreq},</if>
+            <if test="m1MError != null">m1_m_error = #{m1MError},</if>
+            <if test="m1SError != null">m1_s_error = #{m1SError},</if>
+            <if test="sendTime != null">send_time = #{sendTime},</if>
+            <if test="cidOrEmu != null">cid_or_emu = #{cidOrEmu},</if>
+            <if test="date != null">date = #{date},</if>
+            <if test="updateDate != null">update_date = #{updateDate},</if>
+            <if test="createDate != null">create_date = #{createDate},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCidDataById" parameterType="Long">
+        delete
+        from cid_data
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteCidDataByIds" parameterType="String">
+        delete from cid_data where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="getEmuList" resultType="Map">
+        select d.plant_id as 'plantID',d.standard_power as 'standardPower', d.cid as 'cid' ,d.vid as 'vid',right(d.road_type,1) as 'roadType' , d.soft_version as 'softVersion',
+        d.soft_deputy_version as 'softDeputyVersion' , d.m1_m_error as 'm1MError', d.m1_m_error_code as 'm1MErrorCode'
+        ,d.m1_s_error as 'm1SError' , d.m1_s_error_code as 'm1SErrorCode',
+        d.volt as 'volt' ,d.power as 'power' ,d.energy as 'energy' , d.temp as 'temp' ,d.grid_volt as 'gridVolt' ,
+        d.grid_freq as 'gridFreq',d.create_date as 'createDate', d.cid_or_emu as 'cidOrEmu'
+        from cid_data d
+        where road_type is not null and d.vid in (
+            select r.vid from cid_relation r where r.del_flag =0
+            and r.powerstation_id in
+                (
+                    select p.id from cid_powerstationinfo p,sys_dept s  where p.del_flag = 0 and  p.energy_dept_id=s.dept_id
+                    <if test="queryStationId != null  and queryStationId != '' and deptId != null ">
+                        and p.id = #{queryStationId}
+                    </if>
+<!--                    <if test="deptId != null and deptId!='' and queryStationId == null">-->
+<!--                        and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) ))-->
+<!--                    </if>-->
+                            <if test="deptId != null and deptId!='' and queryStationId == null">
+                                and (find_in_set(#{deptId},s.ancestors) or p.energy_dept_id = #{deptId} )
+                            </if>
+                )
+        )
+
+        <if test="cidType != null  and cidType != ''">
+            and d.cid_type = #{cidType}
+        </if>
+
+        <if test="m1MError != null  and m1MError != ''">
+            and d.m1_m_error = #{m1MError}
+        </if>
+        <if test="m1SError != null  and m1SError != ''">
+            and d.m1_s_error = #{m1SError}
+        </if>
+        <if test="m1MErrorCode != null  and m1MErrorCode != ''">
+            and d.m1_m_error_code = #{m1MErrorCode}
+        </if>
+        <if test="m1SErrorCode != null  and m1SErrorCode != ''">
+            and d.m1_s_error_code = #{m1SErrorCode}
+        </if>
+        <if test="vid != null  and vid != ''">and d.vid = #{vid}</if>
+        <if test="cid != null  and cid != ''">and d.cid = #{cid}</if>
+        <if test="searchDate != null  and searchDate != ''">and DATE_FORMAT(d.create_date,'%Y-%m-%d') =
+            #{searchDate}
+        </if>
+
+        order by d.id desc
+    </select>
+
+
+
+<!--    <select id="getEmuList" resultType="java.util.Map">-->
+
+<!--    select d.cid as 'cid' ,d.vid as 'vid',right(d.road_type,1) as 'roadType' , d.soft_version as 'softVersion',-->
+<!--        d.soft_deputy_version as 'softDeputyVersion' , d.m1_m_error as 'm1MError', d.m1_m_error_code as 'm1MErrorCode'-->
+<!--        ,d.m1_s_error as 'm1SError' , d.m1_s_error_code as 'm1SErrorCode',-->
+<!--        d.volt as 'volt' ,d.power as 'power' ,d.energy as 'energy' , d.temp as 'temp' ,d.grid_volt as 'gridVolt' ,-->
+<!--        d.grid_freq as 'gridFreq',d.create_date as 'createDate', d.cid_or_emu as 'isResend'-->
+<!--        from cid_data d, cid_relation r,cid_powerstationinfo p-->
+<!--        where  r.del_flag =0 and p.del_flag = 0 and d.vid=r.vid and r.powerstation_id=p.id-->
+
+<!--        <if test="queryStationId != null  and queryStationId != '' and deptId != null ">-->
+<!--            and p.id = #{queryStationId}-->
+<!--        </if>-->
+<!--        <if test="deptId != null and deptId!='' and queryStationId == null">-->
+<!--            and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors)  )  )-->
+<!--        </if>-->
+
+<!--        <if test="m1MError != null  and m1MError != ''">-->
+<!--            and d.m1_m_error = #{m1MError}-->
+<!--        </if>-->
+<!--        <if test="m1SError != null  and m1SError != ''">-->
+<!--            and d.m1_s_error = #{m1SError}-->
+<!--        </if>-->
+<!--        <if test="m1MErrorCode != null  and m1MErrorCode != ''">-->
+<!--            and d.m1_m_error_code = #{m1MErrorCode}-->
+<!--        </if>-->
+<!--        <if test="m1SErrorCode != null  and m1SErrorCode != ''">-->
+<!--            and d.m1_s_error_code = #{m1SErrorCode}-->
+<!--        </if>-->
+<!--        <if test="vid != null  and vid != ''">and d.vid = #{vid}</if>-->
+<!--        <if test="cid != null  and cid != ''">and d.cid = #{cid}</if>-->
+<!--        <if test="searchDate != null  and searchDate != ''">and DATE_FORMAT(d.create_date,'%Y-%m-%d') =-->
+<!--            #{searchDate}-->
+<!--        </if>-->
+
+<!--        order by d.id desc-->
+<!--    </select>-->
+
+
+    <select id="getCidList" resultType="java.util.Map">
+        select d.cid as 'cid',p.energy_name as 'powerStationName',d.soft_version as 'softVersion',d.soft_deputy_version as 'softDeputyVersion' ,p.energy_status as 'energyStatus',
+        d.create_date as 'createDate' , sum(d.power) as 'power'
+        from cid_data d left join cid_relation r on d.cid=r.cid left join  cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId != null and deptId!=''">and p.energy_dept_id = #{deptId}</if>
+        <if test="vid != null  and vid != ''">and d.vid like concat('%', #{vid}, '%')</if>
+        <if test="cid != null  and cid != ''">and d.cid like concat('%', #{cid}, '%')</if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null  and searchDate != ''">and DATE_FORMAT(d.create_date,'%Y-%m-%d') =
+            #{searchDate}
+        </if>
+
+        group by d.cid
+        order by d.id desc
+    </select>
+
+    <select id="getCidAppList" resultType="java.util.Map">
+        select d.* from cid_data d inner join cid_relation r on d.vid=r.vid inner join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId != null and deptId!=''">and p.energy_dept_id = #{deptId}</if>
+        <if test="powerStationId != null and powerStationId!=''">and p.id = #{powerStationId}</if>
+        <if test="vid != null  and vid != ''">and d.vid like concat('%', #{vid}, '%')</if>
+        <if test="cid != null  and cid != ''">and d.cid like concat('%', #{cid}, '%')</if>
+        <if test="searchDate != null  and searchDate != ''">and DATE_FORMAT(d.create_date,'%Y-%m-%d') =
+            #{searchDate}
+        </if>
+
+        group by d.id
+        order by d.id desc
+    </select>
+
+
+    <!--app 查询power 起 -->
+    <!-- 根据电站ID与查询时间 一天发电量  bug
+    <select id="getStationPowerDayByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%H:%i') as 'date',c.power as 'power' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(c.create_date,'%Y-%m-%d') = #{ searchDate }
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(c.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%H:%i')
+        order by DATE_FORMAT( c.create_date ,'%H:%i')
+    </select>
+    -->
+    <select id="getStationPowerDayByPidAndDate" resultType="java.util.Map">
+        select d.energy as 'energy',sum(d.power) as 'power',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid in (select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0
+        <if test="queryStationId!=null">
+            and r.powerstation_id = #{queryStationId})
+        </if>
+        <if test="deptId!=null">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag=0 and p.energy_dept_id=#{deptId}
+            <if test="queryStationId!=null">
+                and p.id = #{queryStationId}
+            </if>
+            ))
+        </if>
+
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = #{ searchDate }
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')
+    </select>
+
+    <select id="getStationPowerDayByCidAndVidAndPidAndDateForMinute" resultType="java.util.Map">
+        select d.energy as 'energy',avg(d.power) as 'power',DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i') as 'date' from cid_data d
+        where  d.cid in (select r.cid from cid_relation r where r.del_flag = 0
+        <if test="queryStationId!=null">
+            and r.powerstation_id = #{queryStationId})
+        </if>
+        <if test="deptId!=null">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag=0 and p.energy_dept_id=#{deptId}
+            <if test="queryStationId!=null">
+                and p.id = #{queryStationId}
+            </if>
+            ))
+        </if>
+
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+
+        group by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i'),cid,vid
+        order by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i'),cid,vid
+    </select>
+
+    <select id="getStationPowerDayByPidAndDateForMinute" resultType="java.util.Map">
+        select sum(d.energy) as 'energy',sum(d.power) as 'power',DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i') as 'date' from cid_data d
+        where  d.cid in (select r.cid from cid_relation r where r.del_flag = 0
+        <if test="queryStationId!=null">
+            and r.powerstation_id = #{queryStationId})
+        </if>
+        <if test="deptId!=null">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag=0 and p.energy_dept_id=#{deptId}
+            <if test="queryStationId!=null">
+                and p.id = #{queryStationId}
+            </if>
+            ))
+        </if>
+
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+
+        group by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i')
+        order by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%H:%i')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 一周发电量 -->
+    <select id="getStationPowerWeekByPidAndDate"  resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y-%m-%d') as 'date',sum(c.power) as 'power' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and c.create_date between #{searchDate} and ADDDATE(#{searchDate},INTERVAL 1 week)
+        </if>
+        <if test="searchDate == null">
+            and c.create_date between DATE_FORMAT(now(),'%Y-%m-%d') and ADDDATE(now(),INTERVAL 1 week)
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+        order by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 获取一个月发电量 -->
+    <select id="getStationPowerMonthByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y-%m-%d') as 'date',sum(c.power) as 'power' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(c.create_date,'%Y-%m') = #{searchDate}
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(c.create_date,'%Y-%m') = DATE_FORMAT(now(),'%Y-%m')
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+        order by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+    </select>
+
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 一年发电量 -->
+    <select id="getStationPowerYearByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y-%m') as 'date',sum(c.power) as 'power' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null ">
+            and DATE_FORMAT(c.create_date,'%Y') = #{searchDate}
+        </if>
+        <if test="searchDate == null ">
+            and DATE_FORMAT(c.create_date,'%Y') = DATE_FORMAT(now(),'%Y')
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y-%m')
+        order by DATE_FORMAT( c.create_date ,'%Y-%m')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 总发电量 -->
+    <select id="getStationPowerAllByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y') as 'date',sum(c.power) as 'power' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y')
+        order by DATE_FORMAT( c.create_date ,'%Y')
+    </select>
+    <!--app 查询power 止 -->
+    <!--app 查询energy 起 -->
+
+    <!-- 根据电站ID与查询时间 一天发电量 -->
+    <!--
+    old
+    select d.energy as 'energy',sum(d.power)/4 as 'power',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid in (select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0
+        and r.powerstation_id in
+        (select p.id from cid_powerstationinfo p where p.del_flag=0
+        <if test="deptId!=null">
+            and p.energy_dept_id=#{deptId}
+        </if>
+        <if test="queryStationId!=null">
+            and p.id = #{queryStationId}
+        </if>
+        ))
+    -->
+
+<!--    <select id="getStationEnergyDayByPidAndDate" resultType="java.util.Map">-->
+<!--        select d.energy as 'energy',d.power as 'power',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d-->
+<!--        where  d.cid in (select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0-->
+<!--        <if test="queryStationId!=null">-->
+<!--            and r.powerstation_id = #{queryStationId})-->
+<!--        </if>-->
+<!--        <if test="deptId!=null">-->
+<!--            and r.powerstation_id in-->
+<!--            (select p.id from cid_powerstationinfo p where p.del_flag=0 and p.energy_dept_id=#{deptId}-->
+<!--            <if test="queryStationId!=null">-->
+<!--                and p.id = #{queryStationId}-->
+<!--            </if>-->
+<!--            ))-->
+<!--        </if>-->
+<!--        <if test="searchDate != null  and searchDate != ''">-->
+<!--            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = #{ searchDate }-->
+<!--        </if>-->
+<!--        <if test="searchDate == null">-->
+<!--            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')-->
+<!--        </if>-->
+
+<!--        group by DATE_FORMAT( d.create_date ,'%H:%i')-->
+<!--        order by DATE_FORMAT( d.create_date ,'%H:%i')-->
+<!--    </select>-->
+
+    <select id="getStationEnergyDayByPidAndDate" resultType="java.util.Map">
+        select energy as 'energy',power as 'power',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data
+        where  cid = #{cid} and vid = #{vid}
+
+        <if test="roadType != null">
+            and road_type = #{roadType}
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = #{ searchDate }
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+
+        group by DATE_FORMAT(create_date ,'%H:%i'),vid,road_type
+        order by DATE_FORMAT(create_date ,'%H:%i')
+    </select>
+
+    <select id="getStationEnergyHourByPidAndDate" resultType="java.util.Map">
+        select cid ,vid,road_type as 'roadType',soft_version as 'softVersion',soft_deputy_version as 'softDeputyVersion',
+        volt,power,energy,temp,grid_volt as 'gridVolt',grid_freq as 'gridFreq',m1_m_error as 'm1MError',m1_s_error as 'm1SError',
+        m1_m_error_code as 'm1MErrorCode',m1_s_error_code as 'm1SErrorCode',send_time as 'sendTime',cid_or_emu as 'cidOrEmu',
+        date,update_date as 'updateDate',create_date as 'createDate'
+        from cid_data d
+        where  d.cid in (select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0
+        <if test="queryStationId!=null">
+            and r.powerstation_id = #{queryStationId})
+        </if>
+        <if test="deptId!=null">
+            and r.powerstation_id in
+            (select p.id from cid_powerstationinfo p where p.del_flag=0 and p.energy_dept_id=#{deptId}
+            <if test="queryStationId!=null">
+                and p.id = #{queryStationId}
+            </if>
+            ))
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d %H') = #{ searchDate }
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d %H') = DATE_FORMAT(now(),'%Y-%m-%d %H')
+        </if>
+
+        group by d.create_date
+        order by d.create_date
+    </select>
+
+    <!-- 根据CID/VID与查询时间 一天发电量 -->
+    <select id="getStationEnergyDayByCidVidAndDate" resultType="java.util.Map">
+        select d.energy as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid = #{cid}
+        <if test="vid != null ">
+            and d.vid = #{vid}
+        </if>
+        <if test="plantID != null ">
+            and d.plant_id = #{plantID}
+        </if>
+        <if test="roadType != null">
+            and d.road_type = #{roadType}
+        </if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(#{ searchDate },'%Y-%m-%d')
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+
+        group by DATE_FORMAT( d.create_date ,'%H:%i')
+        order by DATE_FORMAT( d.create_date ,'%H:%i')
+    </select>
+
+
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 一周发电量 -->
+    <select id="getStationEnergyWeekByPidAndDate"  resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y-%m-%d') as 'date',sum(c.energy) as 'energy' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and c.create_date between #{searchDate} and ADDDATE(#{searchDate},INTERVAL 1 week)
+        </if>
+        <if test="searchDate == null">
+            and c.create_date between DATE_FORMAT(now(),'%Y-%m-%d') and ADDDATE(now(),INTERVAL 1 week)
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+        order by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 获取一个月发电量 -->
+    <select id="getStationEnergyMonthByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y-%m-%d') as 'date',sum(c.energy) as 'energy' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null  and searchDate != ''">
+            and DATE_FORMAT(c.create_date,'%Y-%m') = #{searchDate}
+        </if>
+        <if test="searchDate == null">
+            and DATE_FORMAT(c.create_date,'%Y-%m') = DATE_FORMAT(now(),'%Y-%m')
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+        order by DATE_FORMAT( c.create_date ,'%Y-%m-%d')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 一年发电量 -->
+    <select id="getStationEnergyYearByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y-%m') as 'date',sum(c.energy) as 'energy' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+        <if test="searchDate != null ">
+            and DATE_FORMAT(c.create_date,'%Y') = #{searchDate}
+        </if>
+        <if test="searchDate == null ">
+            and DATE_FORMAT(c.create_date,'%Y') = DATE_FORMAT(now(),'%Y')
+        </if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y-%m')
+        order by DATE_FORMAT( c.create_date ,'%Y-%m')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据电站ID与查询时间 总发电量 -->
+    <select id="getStationEnergyAllByPidAndDate" resultType="java.util.Map">
+        select DATE_FORMAT( c.create_date ,'%Y') as 'date',sum(c.energy) as 'energy' from cid_data c
+        left join cid_relation r on c.cid=r.cid
+        left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where r.is_confirm = 0 and r.del_flag = 0
+
+        <if test="deptId !=null and deptId!=''">and p.energy_dept_id=#{deptId} </if>
+        <if test="queryStationId != null  and queryStationId != ''">and p.id = #{queryStationId}</if>
+
+        group by DATE_FORMAT( c.create_date ,'%Y')
+        order by DATE_FORMAT( c.create_date ,'%Y')
+    </select>
+    <!-- app 查询energy 止 -->
+
+    <!-- 根据电站ID与查询时间 总发电量 bug -->
+    <!--
+    <select id="selectEnergyByDate" resultType="java.util.Map">
+        select sum(d.energy)/4 as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d left join cid_relation r on r.cid=d.cid left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where p.energy_dept_id=#{deptId} and r.is_confirm = 0 and r.del_flag = 0
+        <if test="searchDate !=null and searchDate !=''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d')=DATE_FORMAT(#{searchDate},'%Y-%m-%d')
+        </if>
+        <if test="searchDate ==null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d')=DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+        group by energy,DATE_FORMAT(create_date,'%H:%i')
+        order by DATE_FORMAT(create_date,'%H:%i')
+    </select>
+
+    DATE_FORMAT(d.create_date,'%i')%5 = 0 and
+    -->
+    <select id="selectEnergyByDate" resultType="java.util.Map">
+        select sum(d.energy) as 'energy',DATE_FORMAT(create_date,'%H:%i') as 'date' from cid_data d
+        where  d.cid in (select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0
+        and r.powerstation_id in (select p.id from cid_powerstationinfo p where p.del_flag = 0
+        <if test="deptId != null  and deptId != ''">
+            and ( p.energy_dept_id=#{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) ))
+        </if>
+        ))
+        <if test="searchDate !=null and searchDate !=''">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d')=DATE_FORMAT(#{searchDate},'%Y-%m-%d')
+        </if>
+        <if test="searchDate ==null">
+            and DATE_FORMAT(d.create_date,'%Y-%m-%d')=DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+        group by DATE_FORMAT(create_date,'%H:%i')
+        order by DATE_FORMAT(create_date,'%H:%i')
+    </select>
+
+    <!-- 迁移 -->
+    <!-- 根据cid,vid与查询时间 查看微逆详情 -->
+    <select id="selectDetailByCidVidAndDate" resultType="java.util.Map">
+
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',energy as 'energy'
+        ,temp as 'temp',grid_volt as 'gridVolt',grid_freq as 'gridFreq'
+        ,m1_m_error as 'mError',m1_m_error_code as 'mErrorCode',m1_s_error as 'sError'
+        ,m1_s_error_code as 'sErrorCode',cid_or_emu as 'isResend',create_date as 'createDate' from cid_data
+        where  cid = #{cid}
+
+        <if test="cidOrEmu != null and cidOrEmu != ''">
+            and cid_or_emu = #{cidOrEmu}
+        </if>
+
+        <if test="cidOrEmu == null ">
+            and cid_or_emu != '5'
+        </if>
+
+        <if test="vid != null and vid != ''">
+            and vid = #{vid}
+        </if>
+        <if test="plantID !=null and plantID !=''">
+            and plant_id = #{plantID}
+        </if>
+
+        <if test='searchType=="d"'>
+                        <if test="searchDateStart !=null and searchDateStart !=''
+                        and searchDateEnd !=null and searchDateEnd !=''
+                           ">
+                            and create_date between  #{searchDateStart} and #{searchDateEnd}
+                        </if>
+<!--            <if test="searchDateStart !=null and searchDateStart !=''-->
+<!--            and searchDateEnd !=null and searchDateEnd !=''-->
+<!--               and searchDateStart != searchDateEnd">-->
+<!--                and create_date between  #{searchDateStart} and #{searchDateEnd}-->
+<!--            </if>-->
+<!--            <if test="searchDateStart !=null and searchDateStart !=''-->
+<!--            and searchDateEnd !=null and searchDateEnd !=''-->
+<!--               and searchDateStart == searchDateEnd">-->
+<!--                and DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(#{searchDateStart},'%Y-%m-%d')-->
+<!--            </if>-->
+        </if>
+        <if test='searchType=="m"'>
+            <if test="searchDateStart !=null and searchDateStart !=''">
+                and DATE_FORMAT(create_date,'%Y-%m')=DATE_FORMAT(#{searchDateStart},'%Y-%m')
+            </if>
+            <if test="searchDateStart ==null">
+                and DATE_FORMAT(create_date,'%Y-%m')=DATE_FORMAT(now(),'%Y-%m')
+            </if>
+        </if>
+        <if test='searchType=="y"'>
+            <if test="searchDateStart !=null and searchDateStart !=''">
+                and DATE_FORMAT(create_date,'%Y')=DATE_FORMAT(#{searchDateStart},'%Y')
+            </if>
+            <if test="searchDateStart ==null">
+                and DATE_FORMAT(create_date,'%Y')=DATE_FORMAT(now(),'%Y')
+            </if>
+        </if>
+        order by  create_date desc
+    </select>
+
+
+
+    <!-- Mis detail volt day --> <!-- old -->
+    <select id="selectMisDetailVoltByDay" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',
+        energy as 'energy',  temp as 'temp' , grid_volt as 'gridVolt' , grid_freq as 'gridFreq' , create_date as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+        <if test="searchDateStart !=null and searchDateStart !='' and searchDateEnd !=null and searchDateEnd !='' ">
+            and create_date between  #{searchDateStart} and #{searchDateEnd}
+        </if>
+        <if test="searchDateStart ==null and searchDateEnd !=null and searchDateEnd !='' ">
+            and #{searchDateEnd} > create_date
+        </if>
+        <if test="searchDateStart !=null and searchDateStart !=''  and searchDateEnd == null">
+            and create_date > #{searchDateStart}
+        </if>
+        order by road_type,create_date
+    </select>
+    <select id="selectMisDetailVoltByDayNew" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',volt as 'volt',power as 'power',
+        energy as 'energy',  temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(create_date,'%Y-%m-%d %H:%i') as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+        <if test="searchDate !=null and searchDate !=''">
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+        order by road_type,DATE_FORMAT(create_date,'%Y-%m-%d %H:%i')
+    </select>
+
+    <select id="selectPowerForAppIndex" resultType="java.util.Map">
+        select power,DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from `cid_data`
+        where DATE_FORMAT(create_date,'%Y-%m-%d')= DATE_FORMAT(now(),'%Y-%m-%d')
+          and cid in (select r.cid from cid_relation r where r.del_flag = 0 and r.is_confirm = 0 and r.bind_type = 0
+                 and r.powerstation_id in ( select p.id from cid_powerstationinfo p where p.del_flag=0
+                 and p.energy_dept_id and
+                ( p.energy_dept_id=#{detpId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{detpId}, ancestors) ))
+            ))
+
+        GROUP BY DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i')
+        order by DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i');
+    </select>
+
+    <select id="selectMisDetailVoltByDayNewForMinute" resultType="map">
+
+         select cid as 'cid',vid as 'vid',road_type as 'loop',volt as 'volt',
+        <if test="loop !=null and loop !=''">
+            power as 'power',
+        </if>
+        <if test="loop ==null ">
+            avg(power) as 'power',
+        </if>
+             energy as 'energy',temp as 'temp' , grid_volt as 'gridVolt' ,
+        grid_freq as 'gridFreq' , DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/500)*500,'%Y-%m-%d %H:%i') as 'createDate' from cid_data        where 1=1 and plant_id is not null
+        and road_type is not null
+
+        <if test="plantID !=null">
+            and plant_id = #{plantID}
+        </if>
+
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+
+        <if test="loop !=null and loop !=''">
+            and road_type=#{loop}
+        </if>
+
+        <if test="searchDate !=null and searchDate !=''">
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+
+        <if test="loop!=null and loop !=''">
+            group by createDate
+            order by createDate
+        </if>
+
+        <if test="loop==null ">
+            group by road_type,createDate
+            order by road_type,createDate
+        </if>
+
+    </select>
+
+    <!-- lof app 显示8小时以内功率数据 -->
+    <select id="selectLofPower" resultType="java.util.Map">
+        select power as 'power',DATE_FORMAT(FLOOR(DATE_FORMAT(create_date, '%Y%m%d%H%i%s')/2000)*2000,'%Y-%m-%d %H:%i') as 'createDate' from cid_data
+        where create_date > #{searchDate}
+            and cid in (select r.cid from cid_relation r where r.del_flag = 0 and r.is_confirm = 0 and r.bind_type = 0
+            and r.powerstation_id in ( select p.id from cid_powerstationinfo p where p.del_flag=0
+            and p.energy_dept_id and
+            ( p.energy_dept_id=#{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) ))
+            ))
+        group by createDate;
+    </select>
+
+
+    <!-- 迁移 -->
+    <!-- Mis detail volt month -->
+    <select id="selectMisDetailVoltByMonth" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',sum(volt) as 'volt', sum(power) as 'power',
+            sum(energy) as 'energy' , sum(temp) as 'temp' ,sum(grid_volt) as 'gridVolt' ,sum(grid_freq) as 'gridFreq' ,
+            DATE_FORMAT(create_date,'%Y-%m-%d') as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+<!--        <if test="searchDate !=null and searchDate !=''">-->
+<!--            and DATE_FORMAT(create_date,'%Y-%m')=#{searchDate}-->
+<!--        </if>-->
+<!--        <if test="searchDate ==null">-->
+<!--            and DATE_FORMAT(create_date,'%Y-%m')=DATE_FORMAT(now(),'%Y-%m')-->
+<!--        </if>-->
+        <if test="searchDateStart !=null and searchDateStart !='' and searchDateEnd !=null and searchDateEnd !='' ">
+            and create_date between  #{searchDateStart} and #{searchDateEnd}
+        </if>
+        <if test="searchDateStart ==null and searchDateEnd !=null and searchDateEnd !='' ">
+            and #{searchDateEnd} > create_date
+        </if>
+        <if test="searchDateStart !=null and searchDateStart !=''  and searchDateEnd == null">
+            and create_date > #{searchDateStart}
+        </if>
+        group by road_type,DATE_FORMAT(create_date,'%Y-%m-%d')
+        order by road_type,DATE_FORMAT(create_date,'%Y-%m-%d')
+    </select>
+    <!-- 迁移 -->
+    <!-- Mis detail volt year -->
+    <select id="selectMisDetailVoltByYear" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop',sum(volt) as 'volt', sum(power) as 'power',
+            sum(energy) as 'energy' , sum(temp) as 'temp' ,sum(grid_volt) as 'gridVolt' ,sum(grid_freq) as 'gridFreq' ,
+            DATE_FORMAT(create_date,'%Y-%m') as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+<!--        <if test="searchDateStart !=null and searchDateStart !=''">-->
+<!--            and DATE_FORMAT(create_date,'%Y')=#{searchDateStart}-->
+<!--        </if>-->
+<!--        <if test="searchDateStart ==null">-->
+<!--            and DATE_FORMAT(create_date,'%Y')=DATE_FORMAT(now(),'%Y')-->
+<!--        </if>-->
+        <if test="searchDateStart !=null and searchDateStart !='' and searchDateEnd !=null and searchDateEnd !='' ">
+            and create_date between  #{searchDateStart} and #{searchDateEnd}
+        </if>
+        <if test="searchDateStart ==null and searchDateEnd !=null and searchDateEnd !='' ">
+            and #{searchDateEnd} > create_date
+        </if>
+        <if test="searchDateStart !=null and searchDateStart !=''  and searchDateEnd == null">
+            and create_date > #{searchDateStart}
+        </if>
+        group by road_type,DATE_FORMAT(create_date,'%Y-%m')
+        order by road_type,DATE_FORMAT(create_date,'%Y-%m')
+    </select>
+
+    <!-- -->
+
+    <!-- Mis detail volt day -->
+    <select id="selectMisDetailByDayAndSearchDate" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop', sum(power) as 'power',
+        sum(energy) as 'energy' , create_date as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+        <if test="searchDate !=null and searchDate !=''">
+            and DATE_FORMAT(create_date,'%Y-%m-%d')=#{searchDate}
+        </if>
+        <if test="searchDate ==null">
+            and DATE_FORMAT(create_date,'%Y-%m-%d')=DATE_FORMAT(now(),'%Y-%m-%d')
+        </if>
+        order by road_type,create_date
+    </select>
+    <!-- 迁移 -->
+    <!-- Mis detail volt month -->
+    <select id="selectMisDetailByMonthAndSearchDate" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop', sum(power) as 'power',
+        sum(energy) as 'energy' ,
+        DATE_FORMAT(create_date,'%Y-%m-%d') as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+        <if test="searchDate !=null and searchDate !=''">
+            and DATE_FORMAT(create_date,'%Y-%m')=#{searchDate}
+        </if>
+        <if test="searchDate ==null">
+            and DATE_FORMAT(create_date,'%Y-%m')=DATE_FORMAT(now(),'%Y-%m')
+        </if>
+        group by road_type,DATE_FORMAT(create_date,'%Y-%m-%d')
+        order by road_type,DATE_FORMAT(create_date,'%Y-%m-%d')
+    </select>
+    <!-- 迁移 -->
+    <!-- Mis detail volt year -->
+    <select id="selectMisDetailByYearAndSearchDate" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',right(road_type,1) as 'loop', sum(power) as 'power',
+        sum(energy) as 'energy' ,
+        DATE_FORMAT(create_date,'%Y-%m') as 'createDate' from cid_data
+        where m1_m_error_code !='0200'
+        <if test="cid !=null and cid !=''">
+            and cid = #{cid}
+        </if>
+        <if test="vid !=null and vid !=''">
+            and vid = #{vid}
+        </if>
+        <if test="loop !=null and loop !=''">
+            and road_type like concat('%', #{loop})
+        </if>
+        <if test="searchDateStart !=null and searchDateStart !=''">
+            and DATE_FORMAT(create_date,'%Y')=#{searchDateStart}
+        </if>
+        <if test="searchDateStart ==null">
+            and DATE_FORMAT(create_date,'%Y')=DATE_FORMAT(now(),'%Y')
+        </if>
+        group by road_type,DATE_FORMAT(create_date,'%Y-%m')
+        order by road_type,DATE_FORMAT(create_date,'%Y-%m')
+    </select>
+
+
+
+    <!-- -->
+    <!-- Mis detail grid_freq year -->
+    <select id="selectMisDetailLoop" resultType="java.util.Map">
+        select right(road_type,1) as 'loop' from cid_data
+        where cid=#{cid} and vid=#{vid} and m1_m_error_code !='0200'
+        group by road_type
+        order by road_type
+    </select>
+
+    <!-- 获取今天所有微逆发电量最后一条记录  -->
+    <select id="selectTodayLastData" parameterType="String"  resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',road_type as 'roadType',energy as 'energy',create_date as 'createDate' from cid_data
+        where id in
+        <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        group by cid,vid,road_type ;
+    </select>
+
+    <!-- 获取今天所有微逆发电量最后一条记录 ids  -->
+    <select id="selectTodayLastDataGetMaxId"  resultType="java.util.Map">
+        select max(id) as 'id' from cid_data
+        where  create_date between #{startDate} and #{endDate} group by cid,vid,road_type ;
+    </select>
+
+    <!-- 获取今天所有微逆发电量第一条记录  -->
+    <select id="selectTodayFirstData"  resultType="java.util.Map">
+        select min(id) as 'id',cid as 'cid',vid as 'vid',road_type as 'roadType',energy as 'energy',create_date as 'createDate' from cid_data
+        where  create_date between #{startDate} and #{endDate} group by cid,vid,road_type ;
+    </select>
+
+    <!-- 获取昨天所有微逆发电量最后一条记录 -->
+    <select id="selectLastDayLastData" parameterType="String" resultType="java.util.Map">
+        select cid as 'cid',vid as 'vid',road_type as 'roadType',energy as 'energy',power as 'power',create_date as 'createDate' from cid_data
+        where  create_date between DATE_FORMAT( DATE_SUB(CURDATE(), INTERVAL 1 DAY), '%Y-%m-%d 00:00:00') and DATE_FORMAT( DATE_SUB(CURDATE(), INTERVAL 1 DAY), '%Y-%m-%d 23:59:59')
+        and id in
+        <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        group by cid,vid,road_type ;
+    </select>
+
+    <!-- 获取昨天所有微逆发电量最后一条记录 -->
+    <select id="selectLastDayLastDataGetMaxId" resultType="java.util.Map">
+        select max(id) as 'id' from cid_data
+        where  create_date between DATE_FORMAT( DATE_SUB(CURDATE(), INTERVAL 1 DAY), '%Y-%m-%d 00:00:00') and DATE_FORMAT( DATE_SUB(CURDATE(), INTERVAL 1 DAY), '%Y-%m-%d 23:59:59')
+        group by cid,vid,road_type ;
+    </select>
+
+    <!-- 获取电站当前功率 -->
+    <select id="selectCurrentPower" parameterType="String" resultType="java.util.Map">
+        select d.cid as 'cid',d.vid as 'vid',d.road_type as 'roadType',
+        sum(d.power) as 'power',p.id as 'cidOrEmu' from cid_data d
+        left join cid_relation r on r.cid=d.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.del_flag = '0' and r.is_confirm = '0' and r.bind_type = '0'
+        and DATE_FORMAT(d.create_date,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')
+        and d.id in
+        <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        group by p.id
+
+    </select>
+
+    <!-- 获取电站当前功率 -->
+    <select id="selectCurrentPowerGetMaxId" resultType="java.util.Map">
+        select max(d.id) as 'id' from cid_data d
+        left join cid_relation r on r.cid=d.cid
+        left join cid_powerstationinfo p on p.id = r.powerstation_id
+        where r.del_flag = '0' and r.is_confirm = '0' and r.bind_type = '0'
+          and DATE_FORMAT(d.create_date,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')
+        group by p.id
+
+    </select>
+
+
+    <select id="selectLastEnergyDataByToday" resultType="java.util.Map">
+        select max(id),cid as 'cid',vid as 'vid', road_type as 'roadType', soft_version as 'softVersion',soft_deputy_version as 'softDeputyVersion',
+        volt as 'volt',power as 'power',energy as 'energy',temp as 'temp',grid_volt as'gridVolt' ,grid_freq as 'gridFreq',
+        m1_m_error as 'm1MError',m1_m_error_code as 'm1MerrorCode'
+        ,m1_s_error_code as 'm1SErrorCode',m1_s_error as 'm1SError',date as 'date' from cid_data
+        where date = DATE_FORMAT(now(),'%Y-%m-%d')
+        group by cid,vid,road_type
+
+    </select>
+
+    <select id="selectCidVidLoopForRelation" resultType="java.util.Map">
+        select cid,vid,road_type as 'roadType' from cid_data  group by cid,vid,road_type;
+    </select>
+
+    <select id="selectCidVidLoopDateForStatus" resultType="java.util.Map">
+        select max(create_date) as 'createDate',cid,vid,road_type as 'roadType',m1_m_error_code as 'm1MerrorCode',m1_s_error_code as 'm1SErrorCode' from cid_data
+        group by cid,vid;
+    </select>
+
+    <select id="selectPlantCurrentPowerId" parameterType="Long" resultType="java.util.Map">
+
+        select max(d.id) as 'id' from cid_data d
+        where d.cid in (select distinct r.cid from cid_relation r
+            where r.del_flag= 0 and r.is_confirm = 0 and bind_type=0
+            and r.powerstation_id =#{powerStationId} )
+        and DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')
+        group by d.cid,d.vid,d.road_type
+    </select>
+
+    <select id="selectPlantMinId" parameterType="Long" resultType="java.util.Map">
+        select min(d.id) as 'id' from cid_data d left join cid_relation r on d.cid=r.cid left join cid_powerstationinfo p on p.id=r.powerstation_id
+        where DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')  and p.id=#{powerStationId}
+        group by d.cid,d.vid,d.road_type
+    </select>
+
+
+
+
+    <!-- 根据ids查询ids的发电量与发电功率 -->
+    <select id="selectPlantCurrentPowerByIds" resultType="java.util.Map">
+        select power,energy from cid_data where id in
+        <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="selectTaskCidVidLoop" resultType="java.util.Map">
+        select cid,vid,road_type as 'roadType' from cid_data
+        where  create_date between #{startDate} and #{endDate}
+        group by cid,vid,road_type
+    </select>
+
+    <select id="selectTaskMaxIds" resultType="java.lang.Long">
+        select max(id) as 'id' from cid_data
+        where cid = #{cid} and vid = #{vid}
+          and create_date between #{startDate} and #{endDate} group by cid,vid ;
+    </select>
+
+    <select id="selectTaskMaxIdsByLastDate" resultType="java.lang.Long">
+        select max(id) as 'id' from cid_data
+        where cid = #{cid} and vid = #{vid} and DATE_FORMAT(create_date,'%Y-%m-%d') = #{searchDate}
+        <if test="roadType != null and roadType != ''">
+            and road_type=#{roadType}
+        </if>
+    </select>
+
+    <select id="selectTaskMinIds"  resultType="java.lang.Long">
+        select min(id) as 'id' from cid_data
+        where cid = #{cid} and vid = #{vid}
+        <if test="roadType != null and roadType != ''">
+            and road_type=#{roadType}
+        </if>
+        and create_date between #{startDate} and #{endDate} group by cid,vid;
+    </select>
+
+    <select id="selectEmuTreeEmuIds" resultType="java.lang.Long">
+        select max(id) from cid_data
+        where cid = #{cid}
+          and DATE_FORMAT(create_date,'%y-%m-%d') = DATE_FORMAT(now(),'%y-%m-%d')
+        group by cid, vid,road_type;
+    </select>
+
+    <select id="selectEmuTreeMisId" resultType="java.lang.Long">
+        select max(id) from cid_data where cid = #{cid} and vid = #{vid}
+          <if test="roadType!=null">
+              and road_type like concat( #{roadType}, '%')
+          </if>
+    </select>
+
+    <!-- 测试  DATE_FORMAT(now(),"%Y-%m-%d") -->
+    <select id="selectPlantCurrentPowerIdNew" resultType="java.util.Map">
+        select MAX(d.id) as 'id' from cid_data d
+        where d.vid in (select r.vid from cid_relation r where r.powerstation_id = #{powerStationId}
+            and r.del_flag = 0 and r.is_confirm = 0 and r.bind_type = 0)
+          and DATE_FORMAT(d.create_date,"%Y-%m-%d") = DATE_FORMAT(now(),"%Y-%m-%d")
+        group by d.cid,d.vid,d.road_type;
+    </select>
+
+    <select id="selectPlantLastUpdateId" resultType="java.lang.Long">
+        select MAX(d.id) as 'id' from cid_data d
+        where d.cid in (select r.cid from cid_relation r where
+        r.del_flag = 0 and r.bind_type = 0 and r.is_confirm = 0
+        and r.powerstation_id = #{powerStationId});
+    </select>
+
+    <select id="selectPlantEnergyByHour" resultType="java.util.Map">
+        select d.energy as 'energy',DATE_FORMAT(d.create_date,"%H") as 'date' from cid_data d
+        where d.cid in (select r.cid from cid_relation r where r.powerstation_id = #{powerStationId}
+            and r.del_flag=0 and r.is_confirm=0 and bind_type = 0)
+        and DATE_FORMAT(d.create_date,"%Y-%m-%d") = DATE_FORMAT(now(),"%Y-%m-%d")
+        group by d.cid,d.vid,d.road_type,DATE_FORMAT(d.create_date,'%H');
+    </select>
+
+    <select id="getMaxDataByCidVidLoop" resultType="java.lang.Long">
+        select max(id) from cid_data where cid = #{cid}
+        <if test=" vid !=null and vid != ''">
+            and vid = #{vid}
+        </if>
+        <if test="roadType != null and roadType != ''">
+            and road_type = #{roadType}
+        </if>
+    </select>
+
+    <select id="getSumEnergyByLoginUser" resultType="java.lang.String">
+        select sum(d.energy) as energy from cid_data d
+        where d.cid in (select r.cid from cid_relation r
+            where r.powerstation_id in (select p.id from cid_powerstationinfo p
+            where p.energy_dept_id=#{deptId} and p.del_flag =0)
+              and r.is_confirm =0 and r.del_flag=0 and bind_type = 0 )
+    </select>
+
+    <select id="getSumTodayEnergyByLoginUser" resultType="java.lang.String">
+        select sum(d.energy) as energy from cid_data d
+        where d.cid in (select r.cid from cid_relation r
+            where r.powerstation_id in (select p.id from cid_powerstationinfo p
+            where p.energy_dept_id=#{deptId} and p.del_flag =0)
+            and r.is_confirm =0 and r.del_flag=0 and bind_type = 0 )
+        and DATE_FORMAT(d.create_date,'%y-%m-%d')=DATE_FORMAT(now(),'%y-%m-%d')
+    </select>
+
+    <select id="selectLastCidList" parameterType="CidData" resultMap="CidDataResult">
+        <include refid="selectCidDataVo"/>
+        <where>
+            <if test="cid != null  and cid != ''">and cid = #{cid}</if>
+            <if test="vid != null  and vid != ''">and vid = #{vid}</if>
+            <if test="roadType != null  and vid != ''">and road_type = #{roadType}</if>
+        </where>
+        order by id desc LIMIT 1
+    </select>
+
+</mapper>

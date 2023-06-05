@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.StatesMapper">
+
+    <resultMap type="States" id="StatesResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="countryId"    column="country_id"    />
+        <result property="countryCode"    column="country_code"    />
+        <result property="fipsCode"    column="fips_code"    />
+        <result property="iso2"    column="iso2"    />
+        <result property="latitude"    column="latitude"    />
+        <result property="longitude"    column="longitude"    />
+        <result property="wikidataid"    column="wikiDataId"    />
+    </resultMap>
+
+    <sql id="selectStatesVo">
+        select id, name, country_id, country_code, fips_code, iso2, latitude, longitude, wikiDataId from states
+    </sql>
+
+    <select id="selectStatesList" parameterType="States" resultMap="StatesResult">
+        <include refid="selectStatesVo"/>
+        <where>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="countryId != null "> and country_id = #{countryId}</if>
+            <if test="countryCode != null  and countryCode != ''"> and country_code = #{countryCode}</if>
+            <if test="fipsCode != null  and fipsCode != ''"> and fips_code = #{fipsCode}</if>
+            <if test="iso2 != null  and iso2 != ''"> and iso2 = #{iso2}</if>
+            <if test="latitude != null "> and latitude = #{latitude}</if>
+            <if test="longitude != null "> and longitude = #{longitude}</if>
+            <if test="wikidataid != null  and wikidataid != ''"> and wikiDataId = #{wikidataid}</if>
+        </where>
+    </select>
+
+    <select id="selectStatesById" parameterType="Integer" resultMap="StatesResult">
+        <include refid="selectStatesVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertStates" parameterType="States" useGeneratedKeys="true" keyProperty="id">
+        insert into states
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="countryId != null">country_id,</if>
+            <if test="countryCode != null and countryCode != ''">country_code,</if>
+            <if test="fipsCode != null">fips_code,</if>
+            <if test="iso2 != null">iso2,</if>
+            <if test="latitude != null">latitude,</if>
+            <if test="longitude != null">longitude,</if>
+            <if test="wikidataid != null">wikiDataId,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="countryId != null">#{countryId},</if>
+            <if test="countryCode != null and countryCode != ''">#{countryCode},</if>
+            <if test="fipsCode != null">#{fipsCode},</if>
+            <if test="iso2 != null">#{iso2},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="wikidataid != null">#{wikidataid},</if>
+        </trim>
+    </insert>
+
+    <update id="updateStates" parameterType="States">
+        update states
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="countryId != null">country_id = #{countryId},</if>
+            <if test="countryCode != null and countryCode != ''">country_code = #{countryCode},</if>
+            <if test="fipsCode != null">fips_code = #{fipsCode},</if>
+            <if test="iso2 != null">iso2 = #{iso2},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+            <if test="wikidataid != null">wikiDataId = #{wikidataid},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteStatesById" parameterType="Integer">
+        delete from states where id = #{id}
+    </delete>
+
+    <delete id="deleteStatesByIds" parameterType="String">
+        delete from states where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

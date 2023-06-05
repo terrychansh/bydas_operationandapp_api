@@ -1,0 +1,1455 @@
+06:24:37.005 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 85 millis. SELECT 1 FROM DUAL[]
+06:27:33.946 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 71 millis. SELECT 1 FROM DUAL[]
+06:28:09.258 [http-nio-8080-exec-9] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 71 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+
+         WHERE del_flag=0
+            
+
+            
+            
+            
+            
+            
+                                    and (energy_dept_id = ? OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors) ))[100,100]
+06:28:09.258 [http-nio-8080-exec-6] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 79 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+
+         WHERE del_flag=0
+            
+
+            
+            
+            
+            
+            
+                                    and (energy_dept_id = ? OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors) ))[100,100]
+06:28:09.293 [http-nio-8080-exec-8] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 83 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+
+         WHERE del_flag=0[]
+06:28:09.331 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 147 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[100,100]
+06:28:09.354 [http-nio-8080-exec-9] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 65 millis. SELECT sum(power) as power,CONCAT(create_date, " ",min) as date FROM stat_mi_plant_min where min is not null and min!='null' and create_date >= ? and    create_date<=? 
+         
+            and plant_id in
+             (  
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             , 
+                ?
+             ) 
+         
+        group by create_date,min
+        order by create_date,min ;["2023-05-26","2023-05-26",76,245,590,591,641,779,780,781,923,925,926,927,932,933,934,935,936,937,938,939,940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999,1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263]
+06:28:09.383 [http-nio-8080-exec-10] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 104 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+
+         WHERE del_flag=0
+            
+
+            
+            
+            
+            
+            
+                                    and (energy_dept_id = ? OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors) ))[100,100]
+06:28:09.397 [http-nio-8080-exec-12] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 83 millis. select r.cid as 'cid',r.vid as 'vid',right(r.road_type,1) as 'roadType',r.powerstation_id as 'powerStationId',r.is_confirm as 'isConfirm'
+        from cid_relation r
+            left join cid_powerstationinfo p
+        on r.powerstation_id=p.id
+        where p.energy_dept_id = ? and r.is_confirm = 1 and r.del_flag = 0[100]
+06:28:09.616 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 439 millis. select r.cid as 'cid',DATE_FORMAT(r.create_time,'%Y-%m') as 'cidType' from cid_relation r where r.del_flag = 0
+
+        and r.powerstation_id in (
+        select p.id from cid_powerstationinfo p where p.del_flag = 0
+        and ( p.energy_dept_id=? OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+        find_in_set(?, ancestors) ))
+        ) and r.create_time>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+        group by r.cid,DATE_FORMAT(r.create_time,'%Y-%m');[100,100]
+06:28:10.142 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 517 millis. select count(r.vid) as 'vid',DATE_FORMAT(r.create_time,'%Y-%m') as 'cidType' from cid_relation r where r.del_flag = 0
+
+        and r.powerstation_id in (
+        select p.id from cid_powerstationinfo p where p.del_flag = 0
+        and ( p.energy_dept_id=? OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+        find_in_set(?, ancestors) ))
+        ) and r.create_time>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+        group by r.cid,r.vid,r.road_type,DATE_FORMAT(r.create_time,'%Y-%m')[100,100]
+06:28:35.291 [http-nio-8080-exec-21] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 75 millis. select id, energy_name, energy_type, energy_capacity, energy_dept_name, energy_dept_id, energy_image_url , energy_location , energy_state ,energy_price , price_unit , energy_location_detail, energy_location_lat , energy_location_lng , energy_time_zone, energy_install, energy_current_power , energy_total_day, energy_total_month, energy_total_year, energy_total, energy_status , energy_layout, energy_settings_anti_reflux, energy_settings_three_phase_equilibrium, energy_settings_role_price, energy_settings_role_allow_layout,last_error_code,last_update, del_flag, create_by, create_time, update_by, update_time from cid_powerstationinfo
+     
+
+         WHERE del_flag=0
+            
+
+            
+            
+            
+            
+            
+                                    and (energy_dept_id = ? OR energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors) ))[100,100]
+06:28:35.397 [http-nio-8080-exec-19] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 183 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[100,100]
+06:28:35.402 [http-nio-8080-exec-25] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 104 millis. select r.cid as 'cid',r.vid as 'vid',right(r.road_type,1) as 'roadType',r.powerstation_id as 'powerStationId',r.is_confirm as 'isConfirm'
+        from cid_relation r
+            left join cid_powerstationinfo p
+        on r.powerstation_id=p.id
+        where p.energy_dept_id = ? and r.is_confirm = 1 and r.del_flag = 0[100]
+06:28:35.628 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 414 millis. select r.cid as 'cid',DATE_FORMAT(r.create_time,'%Y-%m') as 'cidType' from cid_relation r where r.del_flag = 0
+
+        and r.powerstation_id in (
+        select p.id from cid_powerstationinfo p where p.del_flag = 0
+        and ( p.energy_dept_id=? OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+        find_in_set(?, ancestors) ))
+        ) and r.create_time>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+        group by r.cid,DATE_FORMAT(r.create_time,'%Y-%m');[100,100]
+06:28:36.113 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 477 millis. select count(r.vid) as 'vid',DATE_FORMAT(r.create_time,'%Y-%m') as 'cidType' from cid_relation r where r.del_flag = 0
+
+        and r.powerstation_id in (
+        select p.id from cid_powerstationinfo p where p.del_flag = 0
+        and ( p.energy_dept_id=? OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE
+        find_in_set(?, ancestors) ))
+        ) and r.create_time>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+        group by r.cid,r.vid,r.road_type,DATE_FORMAT(r.create_time,'%Y-%m')[100,100]
+06:28:52.181 [schedule-pool-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 66 millis. insert into sys_logininfor (user_name, status, ipaddr, login_location, browser, os, msg, login_time)
+		values (?, ?, ?, ?, ?, ?, ?, sysdate())["admin","0","127.0.0.1","内网IP","Chrome 11","Mac OS X","退出成功"]
+06:29:06.001 [schedule-pool-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 64 millis. insert into sys_logininfor (user_name, status, ipaddr, login_location, browser, os, msg, login_time)
+		values (?, ?, ?, ?, ?, ?, ?, sysdate())["visitor","0","127.0.0.1","内网IP","Chrome 11","Mac OS X","登录成功"]
+06:29:06.001 [http-nio-8080-exec-29] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 71 millis. update sys_user
+ 		 SET login_ip = ?,
+ 			login_date = ?,
+ 			
+ 			
+ 			update_time = sysdate() 
+ 		where user_id = ?["127.0.0.1","2023-05-26 06:29:05",114]
+06:29:06.490 [http-nio-8080-exec-37] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 103 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+06:29:21.808 [http-nio-8080-exec-46] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 92 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+06:30:56.803 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 81 millis. SELECT 1 FROM DUAL[]
+06:31:10.013 [http-nio-8080-exec-7] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 91 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+06:32:19.333 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 79 millis. SELECT 1 FROM DUAL[]
+06:32:54.514 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 92 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+06:33:22.632 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 72 millis. SELECT 1 FROM DUAL[]
+10:05:18.506 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 71 millis. SELECT 1 FROM DUAL[]
+10:05:41.372 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 89 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:05:46.371 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 93 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:06:58.093 [http-nio-8080-exec-30] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 91 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:08:03.772 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 76 millis. SELECT 1 FROM DUAL[]
+10:08:20.871 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 90 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:10:19.267 [http-nio-8080-exec-16] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 51 millis. update sys_user
+ 		 SET login_ip = ?,
+ 			login_date = ?,
+ 			
+ 			
+ 			update_time = sysdate() 
+ 		where user_id = ?["127.0.0.1","2023-05-26 10:10:19",114]
+10:10:19.962 [http-nio-8080-exec-20] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 99 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:24:11.764 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 66 millis. SELECT 1 FROM DUAL[]
+10:24:30.861 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 91 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:24:34.896 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 93 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:38:34.167 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 63 millis. SELECT 1 FROM DUAL[]
+10:39:27.281 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 52 millis. update sys_user
+ 		 SET login_ip = ?,
+ 			login_date = ?,
+ 			
+ 			
+ 			update_time = sysdate() 
+ 		where user_id = ?["127.0.0.1","2023-05-26 10:39:27",114]
+10:39:27.301 [schedule-pool-1] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 57 millis. insert into sys_logininfor (user_name, status, ipaddr, login_location, browser, os, msg, login_time)
+		values (?, ?, ?, ?, ?, ?, ?, sysdate())["visitor","0","127.0.0.1","内网IP","Chrome 11","Mac OS X","登录成功"]
+10:39:28.052 [http-nio-8080-exec-8] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 99 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:46:54.517 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 61 millis. SELECT 1 FROM DUAL[]
+10:47:11.302 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 114 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:49:14.171 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 67 millis. SELECT 1 FROM DUAL[]
+10:49:30.737 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 109 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:49:33.285 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 114 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:49:35.689 [http-nio-8080-exec-30] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 112 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:52:22.600 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 69 millis. SELECT 1 FROM DUAL[]
+10:52:36.670 [http-nio-8080-exec-5] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 112 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:52:40.639 [http-nio-8080-exec-17] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 116 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:55:48.162 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 74 millis. SELECT 1 FROM DUAL[]
+10:56:02.958 [http-nio-8080-exec-4] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 110 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:58:18.790 [http-nio-8080-exec-21] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 112 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:58:20.933 [http-nio-8080-exec-34] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 109 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+10:58:24.718 [http-nio-8080-exec-47] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 110 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+11:20:24.758 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 59 millis. SELECT 1 FROM DUAL[]
+11:32:40.516 [restartedMain] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 75 millis. SELECT 1 FROM DUAL[]
+11:33:37.986 [http-nio-8080-exec-3] ERROR c.b.f.w.e.GlobalExceptionHandler - [handleRuntimeException,69] - 请求地址'/login',发生未知异常.
+com.benyi.common.exception.user.UserPasswordNotMatchException: the user is not exist/password is error.
+	at com.benyi.framework.web.service.SysLoginService.login(SysLoginService.java:122)
+	at com.benyi.web.controller.system.SysLoginController.login(SysLoginController.java:151)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.benyi.common.filter.RepeatableFilter.doFilter(RepeatableFilter.java:43)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at com.benyi.framework.security.filter.JwtAuthenticationTokenFilter.doFilterInternal(JwtAuthenticationTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+11:33:39.489 [http-nio-8080-exec-4] ERROR c.b.f.w.e.GlobalExceptionHandler - [handleRuntimeException,69] - 请求地址'/login',发生未知异常.
+com.benyi.common.exception.user.UserPasswordNotMatchException: the user is not exist/password is error.
+	at com.benyi.framework.web.service.SysLoginService.login(SysLoginService.java:122)
+	at com.benyi.web.controller.system.SysLoginController.login(SysLoginController.java:151)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.benyi.common.filter.RepeatableFilter.doFilter(RepeatableFilter.java:43)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at com.benyi.framework.security.filter.JwtAuthenticationTokenFilter.doFilterInternal(JwtAuthenticationTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+11:33:44.092 [http-nio-8080-exec-6] ERROR c.b.f.w.e.GlobalExceptionHandler - [handleRuntimeException,69] - 请求地址'/login',发生未知异常.
+com.benyi.common.exception.user.UserPasswordNotMatchException: the user is not exist/password is error.
+	at com.benyi.framework.web.service.SysLoginService.login(SysLoginService.java:122)
+	at com.benyi.web.controller.system.SysLoginController.login(SysLoginController.java:151)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.benyi.common.filter.RepeatableFilter.doFilter(RepeatableFilter.java:43)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at com.benyi.framework.security.filter.JwtAuthenticationTokenFilter.doFilterInternal(JwtAuthenticationTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+11:33:52.697 [http-nio-8080-exec-7] ERROR c.b.f.w.e.GlobalExceptionHandler - [handleRuntimeException,69] - 请求地址'/login',发生未知异常.
+com.benyi.common.exception.user.UserPasswordNotMatchException: the user is not exist/password is error.
+	at com.benyi.framework.web.service.SysLoginService.login(SysLoginService.java:122)
+	at com.benyi.web.controller.system.SysLoginController.login(SysLoginController.java:151)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.benyi.common.filter.RepeatableFilter.doFilter(RepeatableFilter.java:43)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at com.benyi.framework.security.filter.JwtAuthenticationTokenFilter.doFilterInternal(JwtAuthenticationTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+11:33:56.540 [schedule-pool-3] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 57 millis. insert into sys_logininfor (user_name, status, ipaddr, login_location, browser, os, msg, login_time)
+		values (?, ?, ?, ?, ?, ?, ?, sysdate())["visitor","0","127.0.0.1","内网IP","Chrome 11","Mac OS X","登录成功"]
+11:37:20.102 [http-nio-8080-exec-41] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 114 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+11:43:11.739 [http-nio-8080-exec-54] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 110 millis. select  r.status as status,count(r.id) as count from cid_relation r where r.vid is not null  and r.del_flag=0
+         
+         
+            and r.powerstation_id in (select p.id from cid_powerstationinfo p, sys_dept s  where (find_in_set(?,s.ancestors) or p.energy_dept_id=?) and p.energy_dept_id=s.dept_id)
+         
+        group by r.status ;[120,120]
+11:43:31.347 [http-nio-8080-exec-64] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1488 millis. SELECT count(0) FROM cid_data d WHERE d.cid IN (SELECT r.cid FROM cid_relation r WHERE r.is_confirm = 0 AND r.del_flag = 0 AND r.bind_type = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p WHERE p.del_flag = 0 AND (p.energy_dept_id = ? OR p.energy_dept_id IN (SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors))))) AND ((d.m1_m_error_code != '0000' AND d.m1_m_error_code != '0200' AND d.m1_m_error_code != '0008') OR (d.m1_s_error_code != '0000' AND d.m1_s_error_code != '0200' AND d.m1_s_error_code != '0008'))[120,120]
+11:43:32.944 [http-nio-8080-exec-64] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1568 millis. SELECT d.cid as 'cid',d.vid as 'vid',right(d.road_type,1) as 'roadType',
+        d.m1_m_error as 'm1MError',d.m1_m_error_cn as 'm1MErrorCn',d.m1_m_error_code as 'm1MErrorCode',
+        d.m1_s_error as 'm1SError',d.m1_s_error_cn as 'm1SErrorCn',d.m1_s_error_code as 'm1SErrorCode',
+        d.create_date as 'date' FROM cid_data d
+        where d.cid in (
+            select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0 and r.bind_type = 0
+            and r.powerstation_id in (
+                select p.id from cid_powerstationinfo p where p.del_flag = 0
+                 
+                 
+                    and (p.energy_dept_id = ? OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors) ))
+                 
+            )
+        )
+        and ( (d.m1_m_error_code!='0000' and d.m1_m_error_code !='0200' and d.m1_m_error_code !='0008')
+        or (d.m1_s_error_code!='0000' and d.m1_s_error_code !='0200' and d.m1_s_error_code !='0008'))
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
+--         group by d.cid ,d.vid,d.road_type
+        order by id desc
+ LIMIT ? [120,120,10]
+11:45:01.458 [http-nio-8080-exec-68] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1286 millis. SELECT count(0) FROM cid_data d WHERE d.cid IN (SELECT r.cid FROM cid_relation r WHERE r.is_confirm = 0 AND r.del_flag = 0 AND r.bind_type = 0 AND r.powerstation_id IN (SELECT p.id FROM cid_powerstationinfo p WHERE p.del_flag = 0 AND (p.energy_dept_id = ? OR p.energy_dept_id IN (SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors))))) AND ((d.m1_m_error_code != '0000' AND d.m1_m_error_code != '0200' AND d.m1_m_error_code != '0008') OR (d.m1_s_error_code != '0000' AND d.m1_s_error_code != '0200' AND d.m1_s_error_code != '0008'))[120,120]
+11:45:02.979 [http-nio-8080-exec-68] ERROR c.a.d.f.s.StatFilter - [internalAfterStatementExecute,504] - slow sql 1513 millis. SELECT d.cid as 'cid',d.vid as 'vid',right(d.road_type,1) as 'roadType',
+        d.m1_m_error as 'm1MError',d.m1_m_error_cn as 'm1MErrorCn',d.m1_m_error_code as 'm1MErrorCode',
+        d.m1_s_error as 'm1SError',d.m1_s_error_cn as 'm1SErrorCn',d.m1_s_error_code as 'm1SErrorCode',
+        d.create_date as 'date' FROM cid_data d
+        where d.cid in (
+            select r.cid from cid_relation r where r.is_confirm = 0 and r.del_flag = 0 and r.bind_type = 0
+            and r.powerstation_id in (
+                select p.id from cid_powerstationinfo p where p.del_flag = 0
+                 
+                 
+                    and (p.energy_dept_id = ? OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(?, ancestors) ))
+                 
+            )
+        )
+        and ( (d.m1_m_error_code!='0000' and d.m1_m_error_code !='0200' and d.m1_m_error_code !='0008')
+        or (d.m1_s_error_code!='0000' and d.m1_s_error_code !='0200' and d.m1_s_error_code !='0008'))
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
+--         group by d.cid ,d.vid,d.road_type
+        order by id desc
+ LIMIT ? [120,120,10]

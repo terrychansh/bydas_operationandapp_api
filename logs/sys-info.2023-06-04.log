@@ -1,0 +1,1089 @@
+00:03:44.056 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+00:03:44.329 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:118, serverValue:20359}] to 101.132.64.230:27017
+00:03:44.330 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=245469500, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 01:03:44 BST 2023, lastUpdateTimeNanos=1006638087439416}
+00:03:52.712 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:119, serverValue:20360}] to 101.132.64.230:27017
+00:22:01.749 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+00:22:01.803 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:120, serverValue:20367}] to 101.132.64.230:27017
+00:22:01.804 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21616375, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 01:22:01 BST 2023, lastUpdateTimeNanos=1006688272203208}
+00:22:10.384 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:121, serverValue:20368}] to 101.132.64.230:27017
+00:38:28.583 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+00:38:28.642 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:122, serverValue:20373}] to 101.132.64.230:27017
+00:38:28.643 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=26699875, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 01:38:28 BST 2023, lastUpdateTimeNanos=1006728383631333}
+00:38:37.266 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:123, serverValue:20376}] to 101.132.64.230:27017
+00:56:07.304 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+00:56:07.358 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:124, serverValue:20385}] to 101.132.64.230:27017
+00:56:07.358 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=24189000, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 01:56:07 BST 2023, lastUpdateTimeNanos=1006778536697416}
+00:56:16.201 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:125, serverValue:20387}] to 101.132.64.230:27017
+01:13:31.103 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+01:13:31.161 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:126, serverValue:20393}] to 101.132.64.230:27017
+01:13:31.162 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=26930375, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 02:13:31 BST 2023, lastUpdateTimeNanos=1006828651529333}
+01:13:40.022 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:127, serverValue:20394}] to 101.132.64.230:27017
+01:30:22.899 [http-nio-8080-exec-54] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+01:30:25.957 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+01:30:26.004 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:128, serverValue:20401}] to 101.132.64.230:27017
+01:30:26.004 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21687084, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 02:30:25 BST 2023, lastUpdateTimeNanos=1006868756233750}
+01:30:35.017 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:129, serverValue:20404}] to 101.132.64.230:27017
+01:47:02.835 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+01:47:03.215 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:130, serverValue:20410}] to 101.132.64.230:27017
+01:47:03.216 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=348775000, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 02:47:02 BST 2023, lastUpdateTimeNanos=1006919281383666}
+01:47:11.916 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:131, serverValue:20412}] to 101.132.64.230:27017
+02:03:11.954 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+02:03:12.534 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:132, serverValue:20417}] to 101.132.64.230:27017
+02:03:12.535 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=554633958, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 03:03:11 BST 2023, lastUpdateTimeNanos=1006980016765791}
+02:03:20.947 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:133, serverValue:20420}] to 101.132.64.230:27017
+02:21:02.244 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+02:21:02.291 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:134, serverValue:20429}] to 101.132.64.230:27017
+02:21:02.292 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20701166, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 03:21:02 BST 2023, lastUpdateTimeNanos=1007030128954791}
+02:21:11.010 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:135, serverValue:20430}] to 101.132.64.230:27017
+02:39:01.105 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+02:39:01.160 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:136, serverValue:20434}] to 101.132.64.230:27017
+02:39:01.160 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=25777917, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 03:39:00 BST 2023, lastUpdateTimeNanos=1007070315690791}
+02:39:19.824 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:137, serverValue:20437}] to 101.132.64.230:27017
+02:56:36.881 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+02:56:36.924 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:138, serverValue:20446}] to 101.132.64.230:27017
+02:56:36.925 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19830250, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 03:56:36 BST 2023, lastUpdateTimeNanos=1007120427837000}
+02:56:45.876 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:139, serverValue:20449}] to 101.132.64.230:27017
+03:12:26.682 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+03:12:26.725 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:140, serverValue:20457}] to 101.132.64.230:27017
+03:12:26.726 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19944166, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 04:12:26 BST 2023, lastUpdateTimeNanos=1007170523219291}
+03:12:34.106 [http-nio-8080-exec-56] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+03:12:35.724 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:141, serverValue:20458}] to 101.132.64.230:27017
+03:29:27.448 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+03:29:27.510 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:142, serverValue:20467}] to 101.132.64.230:27017
+03:29:27.510 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=28520666, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 04:29:27 BST 2023, lastUpdateTimeNanos=1007210638178791}
+03:29:46.754 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:143, serverValue:20471}] to 101.132.64.230:27017
+03:46:52.262 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+03:46:52.322 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:144, serverValue:20475}] to 101.132.64.230:27017
+03:46:52.323 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=25813250, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 04:46:52 BST 2023, lastUpdateTimeNanos=1007260759316833}
+03:47:02.026 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:145, serverValue:20478}] to 101.132.64.230:27017
+04:03:37.105 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+04:03:37.151 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:146, serverValue:20482}] to 101.132.64.230:27017
+04:03:37.152 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20465875, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 05:03:37 BST 2023, lastUpdateTimeNanos=1007320943002500}
+04:03:46.849 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:147, serverValue:20485}] to 101.132.64.230:27017
+04:21:28.964 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+04:21:29.020 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:148, serverValue:20492}] to 101.132.64.230:27017
+04:21:29.021 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22360667, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 05:21:28 BST 2023, lastUpdateTimeNanos=1007371061648625}
+04:21:38.927 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:149, serverValue:20495}] to 101.132.64.230:27017
+04:37:57.645 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+04:37:57.695 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:150, serverValue:20499}] to 101.132.64.230:27017
+04:37:57.696 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22756209, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 05:37:57 BST 2023, lastUpdateTimeNanos=1007421224249708}
+04:38:07.819 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:151, serverValue:20501}] to 101.132.64.230:27017
+04:55:13.388 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+04:55:13.438 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:152, serverValue:20508}] to 101.132.64.230:27017
+04:55:13.438 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=24205041, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 05:55:13 BST 2023, lastUpdateTimeNanos=1007461325223125}
+04:55:23.560 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:153, serverValue:20511}] to 101.132.64.230:27017
+04:55:32.592 [http-nio-8080-exec-58] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+05:12:11.203 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+05:12:11.246 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:154, serverValue:20516}] to 101.132.64.230:27017
+05:12:11.247 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19897666, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 06:12:11 BST 2023, lastUpdateTimeNanos=1007511436011791}
+05:12:21.616 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:155, serverValue:20519}] to 101.132.64.230:27017
+05:29:10.059 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+05:29:10.103 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:156, serverValue:20524}] to 101.132.64.230:27017
+05:29:10.103 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19669041, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 06:29:09 BST 2023, lastUpdateTimeNanos=1007561607826541}
+05:29:20.637 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:157, serverValue:20526}] to 101.132.64.230:27017
+05:45:57.844 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+05:45:57.892 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:158, serverValue:20533}] to 101.132.64.230:27017
+05:45:57.893 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21754042, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 06:45:57 BST 2023, lastUpdateTimeNanos=1007611722638541}
+05:45:58.411 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:159, serverValue:20534}] to 101.132.64.230:27017
+06:03:12.363 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+06:03:12.416 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:160, serverValue:20538}] to 101.132.64.230:27017
+06:03:12.417 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=24822375, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 07:03:12 BST 2023, lastUpdateTimeNanos=1007671850807375}
+06:03:23.442 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:161, serverValue:20541}] to 101.132.64.230:27017
+06:19:23.120 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+06:19:23.163 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:162, serverValue:20549}] to 101.132.64.230:27017
+06:19:23.164 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20613625, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 07:19:23 BST 2023, lastUpdateTimeNanos=1007721960090708}
+06:19:34.618 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:163, serverValue:20550}] to 101.132.64.230:27017
+06:37:52.233 [http-nio-8080-exec-60] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+06:37:58.769 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+06:37:58.817 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:164, serverValue:20557}] to 101.132.64.230:27017
+06:37:58.818 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22754667, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 07:37:58 BST 2023, lastUpdateTimeNanos=1007772063287583}
+06:38:00.534 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:165, serverValue:20558}] to 101.132.64.230:27017
+06:55:05.251 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+06:55:05.306 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:166, serverValue:20567}] to 101.132.64.230:27017
+06:55:05.307 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=27649125, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 07:55:05 BST 2023, lastUpdateTimeNanos=1007812165142916}
+06:55:17.129 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:167, serverValue:20570}] to 101.132.64.230:27017
+07:11:18.126 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+07:11:18.174 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:168, serverValue:20577}] to 101.132.64.230:27017
+07:11:18.174 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21586750, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 08:11:17 BST 2023, lastUpdateTimeNanos=1007862275437541}
+07:11:30.001 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:169, serverValue:20579}] to 101.132.64.230:27017
+07:27:59.647 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+07:27:59.694 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:170, serverValue:20586}] to 101.132.64.230:27017
+07:27:59.695 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20820875, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 08:27:59 BST 2023, lastUpdateTimeNanos=1007912381987916}
+07:28:11.765 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:171, serverValue:20587}] to 101.132.64.230:27017
+07:45:11.884 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+07:45:11.930 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:172, serverValue:20592}] to 101.132.64.230:27017
+07:45:11.931 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21669833, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 08:45:11 BST 2023, lastUpdateTimeNanos=1008042556013583}
+07:45:24.230 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:173, serverValue:20595}] to 101.132.64.230:27017
+07:45:34.887 [http-nio-8080-exec-62] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+08:02:09.563 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+08:02:09.608 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:174, serverValue:20602}] to 101.132.64.230:27017
+08:02:09.609 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21527167, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 09:02:09 BST 2023, lastUpdateTimeNanos=1008102661238750}
+08:02:22.134 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:175, serverValue:20605}] to 101.132.64.230:27017
+08:18:24.340 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+08:18:24.379 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:176, serverValue:20610}] to 101.132.64.230:27017
+08:18:24.380 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18641458, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 09:18:23 BST 2023, lastUpdateTimeNanos=1008152771232041}
+08:18:36.935 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:177, serverValue:20612}] to 101.132.64.230:27017
+08:34:26.204 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+08:34:26.245 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:178, serverValue:20618}] to 101.132.64.230:27017
+08:34:26.246 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19275584, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 09:34:25 BST 2023, lastUpdateTimeNanos=1008202873395958}
+08:34:38.842 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:179, serverValue:20620}] to 101.132.64.230:27017
+08:51:03.536 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+08:51:03.600 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:180, serverValue:20626}] to 101.132.64.230:27017
+08:51:03.601 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=37286708, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 09:51:03 BST 2023, lastUpdateTimeNanos=1008253499892416}
+08:51:06.619 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:181, serverValue:20627}] to 101.132.64.230:27017
+09:08:11.393 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+09:08:11.440 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:182, serverValue:20633}] to 101.132.64.230:27017
+09:08:11.440 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22762292, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 10:08:11 BST 2023, lastUpdateTimeNanos=1008293590472708}
+09:08:25.493 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:183, serverValue:20636}] to 101.132.64.230:27017
+09:25:35.184 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+09:25:35.233 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:184, serverValue:20643}] to 101.132.64.230:27017
+09:25:35.234 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22370916, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 10:25:35 BST 2023, lastUpdateTimeNanos=1008343749762250}
+09:25:39.264 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:185, serverValue:20644}] to 101.132.64.230:27017
+09:42:17.383 [http-nio-8080-exec-64] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+09:42:24.003 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+09:42:24.057 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:186, serverValue:20648}] to 101.132.64.230:27017
+09:42:24.058 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=25934209, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 10:42:24 BST 2023, lastUpdateTimeNanos=1008383856105000}
+09:42:38.325 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:187, serverValue:20651}] to 101.132.64.230:27017
+09:59:04.923 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+09:59:04.974 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:188, serverValue:20657}] to 101.132.64.230:27017
+09:59:04.975 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21678500, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 10:59:04 BST 2023, lastUpdateTimeNanos=1008454218019625}
+09:59:09.297 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:189, serverValue:20658}] to 101.132.64.230:27017
+10:15:11.340 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+10:15:11.395 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:190, serverValue:20675}] to 101.132.64.230:27017
+10:15:11.396 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=26300333, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 11:15:11 BST 2023, lastUpdateTimeNanos=1008494325164083}
+10:15:25.928 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:191, serverValue:20678}] to 101.132.64.230:27017
+10:31:54.930 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+10:31:54.977 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:192, serverValue:20683}] to 101.132.64.230:27017
+10:31:54.978 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22899250, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 11:31:54 BST 2023, lastUpdateTimeNanos=1008584456201375}
+10:32:09.670 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:193, serverValue:20686}] to 101.132.64.230:27017
+10:48:16.725 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+10:48:16.770 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:194, serverValue:20692}] to 101.132.64.230:27017
+10:48:16.770 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22069125, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 11:48:16 BST 2023, lastUpdateTimeNanos=1008634562586541}
+10:48:21.913 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:195, serverValue:20694}] to 101.132.64.230:27017
+10:48:49.210 [http-nio-8080-exec-66] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+11:06:13.529 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+11:06:13.574 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:196, serverValue:20703}] to 101.132.64.230:27017
+11:06:13.575 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21779500, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 12:06:13 BST 2023, lastUpdateTimeNanos=1008694762055500}
+11:06:28.712 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:197, serverValue:20706}] to 101.132.64.230:27017
+11:22:56.712 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+11:22:56.757 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:198, serverValue:20712}] to 101.132.64.230:27017
+11:22:56.757 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=23258083, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 12:22:56 BST 2023, lastUpdateTimeNanos=1008745109998541}
+11:23:01.636 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:199, serverValue:20713}] to 101.132.64.230:27017
+11:39:19.481 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+11:39:19.525 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:200, serverValue:20721}] to 101.132.64.230:27017
+11:39:19.526 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20973709, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 12:39:19 BST 2023, lastUpdateTimeNanos=1008795208075958}
+11:39:24.457 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:201, serverValue:20722}] to 101.132.64.230:27017
+11:55:43.182 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,76] - Exception in monitor thread while connecting to server 101.132.64.230:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:630)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:515)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:355)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:315)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:215)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:109)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:131)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:512)
+	... 5 common frames omitted
+11:55:43.473 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:202, serverValue:20728}] to 101.132.64.230:27017
+11:55:43.474 [cluster-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.driver.cluster - [info,71] - Monitor thread successfully connected to server with description ServerDescription{address=101.132.64.230:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=265647833, setName='rs0', canonicalAddress=101.132.64.230:27017, hosts=[101.132.64.230:27017, 106.15.46.36:27017], passives=[], arbiters=[47.101.35.55:27017], primary='101.132.64.230:27017', tagSet=TagSet{[]}, electionId=7fffffff0000000000000006, setVersion=109242, topologyVersion=TopologyVersion{processId=645f34e2bc507400aeb9b1b6, counter=7}, lastWriteDate=Sun Jun 04 12:55:43 BST 2023, lastUpdateTimeNanos=1008835647178166}
+11:55:58.092 [cluster-rtt-ClusterId{value='647ae853da20e24c50ff6b93', description='null'}-101.132.64.230:27017] INFO  o.m.d.connection - [info,71] - Opened connection [connectionId{localValue:203, serverValue:20731}] to 101.132.64.230:27017
+11:57:53.293 [http-nio-8080-exec-68] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:02:53.007 [http-nio-8080-exec-70] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:08:04.876 [http-nio-8080-exec-72] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:13:39.589 [http-nio-8080-exec-74] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:18:44.046 [http-nio-8080-exec-76] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:24:03.601 [http-nio-8080-exec-78] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:29:38.852 [http-nio-8080-exec-80] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:35:00.830 [http-nio-8080-exec-82] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:40:05.727 [http-nio-8080-exec-84] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:45:24.772 [http-nio-8080-exec-86] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:50:59.799 [http-nio-8080-exec-88] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+12:56:22.110 [http-nio-8080-exec-90] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:01:26.489 [http-nio-8080-exec-92] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:06:49.135 [http-nio-8080-exec-94] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:12:21.318 [http-nio-8080-exec-96] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:17:47.179 [http-nio-8080-exec-98] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:22:48.299 [http-nio-8080-exec-100] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:28:10.869 [http-nio-8080-exec-2] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:33:43.243 [http-nio-8080-exec-4] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:39:00.364 [http-nio-8080-exec-6] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:44:24.033 [http-nio-8080-exec-8] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:49:32.424 [http-nio-8080-exec-10] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+13:55:04.788 [http-nio-8080-exec-12] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:00:29.677 [http-nio-8080-exec-14] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:05:31.088 [http-nio-8080-exec-16] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:10:53.705 [http-nio-8080-exec-18] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:16:26.290 [http-nio-8080-exec-20] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:21:47.628 [http-nio-8080-exec-22] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:26:52.062 [http-nio-8080-exec-24] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:32:14.738 [http-nio-8080-exec-26] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:37:33.964 [http-nio-8080-exec-28] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:43:09.107 [http-nio-8080-exec-30] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:48:16.910 [http-nio-8080-exec-32] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:53:36.478 [http-nio-8080-exec-34] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+14:59:09.687 [http-nio-8080-exec-36] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:04:20.555 [http-nio-8080-exec-38] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:09:43.562 [http-nio-8080-exec-40] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:14:58.441 [http-nio-8080-exec-42] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:20:35.001 [http-nio-8080-exec-44] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:25:55.788 [http-nio-8080-exec-46] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:30:57.105 [http-nio-8080-exec-48] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:36:16.668 [http-nio-8080-exec-50] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:41:53.274 [http-nio-8080-exec-52] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:47:13.753 [http-nio-8080-exec-54] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:52:18.389 [http-nio-8080-exec-56] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+15:57:40.953 [http-nio-8080-exec-58] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:03:15.082 [http-nio-8080-exec-60] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:08:38.505 [http-nio-8080-exec-62] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:13:42.923 [http-nio-8080-exec-64] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:19:02.491 [http-nio-8080-exec-66] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:24:39.908 [http-nio-8080-exec-68] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:29:59.999 [http-nio-8080-exec-70] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:35:18.820 [http-nio-8080-exec-72] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:40:38.678 [http-nio-8080-exec-74] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:45:43.501 [http-nio-8080-exec-76] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:51:06.124 [http-nio-8080-exec-78] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+16:56:40.414 [http-nio-8080-exec-80] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:02:03.243 [http-nio-8080-exec-82] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:07:08.323 [http-nio-8080-exec-84] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:12:27.776 [http-nio-8080-exec-86] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:18:05.510 [http-nio-8080-exec-88] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:23:24.951 [http-nio-8080-exec-90] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:28:29.589 [http-nio-8080-exec-92] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:33:48.908 [http-nio-8080-exec-94] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:39:27.350 [http-nio-8080-exec-96] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:44:46.562 [http-nio-8080-exec-98] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:50:02.432 [http-nio-8080-exec-100] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+17:55:10.691 [http-nio-8080-exec-2] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:00:49.023 [http-nio-8080-exec-4] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:06:08.116 [http-nio-8080-exec-6] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:11:12.659 [http-nio-8080-exec-8] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:16:32.044 [http-nio-8080-exec-10] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:22:10.657 [http-nio-8080-exec-12] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:27:29.581 [http-nio-8080-exec-14] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:32:34.108 [http-nio-8080-exec-16] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:37:53.500 [http-nio-8080-exec-18] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:43:32.334 [http-nio-8080-exec-20] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:48:50.763 [http-nio-8080-exec-22] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:53:57.674 [http-nio-8080-exec-24] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+18:59:15.031 [http-nio-8080-exec-26] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:04:54.150 [http-nio-8080-exec-28] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:10:12.645 [http-nio-8080-exec-30] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:15:17.268 [http-nio-8080-exec-32] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:20:36.668 [http-nio-8080-exec-34] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:26:15.908 [http-nio-8080-exec-36] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:31:33.979 [http-nio-8080-exec-38] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:36:38.462 [http-nio-8080-exec-40] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:41:57.850 [http-nio-8080-exec-42] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:47:37.600 [http-nio-8080-exec-44] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:52:55.341 [http-nio-8080-exec-46] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+19:57:59.753 [http-nio-8080-exec-48] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:03:22.428 [http-nio-8080-exec-50] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:08:58.756 [http-nio-8080-exec-52] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:14:16.097 [http-nio-8080-exec-54] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:19:20.626 [http-nio-8080-exec-56] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:24:43.323 [http-nio-8080-exec-58] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:30:20.144 [http-nio-8080-exec-60] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:35:37.581 [http-nio-8080-exec-62] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:40:42.312 [http-nio-8080-exec-64] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:46:04.897 [http-nio-8080-exec-66] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:51:41.650 [http-nio-8080-exec-68] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+20:57:01.998 [http-nio-8080-exec-70] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:02:06.627 [http-nio-8080-exec-72] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:07:26.207 [http-nio-8080-exec-74] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:13:06.598 [http-nio-8080-exec-76] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:18:23.467 [http-nio-8080-exec-78] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:23:28.143 [http-nio-8080-exec-80] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:28:51.147 [http-nio-8080-exec-82] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:34:28.521 [http-nio-8080-exec-84] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:39:45.323 [http-nio-8080-exec-86] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:44:49.893 [http-nio-8080-exec-88] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:50:12.919 [http-nio-8080-exec-90] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+21:55:50.377 [http-nio-8080-exec-92] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:01:07.018 [http-nio-8080-exec-94] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:06:08.357 [http-nio-8080-exec-96] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:11:24.724 [http-nio-8080-exec-98] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:17:05.836 [http-nio-8080-exec-100] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:22:21.992 [http-nio-8080-exec-2] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:27:26.665 [http-nio-8080-exec-4] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:32:49.296 [http-nio-8080-exec-6] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:38:27.471 [http-nio-8080-exec-8] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:43:53.785 [http-nio-8080-exec-10] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:48:48.220 [http-nio-8080-exec-12] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:54:10.836 [http-nio-8080-exec-14] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+22:59:44.312 [http-nio-8080-exec-16] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:05:02.290 [http-nio-8080-exec-18] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:10:12.109 [http-nio-8080-exec-20] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:15:32.739 [http-nio-8080-exec-22] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:21:11.353 [http-nio-8080-exec-24] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:26:30.207 [http-nio-8080-exec-26] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:31:31.492 [http-nio-8080-exec-28] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:36:50.840 [http-nio-8080-exec-30] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:42:32.797 [http-nio-8080-exec-32] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:47:48.162 [http-nio-8080-exec-34] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:52:59.545 [http-nio-8080-exec-36] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}
+23:58:15.415 [http-nio-8080-exec-38] INFO  c.b.e.c.CidRelationController - [getRelationList,118] - cidRelation:{"hasError":false,"id":1232,"params":{},"powerStationId":1232,"showIndex":false}

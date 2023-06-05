@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidEntityMapper">
+
+    <resultMap type="CidEntity" id="CidEntityResult">
+
+        <result property="id" column="id"/>
+        <result property="cid" column="cid"/>
+        <result property="plantID" column="plant_id"/>
+        <result property="roadType" column="road_type"/>
+        <result property="status" column="status"/>
+        <result property="hardVersion" column="hard_version"/>
+        <result property="softVersion" column="soft_version"/>
+        <result property="softDeputyVersion" column="soft_deputy_version"/>
+        <result property="cidType" column="cid_type"/>
+        <result property="dailyEnergy" column="current_energy"/>
+        <result property="standardPower" column="standard_power"/>
+        <result property="currentPower" column="current_power"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+
+    </resultMap>
+
+
+
+    <insert id="insertCidEntity" parameterType="CidEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into stat_cid_entity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null">cid,</if>
+            <if test="roadType != null ">road_type,</if>
+            <if test="plantID != null">plant_id,</if>
+            <if test="status != null">status,</if>
+
+            <if test="standardPower != null">standard_power,</if>
+            <if test="currentPower != null">current_power ,</if>
+            <if test="dailyEnergy != null">current_energy,</if>
+            <if test="hardVersion != null">hard_version,</if>
+            <if test="softVersion != null">soft_version,</if>
+            <if test="softDeputyVersion != null">soft_deputy_version,</if>
+            <if test="cidType != null">cid_type,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null">#{cid},</if>
+            <if test="roadType != null ">#{roadType},</if>
+            <if test="plantID != null">#{plantID},</if>
+            <if test="status != null">#{status},</if>
+            <if test="standardPower != null">>#{standardPower},</if>
+            <if test="currentPower != null">>#{currentPower} ,</if>
+            <if test="dailyEnergy != null">>#{dailyEnergy},</if>
+
+            <if test="hardVersion != null">#{hardVersion},</if>
+            <if test="softVersion != null">#{softVersion},</if>
+            <if test="softDeputyVersion != null">#{softDeputyVersion},</if>
+            <if test="cidType != null">#{cidType},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateCidEntity" parameterType="CidEntity">
+        update stat_cid_entity
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="roadType != null ">road_type = #{roadType},</if>
+            <if test="plantID != null">plant_id = #{plantID},</if>
+            <if test="status != null">status = #{status},</if>
+
+            <if test="standardPower != null">standard_power = #{standardPower},</if>
+            <if test="currentPower != null">current_power = #{currentPower},</if>
+            <if test="dailyEnergy != null">current_energy = #{dailyEnergy},</if>
+            <if test="hardVersion != null">hard_version = #{hardVersion},</if>
+            <if test="softVersion != null">soft_version = #{softVersion},</if>
+            <if test="softDeputyVersion != null">soft_deputy_version = #{softDeputyVersion},</if>
+            <if test="cidType != null">cid_type = #{cidType},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where plant_id = #{plantID} and cid= #{cid}
+    </update>
+
+    <select id="selectCidList" resultType="java.util.Map">
+        select r.cid_type as 'cidType' ,r.cid as 'cid' ,r.plant_id as 'powerStationId',r.status as status,
+        r.current_energy as 'currentEnergy',r.current_power as 'currentPower', r.update_time as 'updateTime'
+        ,r.cid_type as 'cidType' from stat_cid_entity r where r.del_flag = 0
+
+        <if test="cidType !=null ">
+            and r.cid_type = #{cidType}
+        </if>
+        <if test="plantID !=null ">
+            and r.plant_id = #{plantID}
+        </if>
+
+        <if test="cid != null">
+            and r.cid=#{cid}
+        </if>
+        order by r.status
+    </select>
+
+    <select id="selectCidEntityByCidAndPlantID"  resultMap="CidEntityResult">
+        select *  from stat_cid_entity  where del_flag=0 and cid=#{cid} and plant_id=#{plantID}
+    </select>
+
+</mapper>

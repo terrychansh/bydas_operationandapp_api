@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidDataMinMapper">
+
+
+    <resultMap type="CidDataMin" id="CidDataMinResult">
+        <result property="id" column="id"/>
+        <result property="plantID" column="plant_id"/>
+        <result property="cid" column="cid"/>
+        <result property="vid" column="vid"/>
+        <result property="energy" column="energy"/>
+        <result property="power" column="power"/>
+        <result property="min" column="min"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+
+    <select id="selectByDay"    resultType="map">
+        SELECT sum(power) as power,CONCAT(create_date, " ",min) as date FROM stat_mi_plant_min where min is not null and min!='null' and create_date >= #{startDate} and   <![CDATA[create_date<=#{endDate}]]>
+        <if test="plantID !=null  ">
+            and plant_id in
+            <foreach item="item" index="index" collection="plantID" open="("  close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        group by create_date,min
+        order by create_date,min ;
+    </select>
+
+
+
+
+</mapper>

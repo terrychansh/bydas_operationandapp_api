@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidWorkOrderMapper">
+    
+    <resultMap type="CidWorkOrder" id="CidWorkOrderResult">
+        <result property="workOrderId"    column="work_order_id"    />
+        <result property="workOrderInfo"    column="work_order_info"    />
+        <result property="workOrderSentTo"    column="work_order_sent_to"    />
+        <result property="workOrderReplayInfo"    column="work_order_replay_info"    />
+        <result property="workOrderStatus"    column="work_order_status"    />
+        <result property="workOrderType" column="work_order_type" />
+        <result property="createDeptId" column="create_dept_id" />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectCidWorkOrderVo">
+        select work_order_id, work_order_info, work_order_sent_to, work_order_replay_info, work_order_status,work_order_type , create_dept_id , del_flag, create_by, create_time, update_by, update_time from cid_work_order
+    </sql>
+
+    <select id="selectCidWorkOrderList" parameterType="CidWorkOrder" resultMap="CidWorkOrderResult">
+        <include refid="selectCidWorkOrderVo"/>
+        <where>  
+            <if test="workOrderInfo != null  and workOrderInfo != ''"> and work_order_info = #{workOrderInfo}</if>
+            <if test="workOrderSentTo != null "> and work_order_sent_to = #{workOrderSentTo}</if>
+            <if test="workOrderReplayInfo != null  and workOrderReplayInfo != ''"> and work_order_replay_info = #{workOrderReplayInfo}</if>
+            <if test="workOrderStatus != null  and workOrderStatus != ''"> and work_order_status = #{workOrderStatus}</if>
+            <if test="workOrderType != null and workOrderType != ''">and work_order_type = #{workOrderType}</if>
+            <if test="createDeptId != null  and createDeptId != ''"> and create_dept_id = #{createDeptId}</if>
+            <if test="createBy != null "> and create_by = #{createBy}</if>
+            <if test="updateBy != null "> and update_by = #{updateBy}</if>
+        </where>
+    </select>
+
+    <select id="selectCidWorkOrderUnFinishList" parameterType="CidWorkOrder" resultMap="CidWorkOrderResult">
+        <include refid="selectCidWorkOrderVo"/>
+            where work_order_status != '2'
+            <if test="workOrderInfo != null  and workOrderInfo != ''"> and work_order_info = #{workOrderInfo}</if>
+            <if test="workOrderSentTo != null "> and work_order_sent_to = #{workOrderSentTo}</if>
+            <if test="workOrderReplayInfo != null  and workOrderReplayInfo != ''"> and work_order_replay_info = #{workOrderReplayInfo}</if>
+            <if test="workOrderStatus != null  and workOrderStatus != ''"> and work_order_status = #{workOrderStatus}</if>
+            <if test="workOrderType != null and workOrderType != ''">and work_order_type = #{workOrderType}</if>
+            <if test="createDeptId != null  and createDeptId != ''"> and create_dept_id = #{createDeptId}</if>
+            <if test="createBy != null "> and create_by = #{createBy}</if>
+            <if test="updateBy != null "> and update_by = #{updateBy}</if>
+    </select>
+
+    <select id="selectCidWorkOrderFinishList" parameterType="CidWorkOrder" resultMap="CidWorkOrderResult">
+        <include refid="selectCidWorkOrderVo"/>
+        where work_order_status  = '2'
+        <if test="workOrderInfo != null  and workOrderInfo != ''"> and work_order_info = #{workOrderInfo}</if>
+        <if test="workOrderSentTo != null "> and work_order_sent_to = #{workOrderSentTo}</if>
+        <if test="workOrderReplayInfo != null  and workOrderReplayInfo != ''"> and work_order_replay_info = #{workOrderReplayInfo}</if>
+        <if test="workOrderStatus != null  and workOrderStatus != ''"> and work_order_status = #{workOrderStatus}</if>
+        <if test="workOrderType != null and workOrderType != ''">and work_order_type = #{workOrderType}</if>
+        <if test="createDeptId != null  and createDeptId != ''"> and create_dept_id = #{createDeptId}</if>
+        <if test="createBy != null "> and create_by = #{createBy}</if>
+        <if test="updateBy != null "> and update_by = #{updateBy}</if>
+    </select>
+    
+    <select id="selectCidWorkOrderByWorkOrderId" parameterType="Long" resultMap="CidWorkOrderResult">
+        <include refid="selectCidWorkOrderVo"/>
+        where work_order_id = #{workOrderId}
+    </select>
+        
+    <insert id="insertCidWorkOrder" parameterType="CidWorkOrder">
+        insert into cid_work_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="workOrderId != null">work_order_id,</if>
+            <if test="workOrderInfo != null">work_order_info,</if>
+            <if test="workOrderSentTo != null">work_order_sent_to,</if>
+            <if test="workOrderReplayInfo != null">work_order_replay_info,</if>
+            <if test="workOrderStatus != null">work_order_status,</if>
+            <if test="workOrderType != null">work_order_type,</if>
+            <if test="createDeptId != null">create_dept_id,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="workOrderId != null">#{workOrderId},</if>
+            <if test="workOrderInfo != null">#{workOrderInfo},</if>
+            <if test="workOrderSentTo != null">#{workOrderSentTo},</if>
+            <if test="workOrderReplayInfo != null">#{workOrderReplayInfo},</if>
+            <if test="workOrderStatus != null">#{workOrderStatus},</if>
+            <if test="workOrderType != null">#{workOrderType},</if>
+            <if test="createDeptId != null">#{createDeptId},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCidWorkOrder" parameterType="CidWorkOrder">
+        update cid_work_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="workOrderInfo != null">work_order_info = #{workOrderInfo},</if>
+            <if test="workOrderSentTo != null">work_order_sent_to = #{workOrderSentTo},</if>
+            <if test="workOrderReplayInfo != null">work_order_replay_info = #{workOrderReplayInfo},</if>
+            <if test="workOrderStatus != null">work_order_status = #{workOrderStatus},</if>
+            <if test="workOrderType != null and workOrderType != ''">work_order_type = #{workOrderType},</if>
+            <if test="createDeptId != null">create_dept_id= #{createDeptId},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where work_order_id = #{workOrderId}
+    </update>
+
+    <delete id="deleteCidWorkOrderByWorkOrderId" parameterType="Long">
+        delete from cid_work_order where work_order_id = #{workOrderId}
+    </delete>
+
+    <delete id="deleteCidWorkOrderByWorkOrderIds" parameterType="String">
+        delete from cid_work_order where work_order_id in 
+        <foreach item="workOrderId" collection="array" open="(" separator="," close=")">
+            #{workOrderId}
+        </foreach>
+    </delete>
+</mapper>

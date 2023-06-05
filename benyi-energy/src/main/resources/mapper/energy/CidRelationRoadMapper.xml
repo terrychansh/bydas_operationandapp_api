@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidRelationRoadMapper">
+
+    <resultMap type="CidRelation" id="CidRelationResult">
+        <result property="id" column="id"/>
+        <result property="vid" column="vid"/>
+        <result property="cid" column="cid"/>
+        <result property="roadType" column="road_type"/>
+        <result property="powerStationId" column="powerstation_id"/>
+        <result property="status" column="status"/>
+        <result property="bindType" column="bind_type"/>
+        <result property="isConfirm" column="is_confirm"/>
+        <result property="hardVersion" column="hard_version"/>
+        <result property="softVersion" column="soft_version"/>
+        <result property="softDeputyVersion" column="soft_deputy_version"/>
+        <result property="cidType" column="cid_type"/>
+        <result property="currentEnergy" column="current_energy"/>
+        <result property="weekEnergy" column="week_energy"/>
+        <result property="monthEnergy" column="month_energy"/>
+        <result property="yearEnergy" column="year_energy"/>
+        <result property="countEnergy" column="count_energy"/>
+        <result property="cammandUpdateMap" column="cammand_update_map"/>
+        <result property="cammandStartingUp" column="cammand_starting_up"/>
+        <result property="cammandUpdate" column="cammand_update"/>
+        <result property="cammandPowerCoefficient" column="cammand_power_coefficient"/>
+        <result property="cammandOnGrid" column="cammand_on_grid"/>
+        <result property="cammandUnGetOnGrid" column="cammand_un_get_on_grid"/>
+        <result property="lastUpdate" column="last_update"/>
+        <result property="lastErrorCode" column="last_error_code"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="standardPower" column="standard_power"/>
+        <result property="currentPower" column="current_power"/>
+    </resultMap>
+
+    <sql id="selectCidRelationVo">
+        select id,
+               vid,
+               cid,
+               road_type,
+               powerstation_id,
+               current_energy,
+               week_energy,
+               month_energy,
+               year_energy,
+               count_energy,
+               status,
+               bind_type,
+               is_confirm,
+               hard_version,
+               cammand_update_map,
+               cammand_starting_up,
+               cammand_update,
+               cammand_power_coefficient,
+               cammand_on_grid,
+               cammand_un_get_on_grid,
+                   soft_version,
+               soft_deputy_version,
+               cid_type,
+               last_update,
+               last_error_code,
+               del_flag,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               standard_power,
+               current_power
+        from cid_relation_road c
+    </sql>
+
+    <select id="selectByCidAndVidAndPlantID"  resultMap="CidRelationResult">
+        <include refid="selectCidRelationVo"/>
+         where cid=#{cid} and powerstation_id=#{powerStationId} and vid=#{vid} order by road_type
+    </select>
+
+    <update id="updateRelationByCidVidLoop" parameterType="CidRelation">
+        update cid_relation_road
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="currentEnergy != null">current_energy = #{currentEnergy},</if>
+            <if test="weekEnergy != null">week_energy = #{weekEnergy},</if>
+            <if test="monthEnergy != null ">month_energy = #{monthEnergy},</if>
+            <if test="yearEnergy != null">year_energy = #{yearEnergy},</if>
+            <if test="countEnergy != null">count_energy = #{countEnergy},</if>
+        </trim>
+        where cid=#{cid} and vid = #{vid}  and road_type = #{roadType}
+    </update>
+
+    <insert id="insertBatchCidVidRoadRelation" parameterType="list" >
+        insert into cid_relation_road (vid,cid,road_type,powerstation_id,status,cid_type,del_flag,create_by,create_time) VALUES
+        <foreach item="data" collection="list" separator=",">
+            (
+            #{data.vid}, #{data.cid},#{data.roadType}, #{data.powerStationId}, #{data.status},
+            #{data.cidType}, #{data.delFlag}, #{data.createBy},#{data.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectVidListByCidAndPowerStationId" resultMap="CidRelationResult">
+        select cid as 'cid',vid ,powerstation_id ,status,
+               current_energy ,current_power , update_time,hard_version ,soft_version , road_type
+        from cid_relation_road  where del_flag = 0  and cid=#{cid}  and vid=#{vid}  and powerstation_id = #{powerStationId}
+    </select>
+
+    <update id="updateCidRelationForMigrate" parameterType="CidRelation">
+        update cid_relation_road
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="vid != null and cid != null and powerStationId != null">del_flag = 0,</if>
+            <if test="powerStationId != null and cid != null and powerStationId != null">powerstation_id = #{powerStationId},</if>
+        </trim>
+        where 1 = 1
+        <if test="vid != null">and vid = #{vid}</if>
+        <if test="vid == null">and vid is null</if>
+
+        <if test="cid != null">and cid = #{cid}</if>
+        <if test="cid == null">and cid is null</if>
+
+
+    </update>
+
+
+
+
+</mapper>

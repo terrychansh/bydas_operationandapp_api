@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benyi.energy.mapper.CidLoginHeartMapper">
+
+    <resultMap type="CidLoginHeart" id="CidLoginHeartResult">
+        <result property="id"    column="id"    />
+        <result property="cid"    column="cid"    />
+        <result property="heartLoginType"    column="heart_login_type"    />
+        <result property="createDate"    column="create_date"    />
+    </resultMap>
+
+    <sql id="selectCidLoginHeartVo">
+        select id, cid, heart_login_type, create_date from cid_login_heart
+    </sql>
+
+    <select id="selectCidLoginHeartList" parameterType="CidLoginHeart" resultMap="CidLoginHeartResult">
+        <include refid="selectCidLoginHeartVo"/>
+        <where>
+            <if test="cid != null  and cid != ''"> and cid = #{cid}</if>
+            <if test="heartLoginType != null  and heartLoginType != ''"> and heart_login_type = #{heartLoginType}</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectCidLoginHeartListByQuery" resultType="java.util.Map">
+        select l.cid as 'cid',l.heart_login_type as 'heartLoginType',l.create_date as 'createDate'
+        from cid_login_heart l
+        where l.cid in
+              (
+                    select r.cid from cid_relation r where r.del_flag =0 and r.bind_type = 0 and r.is_confirm = 0
+                    and r.powerstation_id in
+                    (
+                        select p.id from cid_powerstationinfo p where p.del_flag = 0
+                        <if test="powerStationId != null  and powerStationId != '' and deptId != null ">
+                            and p.id = #{powerStationId}
+                        </if>
+                        <if test="deptId != null and deptId!='' and queryStationId == null">
+                            and (p.energy_dept_id = #{deptId} OR p.energy_dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE find_in_set(#{deptId}, ancestors) ))
+                        </if>
+                    )
+            )
+        <if test="cid != null">
+            and l.cid = #{cid}
+        </if>
+        <if test="heartLoginType != null">
+            and l.heart_login_type = #{heartLoginType}
+        </if>
+        <if test="searchDate !=null">
+            and DATE_FORMAT(create_date,'%Y-%m-%d') = #{searchDate}
+        </if>
+<!--        <if test="searchDate ==null">-->
+<!--            and DATE_FORMAT(create_date,'%Y-%m-%d') = DATE_FORMAT(now(),'%Y-%m-%d')-->
+<!--        </if>-->
+        order by createDate desc
+    </select>
+
+    <select id="selectMaxLoginHeartByCid" resultType="java.lang.Long">
+        select max(id) from cid_login_heart where cid= #{cid}
+    </select>
+
+    <select id="selectCidLoginHeartById" parameterType="Long" resultMap="CidLoginHeartResult">
+        <include refid="selectCidLoginHeartVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectLastUpdateTime" parameterType="String" resultMap="CidLoginHeartResult">
+        <include refid="selectCidLoginHeartVo"/>
+        where cid = #{cid}
+        order by create_date desc LIMIT 1
+    </select>
+
+    <insert id="insertCidLoginHeart" parameterType="CidLoginHeart" useGeneratedKeys="true" keyProperty="id">
+        insert into cid_login_heart
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null">cid,</if>
+            <if test="heartLoginType != null">heart_login_type,</if>
+            <if test="createDate != null">create_date,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null">#{cid},</if>
+            <if test="heartLoginType != null">#{heartLoginType},</if>
+            <if test="createDate != null">#{createDate},</if>
+        </trim>
+    </insert>
+
+    <update id="updateCidLoginHeart" parameterType="CidLoginHeart">
+        update cid_login_heart
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cid != null">cid = #{cid},</if>
+            <if test="heartLoginType != null">heart_login_type = #{heartLoginType},</if>
+            <if test="createDate != null">create_date = #{createDate},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCidLoginHeartById" parameterType="Long">
+        delete from cid_login_heart where id = #{id}
+    </delete>
+
+    <delete id="deleteCidLoginHeartByIds" parameterType="String">
+        delete from cid_login_heart where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
